@@ -38,7 +38,7 @@ if ($stmt->execute(array(':pseudo' => $pseudo)) && $row = $stmt->fetch()) {
         $_SESSION['pseudo'] = $pseudo;
         $_SESSION['accounttype'] = $accounttype;
         $_SESSION['id'] = $id;
-        header('location:suscribe.php');
+        header('location:views/suscribe.php');
         exit();
     }
 

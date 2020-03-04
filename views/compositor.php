@@ -32,9 +32,9 @@ require_once 'require/header.php';
             <div class="col-12">
                 <a><i class="fas fa-network-wired"></i><b> Réseaux :</b></a>
                 <a title="Profil Facebook de <?= $pseudo ?>" target="_blank" href="<?= $facebookId ?? '#' ?>"><img
-                            src="assets/img/facebook-logo.png" width="80" height="60" alt="logo_facebook"></a>
+                            src="../assets/img/facebook-logo.png" width="80" height="60" alt="logo_facebook"></a>
                 <a title="Profil Twitter de <?= $pseudo ?>" target="_blank" href="<?= $twitterId ?? '#' ?>"><img
-                            src="assets/img/logo_twitter.png" width="80" height="60" alt="logo_twitter"></a>
+                            src="../assets/img/logo_twitter.png" width="80" height="60" alt="logo_twitter"></a>
             </div>
         </div>
     </div>
@@ -55,7 +55,7 @@ require_once 'require/header.php';
     </div>
 </div>
 <?php require_once 'require/footer.php'; ?>
-<script src="assets/js/jquery-3.3.1.min.js"></script>
+<script src="../assets/js/jquery-3.3.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
         integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
         crossorigin="anonymous"></script>

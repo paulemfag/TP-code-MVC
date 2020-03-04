@@ -31,9 +31,9 @@ require_once '../controllers/sqlmypage.php';
         <div class="col-12">
             <a><i class="fas fa-network-wired"></i><b> Réseaux :</b></a>
             <a title="Profil Facebook de <?= $pseudo ?>" target="_blank" href="<?= $facebookId ?? '#' ?>"><img
-                        src="assets/img/facebook-logo.png" width="80" height="60" alt="logo_facebook"></a>
+                        src="../assets/img/facebook-logo.png" width="80" height="60" alt="logo_facebook"></a>
             <a title="Profil Twitter de <?= $pseudo ?>" target="_blank" href="<?= $twitterId ?? '#' ?>"><img
-                        src="assets/img/logo_twitter.png" width="80" height="60" alt="logo_twitter"></a>
+                        src="../assets/img/logo_twitter.png" width="80" height="60" alt="logo_twitter"></a>
         </div>
     </div>
 </div>
