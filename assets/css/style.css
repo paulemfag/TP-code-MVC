@@ -1,0 +1,122 @@
+html,body{
+  height: 100vh;
+  overflow-y: auto;
+}
+
+body{
+  background-size: cover;
+  background: url('../img/universe-4609408_1280.jpg') repeat;
+}
+
+#newplaylist{
+  background-color: transparent;
+  border: transparent;
+  border: none;
+}
+
+audio{
+  height: 20px;
+}
+
+.inputColor{
+  color : #114E7F;
+  background-color: #fff;;
+  opacity: 0.8;
+}
+
+#fileInput{
+  opacity: 0.8;
+  color: #114E7F;
+}
+
+#scroll{
+  height: 100vh;
+}
+
+.navbar-nav > li > .dropdown-menu {
+    background-color: #727d87; 
+}
+
+.modal > .modal-dialog > .modal-content{
+    background-color: #BD5C44;
+}
+
+h1{
+  font-family: 'Odibee Sans', cursive;
+  color: #113E7F;
+  font-weight: bold;
+}
+
+h2{
+  font-family: 'Odibee Sans', cursive;
+  color: #113E7F;
+  font-weight: bold;
+}
+
+.opacity{
+  opacity: 0.5;
+}
+
+#parameters{
+  list-style: none;
+}
+
+#big_text{
+  height: 60px;
+}
+
+.table{
+  position: fixed;
+}
+
+.sceditor-button-flash{
+  background-position: 0 -628px;
+}
+.sceditor-button-servimg{
+  background-position: 0 -644px;
+}
+.sceditor-button-dailymotion{
+  background-position: 0 -660px;
+}
+.sceditor-button-faspoiler{
+  background-position: 0 -676px;
+}
+.sceditor-button-fahide{
+  background-position: 0 -692px;
+}
+.sceditor-button-fascroll{
+  background-position: 0 -708px;
+}
+.sceditor-button-faupdown{
+  background-position: 0 -724px;
+}
+.sceditor-button-farand{
+  background-position: 0 -756px;
+}
+.sceditor-button-faroll{
+  background-position: 0 -772px;
+}
+.sceditor-button-more{
+  background-position: 0 -788px;
+}
+.sceditor-button-emoticon{
+  background-position: 0 -804px;
+}
+.sceditor-button-headers{
+  background-position: 0 -820px;
+}
+
+.fa-home{
+  font-size: 7.8vh;
+}
+/*
+#card{
+  background-color: #4DFFFFFF;
+}*/
+
+footer{
+  position: fixed;
+  left: 0;
+  bottom : 0;
+  width: 100%;
+}
