@@ -15,7 +15,7 @@ VALUES (:pseudo, :mailbox, :password, :accountType)');
     $sth->bindValue(':accountType', $accountType, PDO::PARAM_STR);
     $sth->execute();
     //Fichier vérifiant le type d'adresse mail
-    require_once 'mailboxhost.php';
+    require_once 'controllers/mailboxhost.php';
     // si l'extension mail match avec une des regex le text mail est un href redirigeant vers la boite mail correspondante
     if (isset($mailhref)) {
         $activeYourAccount = '
@@ -52,7 +52,7 @@ try {
     echo "Erreur : " . $e->getMessage();
 }
 //récupération du fichier requis
-require_once '../vendor/autoload.php';
+require_once 'vendor/autoload.php';
 $messageToSend = 'Bienvenue sur Fill ' . $pseudo . ',
  
 Pour activer votre compte, veuillez cliquer sur le lien ci-dessous
@@ -60,14 +60,14 @@ ou le copier/coller dans votre navigateur Internet.
  
 http://fill.info/activation.php?log=' . urlencode($pseudo) . '&cle=' . urlencode($key) . '
  
- 
+Cordialement, l\'équipe Fill.
 ------------------------------------------------------------------------------
 Ceci est un mail automatique, Merci de ne pas y répondre.';
 
 //Requiert le fichier "smtpParameters.php" contenant les informations de connexion (constantes)
 require_once 'smtpParameters.php';
 // Informations du transport
-$transport = (new Swift_SmtpTransport('smtp.gmail.com', 465, 'ssl'))
+/*$transport = (new Swift_SmtpTransport('smtp.gmail.com', 465, 'ssl'))
     ->setUsername(SMTPUSER)
     ->setPassword(SMTPPASSWORD);
 
@@ -79,7 +79,7 @@ $message = (new Swift_Message('Activation de votre compte Fill'))
     ->setContentType("text/html")
     ->setFrom(['suscribe@fill.info' => 'Fill | Service inscription'])
     ->setTo([$mailbox => $pseudo])
-    ->setBody($messageToSend);
+    ->setBody($messageToSend);*/
 $Name = 'Fill | Suscribe Service';
 $email = 'fill@service.info';
 $header = 'De: '. $Name . ' <' . $email . '>\r\n';

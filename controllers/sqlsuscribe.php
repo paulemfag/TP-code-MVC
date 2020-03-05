@@ -1,2 +1,2 @@
 <?php
-require_once '../models/sqlmypage.php';
+require_once '../models/sqlsuscribe.php';
