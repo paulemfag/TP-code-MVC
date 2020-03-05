@@ -15,15 +15,15 @@ require_once 'require/header.php';
     <th class="col-3 float-left">Supprimer :</th>
     </thead>
     <tbody class="text-center">
-    <?php foreach ($compositionsList as $composition): ?>
+    <?php foreach ($compositionsList as $value):?>
         <tr>
-            <td class="col-2 float-left"><a title="Page composition | <?= $compositionTitle ?>" href="composition.php?id=<?= $compositionId ?>"><?= $compositionTitle ?></a></td>
-            <td class="col-2 float-left"><a title="Page compositeur | <?= $compositorPseudo ?>" href="compositor.php?id=<?= $compositorId ?>"><?= $compositorPseudo ?></a></td>
-            <td class="col-2 float-left"><a title="Page style <?= $style ?>" href="stylePage.php?style=<?= $style ?>"><?= $style ?></a></td>
+            <td class="col-2 float-left"><a title="Page composition | <?= $value['title'] ?>" href="composition.php?id=<?= $value['compositionid'] ?>"><?= $value['title'] ?></a></td>
+            <td class="col-2 float-left"><a title="Page compositeur | <?= $value['pseudo'] ?>" href="compositor.php?id=<?= $value['id'] ?>"><?= $value['pseudo'] ?></a></td>
+            <td class="col-2 float-left"><a title="Page style <?= $value['style'] ?>" href="stylePage.php?style=<?= $value['style'] ?>"><?= $value['style'] ?></a></td>
             <td class="col-3 float-left"><audio style="height: 20px;" controls controlsList="nodownload">
-                    <source src="<?= $file ?>">
+                    <source src="<?= $value['file'] ?>">
                 </audio></td>
-            <td class="col-3 float-left"><a title="Suprimmer la composition : <?= $compositionTitle ?>" class="col-3 mr-auto btn-sm btn-outline-danger text-center" href="playlist.php?id=<?= $_GET['id'] ?>&idcomposition=<?= $compositionId ?>"><i class="col-3 fas fa-trash-alt"></i></a></td>
+            <td class="col-3 float-left"><a title="Suprimmer la composition : <?= $value['title'] ?>" class="col-3 mr-auto btn-sm btn-outline-danger text-center" href="playlist.php?id=<?= $_GET['id'] ?>&ampidcomposition=<?= $value['compositionid'] ?>"><i class="col-3 fas fa-trash-alt"></i></a></td>
         </tr>
     <?php endforeach; ?>
     </tbody>

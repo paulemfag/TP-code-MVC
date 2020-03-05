@@ -40,11 +40,3 @@ WHERE playlists.id = :id'
 } catch (Exception $ex) {
     die('Connexion échoué');
 }
-foreach ($compositionsList as $rowInfo){
-    $compositionId = $rowInfo['compositionid'];
-    $compositionTitle = $rowInfo['title'];
-    $compositorPseudo = $rowInfo['pseudo'];
-    $compositorId = $rowInfo['id'];
-    $style = $rowInfo['style'];
-    $file = $rowInfo['file'];
-}

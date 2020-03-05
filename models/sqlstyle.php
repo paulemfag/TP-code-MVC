@@ -12,7 +12,6 @@ try {
 }
 try {
     //Récupération des informations de la table composition selon le style
-
     $stmt = $db->prepare('SELECT compositions.id, compositions.title, compositions.file, compositions.id_users FROM compositions INNER JOIN categories ON compositions.title = categories.title AND categories.style = :style ORDER BY title ASC');
     if ($stmt->execute(array(':style' => $style)) && $row = $stmt->fetchAll(PDO::FETCH_ASSOC)) {
         //Pour chaque composition
@@ -53,10 +52,10 @@ try {
     echo "Erreur : " . $e->getMessage();
 }
 if (filter_input(INPUT_GET, 'idPlaylist', FILTER_SANITIZE_NUMBER_INT) && filter_input(INPUT_GET, 'idComposition', FILTER_SANITIZE_NUMBER_INT)) {
-    $idComposition = $_GET['idComposition'] . ', ';
+    $idComposition = $_GET['idComposition'];
     $idPlaylist = $_GET['idPlaylist'];
     try {
-        $stmt = $db->prepare('UPDATE `playlists` SET compositions_id_list = :idComposition WHERE id = :idPlaylist');
+        $stmt = $db->prepare('INSERT INTO `compo_in_playlist` (`id_compositions`, `id_playlists`) VALUES (:idComposition, :idPlaylist)');
         $stmt->bindParam(':idComposition', $idComposition, PDO::PARAM_STR);
         $stmt->bindParam(':idPlaylist', $idPlaylist, PDO::PARAM_INT);
         $stmt->execute();
