@@ -62,8 +62,8 @@ require_once 'controllers/form_validation.php';
 </div>
 <?php //Message d'alerte informant que le compte a bien été crée
 echo $activeYourAccount ?? '' ?>
-<div id="presentationText">
-    <p class="text-light">Crée en 2019 par Monsieur FAGOT, FILL est un site d'écoute et de publication musicale
+<div class="opacity bg-light" id="presentationText">
+    <p id="introduction">Crée en 2019 par Monsieur FAGOT, FILL est un site d'écoute et de publication musicale
         développé dans l'optique d'offrir aux auteurs un endroit ou partager leur compositions " To fill " et au grand
         public de découvrir de nouveaux horizons " To feel ".<br>
         Les membres disposent également d'un espace Forum ou ils peuvent débattre sur des sujets qui leurs tiennent à
@@ -71,68 +71,86 @@ echo $activeYourAccount ?? '' ?>
     <p>
 </div>
 <div id="suscribeItems">
-    <div class="container text-center bg-light mt-2 opacity">
-        <h1 class="text-primary ml-auto mr-auto">Fill | Inscription :</h1>
+    <div id="scroll">
+        <div class="container text-center bg-light mt-2 opacity">
+            <h1 class="text-primary ml-auto mr-auto">Fill | Inscription :</h1>
+        </div>
+        <!-- form Inscription -->
+        <form class="container" id="suscribers" method="post" action="#" novalidate>
+            <div class="form-group">
+                <label class="text-light" for="typeOfAccount">Type de compte :</label>
+                <select class="col-12" name="typeOfAccount" id="typeOfAccount">
+                    <option value="particular">Particulier</option>
+                    <option value="compositor">Compositeur</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label class="text-light" for="suscribepseudo">Pseudo :</label>
+                <span class="text-danger float-right"><?= ($errors['suscribepseudo']) ?? '' ?></span>
+                <input id="suscribepseudo" name="suscribepseudo" class="col-12 mt-1 inputColor" type="text"
+                       placeholder="Pseudo" value="<?= $suscribepseudo ?>" required>
+            </div>
+            <div class="form-group">
+                <label class="text-light" for="suscribemailbox">Adresse mail :</label>
+                <span class="text-danger float-right"><?= ($errors['suscribemailbox']) ?? '' ?></span>
+                <input id="suscribemailbox" name="suscribemailbox" class="col-12 mt-1 inputColor" type="email"
+                       placeholder="exemple@mail.com" value="<?= $suscribemailbox ?>" required>
+            </div>
+            <div class="form-group">
+                <label class="text-light" for="suscribepassword">Mot de passe :</label>
+                <span class="text-danger float-right"><?= ($errors['suscribepassword']) ?? '' ?></span>
+                <input id="suscribepassword" name="suscribepassword" class="col-12 mt-1 inputColor"
+                       type="password" placeholder="*****" value="<?= $suscribepassword ?>" required>
+            </div>
+            <div class="form-group">
+                <input id="suscribepasswordconfirmation" name="suscribepasswordconfirmation"
+                       class="col-12 mt-1 inputColor" type="password"
+                       placeholder="Confirmation du mot de passe" value="<?= $suscribepasswordconfirmation ?>" required>
+            </div>
+            <div class="captcha">
+                <div
+                        class="g-recaptcha"
+                        data-sitekey="6Lf-Dd8UAAAAAB6ROCZ8e2TWVp3-2PBzzz34y67X"
+                        style="display: inline-block;">
+
+                </div>
+            </div>
+            <button id="suscribe" name="suscribe" class="btn btn-outline-primary col-12 mt-1"
+                    type="submit" value="<?= $suscribe ?? '' ?>">M'inscrire
+            </button>
+            <span class="text-success float-right"><?= ($errors['isok']) ?? '' ?></span>
+        </form>
     </div>
-    <!-- form Inscription -->
-    <form class="container" id="suscribers" method="post" action="#" novalidate>
-        <div class="form-group">
-            <label class="text-light" for="typeOfAccount">Type de compte :</label>
-            <select class="col-12" name="typeOfAccount" id="typeOfAccount">
-                <option value="particular">Particulier</option>
-                <option value="compositor">Compositeur</option>
-            </select>
-        </div>
-        <div class="form-group">
-            <label class="text-light" for="suscribepseudo">Pseudo :</label>
-            <span class="text-danger float-right"><?= ($errors['suscribepseudo']) ?? '' ?></span>
-            <input id="suscribepseudo" name="suscribepseudo" class="col-12 text-center mt-1 inputColor" type="text"
-                   placeholder="Pseudo" value="<?= $suscribepseudo ?>" required>
-        </div>
-        <div class="form-group">
-            <label class="text-light" for="suscribemailbox">Adresse mail :</label>
-            <span class="text-danger float-right"><?= ($errors['suscribemailbox']) ?? '' ?></span>
-            <input id="suscribemailbox" name="suscribemailbox" class="col-12 text-center mt-1 inputColor" type="email"
-                   placeholder="exemple@mail.com" value="<?= $suscribemailbox ?>" required>
-        </div>
-        <div class="form-group">
-            <label class="text-light" for="suscribepassword">Mot de passe :</label>
-            <span class="text-danger float-right"><?= ($errors['suscribepassword']) ?? '' ?></span>
-            <input id="suscribepassword" name="suscribepassword" class="col-12 text-center mt-1 inputColor"
-                   type="password" placeholder="*****" value="<?= $suscribepassword ?>" required>
-        </div>
-        <div class="form-group">
-            <input id="suscribepasswordconfirmation" name="suscribepasswordconfirmation"
-                   class="col-12 text-center mt-1 inputColor" type="password"
-                   placeholder="Confirmation du mot de passe" value="<?= $suscribepasswordconfirmation ?>" required>
-        </div>
-        <button id="suscribe" name="suscribe" class="btn btn-outline-primary col-12 text-center mt-1"
-                type="submit" value="<?= $suscribe ?? '' ?>">M'inscrire
-        </button>
-        <span class="text-success float-right"><?= ($errors['isok']) ?? '' ?></span>
-    </form>
 </div>
 <div id="connectItems">
     <div class="container text-center bg-light mt-2 opacity">
-        <h1 class="text-primary text-center ml-auto mr-auto">Fill | Connexion :</h1>
+        <h1 class="text-primary ml-auto mr-auto">Fill | Connexion :</h1>
     </div>
     <!-- Form Connexion -->
     <form class="container" action="#" method="post" novalidate>
         <div class="form-group">
             <label class="text-light" for="pseudo">Pseudo :</label>
             <span class="text-danger float-right"><?= ($errors['pseudo']) ?? '' ?></span>
-            <input id="pseudo" name="pseudo" class="col-12 text-center mt-1 inputColor" type="text" placeholder="Pseudo"
+            <input id="pseudo" name="pseudo" class="col-12 mt-1 inputColor" type="text" placeholder="Pseudo"
                    value="<?= $pseudo ?>" required>
         </div>
         <div class="form-group">
             <label class="text-light" for="password">Mot de passe :</label>
             <span class="text-danger float-right"><?= ($errors['password']) ?? '' ?></span>
-            <input id="password" name="password" class="col-12 text-center mt-1 inputColor" type="password"
+            <input id="password" name="password" class="col-12 mt-1 inputColor" type="password"
                    placeholder="Mot de passe" value="<?= $_POST['password'] ?? '' ?>" required>
         </div>
-        <div class="row col-12">
-            <a class="col-12 text-center" title="Créer un compte" id="noAccount" href="#">Je n'ai pas encore de compte</a>
-            <a class="col-12 text-center" title="Récupérer mon mot de passe" id="lostPassword" href="#">Mot de passe oublié</a>
+        <div class="row text-center">
+            <a class="col-12" title="Créer un compte" id="noAccount" href="#">Je n'ai pas encore de compte</a>
+            <a class="col-12" title="Récupérer mon mot de passe" id="lostPassword" href="#">Mot de passe oublié</a>
+        </div>
+        <div class="captcha">
+            <div
+                    class="g-recaptcha"
+                    data-sitekey="6Lf-Dd8UAAAAAB6ROCZ8e2TWVp3-2PBzzz34y67X"
+                    style="display: inline-block;" aria-required="true">
+
+            </div>
         </div>
         <span class="text-danger float-right"><?= $errors['login'] ?? '' ?></span>
         <button id="login" name="login" class="btn btn-outline-primary col-12 text-center mt-1"
@@ -173,6 +191,11 @@ echo $activeYourAccount ?? '' ?>
 <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 <script src="assets/js/jquery-3.3.1.min.js"></script>
 <script src="assets/js/home.js"></script>
+<script type="text/javascript">
+    var onloadCallback = function() {
+        alert("grecaptcha is ready!");
+    };
+</script>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>

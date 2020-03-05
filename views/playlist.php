@@ -17,9 +17,9 @@ require_once 'require/header.php';
     <tbody class="text-center">
     <?php foreach ($compositionsList as $value):?>
         <tr>
-            <td class="col-2 float-left"><a title="Page composition | <?= $value['title'] ?>" href="composition.php?id=<?= $value['compositionid'] ?>"><?= $value['title'] ?></a></td>
-            <td class="col-2 float-left"><a title="Page compositeur | <?= $value['pseudo'] ?>" href="compositor.php?id=<?= $value['id'] ?>"><?= $value['pseudo'] ?></a></td>
-            <td class="col-2 float-left"><a title="Page style <?= $value['style'] ?>" href="stylePage.php?style=<?= $value['style'] ?>"><?= $value['style'] ?></a></td>
+            <td class="col-2 float-left"><a target="_blank" title="Page composition | <?= $value['title'] ?>" href="composition.php?id=<?= $value['compositionid'] ?>"><?= $value['title'] ?></a></td>
+            <td class="col-2 float-left"><a target="_blank" title="Page compositeur | <?= $value['pseudo'] ?>" href="compositor.php?id=<?= $value['id'] ?>"><?= $value['pseudo'] ?></a></td>
+            <td class="col-2 float-left"><a target="_blank" title="Page style <?= $value['style'] ?>" href="stylePage.php?style=<?= $value['style'] ?>"><?= $value['style'] ?></a></td>
             <td class="col-3 float-left"><audio style="height: 20px;" controls controlsList="nodownload">
                     <source src="<?= $value['file'] ?>">
                 </audio></td>

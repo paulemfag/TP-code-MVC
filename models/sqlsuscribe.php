@@ -1,5 +1,11 @@
 <?php
 require_once 'sqlparameters.php';
+
+$Url = "https://www.google.com/recaptcha/api/siteverify";
+$SecretKey = "----Secret Key----";
+$Response = file_get_contents($Url."?secret=".$SecretKey."&response=".$_POST['Response']);
+$Robot = json_decode($Response);
+var_dump($Response);
 // récupération des valeurs du formulaire dans des variables
 try {
     $pseudo = $_POST['suscribepseudo'];

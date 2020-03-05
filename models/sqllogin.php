@@ -1,7 +1,7 @@
 <?php
 require_once 'sqlparameters.php';
 // Récupération de la valeur du champ actif pour le login $login
-$stmt = $db->prepare("SELECT `id`, `pseudo`, `mailBox`, `active`, `password`, `accounttype` FROM `users` WHERE pseudo LIKE :pseudo ");
+$stmt = $db->prepare('SELECT `id`, `pseudo`, `mailBox`, `active`, `password`, `accounttype` FROM `users` WHERE pseudo LIKE :pseudo ');
 if ($stmt->execute(array(':pseudo' => $pseudo)) && $row = $stmt->fetch()) {
     $id = $row['id'];
     $pseudo = $row['pseudo'];

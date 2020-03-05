@@ -20,6 +20,13 @@ audio{
   height: 20px;
 }
 
+#introduction{
+  font-style: italic;
+}
+
+#captcha{
+  text-align: center;
+}
 .inputColor{
   color : #114E7F;
   background-color: #fff;;
