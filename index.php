@@ -148,7 +148,7 @@ echo $activeYourAccount ?? '' ?>
             <div
                     class="g-recaptcha"
                     data-sitekey="6Lf-Dd8UAAAAAB6ROCZ8e2TWVp3-2PBzzz34y67X"
-                    style="display: inline-block;" aria-required="true">
+                    style="display: inline-block;">
 
             </div>
         </div>
@@ -177,9 +177,9 @@ echo $activeYourAccount ?? '' ?>
 <footer class="page-footer font-small text-light bg-secondary">
     <!-- logos hrefs -->
     <div class="container-fluid text-center text-md-center">
-        <a title="Facebook | Fill" target="_blank" href="https://www.facebook.com"><img src="../assets/img/facebook-logo.png" width="40" height="30"
+        <a title="Facebook | Fill" rel="noopener" target="_blank" href="https://www.facebook.com"><img src="../assets/img/facebook-logo.png" width="40" height="30"
                                                                                         alt="logo_fb"></a>
-        <a title="Twitter | Fill" target="_blank" href="https://www.twitter.com"><img src="../assets/img/logo_twitter.png" alt="logo_twitter" height="20"
+        <a title="Twitter | Fill" rel="noopener" target="_blank" href="https://www.twitter.com"><img src="../assets/img/logo_twitter.png" alt="logo_twitter" height="20"
                                                                                       width="25"></a>
     </div>
     <!-- Copyright -->

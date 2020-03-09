@@ -7,11 +7,11 @@ $Response = file_get_contents($Url."?secret=".$SecretKey."&response=".$_POST['Re
 $Robot = json_decode($Response);
 var_dump($Response);
 // récupération des valeurs du formulaire dans des variables
+$pseudo = $_POST['suscribepseudo'];
+$mailbox = $_POST['suscribemailbox'];
+$password = password_hash($_POST['suscribepassword'], PASSWORD_DEFAULT);
+$accountType = $_POST['typeOfAccount'];
 try {
-    $pseudo = $_POST['suscribepseudo'];
-    $mailbox = $_POST['suscribemailbox'];
-    $password = password_hash($_POST['suscribepassword'], PASSWORD_DEFAULT);
-    $accountType = $_POST['typeOfAccount'];
     // insertion dans la base de donnée
     $sth = $db->prepare('INSERT INTO `users` (pseudo, mailbox, password, accounttype)
 VALUES (:pseudo, :mailbox, :password, :accountType)');
