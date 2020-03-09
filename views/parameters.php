@@ -3,6 +3,7 @@ $title = 'Fill | Paramètres';
 require_once 'require/header.php';
 require_once '../controllers/form_validation.php';
 ?>
+<?= $message ?? '' ?>
 <div class="container text-center bg-light mt-2 opacity">
     <h1>Paramètres :</h1>
 </div>
@@ -14,7 +15,6 @@ require_once '../controllers/form_validation.php';
     </ul>
 </div>
 <div id="scroll">
-    <?= $message ?? '' ?>
 <div id="changePasswordItems">
     <h2 class="container bg-light opacity">Changement du mot de passe :</h2>
     <form class="container" action="#" method="post" novalidate>
