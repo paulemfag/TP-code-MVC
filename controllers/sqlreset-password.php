@@ -1,2 +1,2 @@
 <?php
-require_once '../models/sqlreset-password';
+require_once '../models/sqlreset-password.php';
