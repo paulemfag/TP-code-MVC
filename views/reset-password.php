@@ -19,6 +19,7 @@
     <img src="../assets/img/keyboards.png" alt="logo_clavier" height="40" width="60">
     <a id="FILL" class="navbar-brand text-light" style="font-weight: bold;">FILL</a>
 </nav>
+<?= $recuperationStatus ?? '' ?>
 <div class="container text-center bg-light mt-2 opacity">
     <h1>Récupération du mot de passe :</h1>
 </div>
