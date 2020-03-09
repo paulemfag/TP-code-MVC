@@ -1,5 +1,5 @@
 <?php
-//Vérifie si elle n'est pas vide et si c'est un entier
+//Vérifie si l'id n'est pas vide et si c'est un entier
 if (!filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT)) {
     //redirection vers la page d'accueil
     header('location:accueil.php');
@@ -39,4 +39,24 @@ WHERE playlists.id = :id'
     $compositionsList = $sth->fetchAll(PDO::FETCH_ASSOC);
 } catch (Exception $ex) {
     die('Connexion échoué');
+}
+if (filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT) && filter_input(INPUT_GET, 'idcomposition', FILTER_SANITIZE_NUMBER_INT)){
+    $idcomposition = $_GET['idcomposition'];
+    try {
+        $sth = $db->prepare('DELETE FROM compo_in_playlist WHERE `id_playlists` = :idplaylist AND `id_compositions` = :idcomposition');
+        $sth->bindValue(':idplaylist', $idPlaylist, PDO::PARAM_INT);
+        $sth->bindValue(':idcomposition', $idcomposition, PDO::PARAM_INT);
+        $sth->execute();
+        $successfulDelete = '
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+  <p>La composition a bien été suprimmée.</p>
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>';
+        sleep(2);
+        header('location:playlist.php?id=' .$idPlaylist. '');
+    }  catch (Exception $ex) {
+        die('Connexion échoué');
+    }
 }

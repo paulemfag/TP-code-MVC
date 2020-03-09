@@ -16,7 +16,7 @@ require_once '../controllers/form_validation.php';
 <div id="scroll">
     <?= $message ?? '' ?>
 <div id="changePasswordItems">
-    <h2 class="container">Changement du mot de passe :</h2>
+    <h2 class="container bg-light opacity">Changement du mot de passe :</h2>
     <form class="container" action="#" method="post" novalidate>
         <div class="form-group">
             <label class="text-light" for="actualPassword">Mot de passe actuel :</label>
@@ -37,7 +37,7 @@ require_once '../controllers/form_validation.php';
     </form>
 </div>
 <div id="changeTypeOfAccount">
-    <h2 class="container">Changement du type de compte :</h2>
+    <h2 class="container bg-light opacity">Changement du type de compte :</h2>
     <form class="container" action="#" method="post" novalidate>
         <div class="form-group">
             <label class="text-light" for="actualType">Type de compte actuel :</label>
@@ -52,17 +52,22 @@ require_once '../controllers/form_validation.php';
             <span class="text-danger float-right"><?= $errors['changeAccountPassword'] ?? '' ?></span>
             <input class="col-12 inputColor" id="changeAccountPassword" name="changeAccountPassword" type="password" value="<?= $_POST['changeAccountPassword'] ?? '' ?>">
         </div>
-        <h2 class="text-danger">Attention après ces changements [...], vous serez déconnecté et devrez donc vous reconnecter.</h2>
+        <div class="container bg-light opacity">
+            <h2 class="text-danger">Attention après ces changements [...], vous serez déconnecté et devrez donc vous reconnecter.</h2>
+        </div>
         <button class="btn btn-outline-success col-12" id="changeAccountType" name="changeAccountType" type="submit" value="<?= $changeAccount ?? '' ?>">Changer mon type de compte</button>
     </form>
 </div>
 <div id="removeAccountItems">
-    <h2 class="container">Suppression du compte :</h2>
+    <h2 class="container bg-light opacity">Suppression du compte :</h2>
     <form class="container" action="#" method="post" novalidate>
         <div class="form-group">
             <label class="text-light" for="Password">Veuillez taper votre mot de passe :</label>
             <span class="text-danger float-right"><?= ($errors['Password']) ?? '' ?></span>
             <input id="Password" class="col-12 inputColor" name="Password" type="password" value="<?= $actualPassword ?>" required>
+        </div>
+        <div class="bg-light opacity">
+            <h2 class="ml-2 text-danger">Attention après ces changements votre compte sera archivé.</h2>
         </div>
         <button class="btn btn-outline-danger col-12" id="removeMyAccount" name="removeMyAccount" type="submit" value="<?= $removeMyAccount ?? '' ?>"><i class="far fa-times-circle"></i> Supprimer mon compte</button>
     </form>

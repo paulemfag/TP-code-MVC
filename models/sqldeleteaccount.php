@@ -2,7 +2,7 @@
 require_once 'sqlparameters.php';
 try {
     $sth = $db->prepare('SELECT `password` FROM `users` WHERE `id` = :id');
-    $sth->bindValue(':id', $id, PDO::PARAM_INT);
+    $sth->bindValue(':id', $_SESSION['id'], PDO::PARAM_INT);
     $sth->execute();
     $user = $sth->fetch();
 } catch (Exception $ex) {
@@ -13,10 +13,10 @@ if (password_verify($removeMyAccountPassword, $user['password'])) {
     //stockage de la valeur 0 dans une variable pour changer la colonne `active`
     $active = 0;
     try {
-        $stmt = $db->prepare('UPDATE `users` SET `active` = :active WHERE id = :id');
-        $sth->bindValue(':id', $id, PDO::PARAM_INT);
+        $sth = $db->prepare('UPDATE `users` SET `active` = :active WHERE id = :id');
+        $sth->bindValue(':id', $_SESSION['id'], PDO::PARAM_INT);
         $sth->bindValue(':active', $active, PDO::PARAM_INT);
-        $stmt->execute();
+        $sth->execute();
         //redirection vers l'index(déconnexion)
         require_once '../views/logout.php';
     } catch (PDOException $e) {

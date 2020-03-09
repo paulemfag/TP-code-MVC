@@ -32,7 +32,7 @@ try {
             }
             $composition = $composition .
                 '<td> 
-            <audio controls controlsList="nodownload">
+            <audio class="Audio" preload="auto" controls controlsList="nodownload">
             <source src="' . $rowInfo['file'] . '" type="audio/mp3">
             </audio>
             </td>

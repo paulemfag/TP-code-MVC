@@ -12,7 +12,7 @@ if ($stmt->execute(array(':pseudo' => $pseudo)) && $row = $stmt->fetch()) {
     // Si la valeur de la colonne active est égale à 0, on invite l'utilisateur à confirmer son compte via le mail
     if ($active == '0' && $pseudo == $_POST['pseudo'] && password_verify($_POST['password'], $password)) {
     //Vérifie le type d'adresse mail pour personnaliser le message d'erreur
-    require_once 'mailboxhost.php';
+    require_once 'controllers/mailboxhost.php';
     //si l'extension mail est trouvée :
     if (!empty($hrefTitle) && !empty($mailhref)) {
         $notConfirmetYet = '<div class="alert alert-warning alert-dismissible fade show" role="alert">

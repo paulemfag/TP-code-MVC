@@ -1,7 +1,14 @@
 <?php
+if (isset ($successfullDelete)){
+    sleep(2);
+    header('location:mypage.php');
+    exit();
+}
 $title = 'Fill | Ma page';
 require_once 'require/header.php';
 require_once '../controllers/sqlmypage.php';
+//message d'alerte en cas de suppression de composition
+echo $successfullDelete ?? '';
 ?>
 <div class="col-12">
     <h1 class="text-center bg-light col-10 opacity mt-2 ml-auto mr-auto"><?= $_SESSION['pseudo'] ?> | Informations personnelles :</h1>
@@ -51,7 +58,7 @@ require_once '../controllers/sqlmypage.php';
 <audio style="height: 20px;" class="float-right col-5" controls>
             <source src="' . $file . '" type="audio/mp3">
             </audio>
-            <a title="Suprimmer la composition : ' .$compositionTitle[0]. '" class="col-1 ml-3 mr-auto btn-sm btn-outline-danger text-center" href="?id=' .$composition['id']. '"><i class="fas fa-trash-alt"></i></a>';
+            <a title="Suprimmer la composition : ' .$compositionTitle[0]. '" class="col-1 ml-3 mr-auto btn-sm btn-outline-danger text-center" href="?idcomposition=' .$composition['id']. '"><i class="fas fa-trash-alt"></i></a>';
         } ?>
     </div>
 </div>

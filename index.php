@@ -63,7 +63,7 @@ require_once 'controllers/form_validation.php';
 <?php //Message d'alerte informant que le compte a bien été crée
 echo $activeYourAccount ?? '' ?>
 <div class="opacity bg-light" id="presentationText">
-    <p id="introduction">Crée en 2019 par Monsieur FAGOT, FILL est un site d'écoute et de publication musicale
+    <p class="text-center" id="introduction">Crée en 2019 par Monsieur FAGOT, FILL est un site d'écoute et de publication musicale
         développé dans l'optique d'offrir aux auteurs un endroit ou partager leur compositions " To fill " et au grand
         public de découvrir de nouveaux horizons " To feel ".<br>
         Les membres disposent également d'un espace Forum ou ils peuvent débattre sur des sujets qui leurs tiennent à
@@ -141,8 +141,8 @@ echo $activeYourAccount ?? '' ?>
                    placeholder="Mot de passe" value="<?= $_POST['password'] ?? '' ?>" required>
         </div>
         <div class="row text-center">
-            <a class="col-12" title="Créer un compte" id="noAccount" href="#">Je n'ai pas encore de compte</a>
-            <a class="col-12" title="Récupérer mon mot de passe" id="lostPassword" href="#">Mot de passe oublié</a>
+            <a class="col-12 indexhref" title="Créer un compte" id="noAccount" href="#">Je n'ai pas encore de compte</a>
+            <a class="col-12 indexhref" title="Récupérer mon mot de passe" id="lostPassword" href="#">Mot de passe oublié</a>
         </div>
         <div class="captcha">
             <div
