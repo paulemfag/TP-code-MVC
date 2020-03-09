@@ -35,7 +35,7 @@ if (empty($userInformations)) {
 
 Veuillez cliquer sur le lien suivant pour réinitialiser votre mot de passe.
 
-http://fill.info/reset-password.php?key=' . $key . '&email=' . $recuperationMailbox . '&action=reset
+https://filldemo.000webhostapp.com/views/reset-password.php?key=' . $key . '&email=' . $recuperationMailbox . '&action=reset
 
 ------------------------------------------------------------------------------
 Merci de bien vouloir copier le lien entier dans votre navigateur.
