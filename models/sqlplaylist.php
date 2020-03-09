@@ -43,21 +43,22 @@ WHERE playlists.id = :id'
 if (filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT) && filter_input(INPUT_GET, 'idcomposition', FILTER_SANITIZE_NUMBER_INT)) {
     //Stocakge de l'id récupéré en GET dans une variable
     $idcomposition = $_GET['idcomposition'];
-    //suppression de la table compo_in_playlist
+    //suppression dans la table compo_in_playlist
     try {
         $sth = $db->prepare('DELETE FROM compo_in_playlist WHERE `id_playlists` = :idplaylist AND `id_compositions` = :idcomposition');
         $sth->bindValue(':idplaylist', $idPlaylist, PDO::PARAM_INT);
         $sth->bindValue(':idcomposition', $idcomposition, PDO::PARAM_INT);
         $sth->execute();
-        $successfulDelete = '
-<div class="alert alert-success alert-dismissible fade show" role="alert">
-  <p>La composition a bien été suprimmée.</p>
-  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-    <span aria-hidden="true">&times;</span>
-  </button>
-</div>';
-        sleep(2);
+/*      $successfulDelete = '
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+          <p>La composition a bien été suprimmée.</p>
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>';
+        sleep(2);*/
         header('location:playlist.php?id=' . $idPlaylist . '');
+        exit();
     } catch (Exception $ex) {
         die('Connexion échoué');
     }

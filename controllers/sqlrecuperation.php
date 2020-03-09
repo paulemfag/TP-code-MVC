@@ -1,2 +1,2 @@
 <?php
-require_once '../models/sqlrecuperation.php';
+require_once 'models/sqlrecuperation.php';

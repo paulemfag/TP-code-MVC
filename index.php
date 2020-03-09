@@ -159,6 +159,7 @@ echo $activeYourAccount ?? '' ?>
     </form>
 </div>
 <form class="container" id='forgottenPassword' method="post" novalidate>
+    <?= $recuperationReturn ?? '' ?>
     <div class="container text-center bg-light mt-2 opacity">
         <h1 class="text-primary ml-auto mr-auto">Récupération du mot de passe :</h1>
     </div>
@@ -168,7 +169,6 @@ echo $activeYourAccount ?? '' ?>
         <input id="recuperationMailbox" class="col-12 inputColor" name="recuperationMailbox" type="text"
                value="<?= $recuperationMailbox ?>" required>
     </div>
-    <span class="text-success float-right"><?= ($errors['isok']) ?? '' ?></span>
     <button id="recuperation" name="recuperation" class="btn btn-outline-success col-12 text-center mt-1" type="submit"
             value="<?= $recuperation ?? '' ?>">Récupérer mon mot de passe
     </button>

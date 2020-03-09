@@ -232,7 +232,6 @@ if (isset ($_POST['recuperation'])) {
         $errors['recuperationMailbox'] = 'Veuillez saisir une adresse mail valide.';
     } else {
         require_once 'sqlrecuperation.php';
-        $errors['isok'] = 'Un email de récupération vous a été envoyé.';
     }
 }
 //Formulaire reset mot de passe après récupération
@@ -250,7 +249,6 @@ if (isset($_POST['resetMyPassword'])){
     if (count($errors) == 0) {
         require_once '../controllers/sqlreset-password.php';
     }
-
 }
 //Vérification changement du type de compte
 if (isset($_POST['changeAccountType'])) {
