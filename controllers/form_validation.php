@@ -86,6 +86,8 @@ if (isset($_POST['login'])) {
     //Si il n'y a pas d'erreurs execute les vérifications en BDD et renvoi vers la page 'accueil.php'
     if (count($errors) == 0) {
         require_once 'sqllogin.php';
+        $_POST['password'] = '';
+        $pseudo = '';
     }
 }
 // Si la personne viens de la page 'activation.php' donne une valeur au bouton / affiche le formulaire de connexion (js)
