@@ -1,4 +1,35 @@
-<?php require_once '../controllers/form_validation.php'; ?>
+<?php
+require_once '../controllers/sqlparameters.php';
+//vérifie que les paramètres GET sont valables
+if (filter_input(INPUT_GET, 'email', FILTER_SANITIZE_STRING)
+    && filter_input(INPUT_GET, 'key', FILTER_SANITIZE_STRING)) {
+    $mailBox = $_GET['email'];
+    $key = $_GET['key'];
+    //récupère la longueur de la clé
+    $keyLength = strlen($key);
+    //si la clé ne fais pas 42 charactères
+    if ($keyLength !== 42) {
+        header('location:../index.php');
+        exit();
+    }
+    $stmt = $db->prepare('SELECT `key` FROM `password_reset_temp` WHERE `email` = :email ');
+    if ($stmt->execute(array(':email' => $mailBox)) && $row = $stmt->fetchAll(PDO::FETCH_ASSOC)) {
+        foreach ($row as $rowinfo) {
+            $bddKey = $rowinfo['key'];
+        }
+        //Si la clé en BDD n'est pas égale à celle de l'url
+        if ($bddKey !== $key) {
+            header('location:../index.php');
+            exit();
+        }
+    }
+}
+else {
+    //Si les paramètres GET ne sont pas valables
+    header('location:../index.php');
+    exit();
+}
+require_once '../controllers/form_validation.php'; ?>
 <!DOCTYPE html>
 <html lang="fr" dir="ltr">
 <head>
@@ -23,19 +54,31 @@
 <div class="container text-center bg-light mt-2 opacity">
     <h1>Récupération du mot de passe :</h1>
 </div>
+<input type="hidden" id="actualDatetime">
 <form class="container" action="#" method="post" novalidate>
     <div class="form-group">
         <label class="text-light" for="passwordAfterReset">Nouveau mot de passe :</label>
         <span class="text-danger float-right"><?= ($errors['passwordAfterReset']) ?? '' ?></span>
-        <input value="<?= $passwordAfterReset ?>" name="passwordAfterReset" id="passwordAfterReset" class="col-12 inputColor" type="password">
+        <input value="<?= $passwordAfterReset ?>" name="passwordAfterReset" id="passwordAfterReset"
+               class="col-12 inputColor" type="password">
     </div>
     <div class="form-group">
         <label class="text-light" for="confirmPasswordAfterReset">Confirmation du nouveau mot de passe :</label>
         <span class="text-danger float-right"><?= ($errors['confirmPasswordAfterReset']) ?? '' ?></span>
-        <input value="<?= $confirmPasswordAfterReset ?>" name="confirmPasswordAfterReset" id="confirmPasswordAfterReset" class="col-12 inputColor" type="password">
+        <input value="<?= $confirmPasswordAfterReset ?>" name="confirmPasswordAfterReset" id="confirmPasswordAfterReset"
+               class="col-12 inputColor" type="password">
     </div>
     <input name="resetMyPassword" class="btn btn-outline-success col-12" value="Changer le mot de passe" type="submit">
 </form>
-<?php require_once 'require/footer.php'?>
+<?php require_once 'require/footer.php' ?>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
 </body>
 </html>

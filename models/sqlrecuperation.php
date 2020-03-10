@@ -9,6 +9,14 @@ try {
 } catch (PDOException $e) {
     echo "Erreur : " . $e->getMessage();
 }
+//suprimme l'ancienne clé en BDD au cas ou une demande aurait déjà été effectué
+try {
+    $sth = $db->prepare('DELETE FROM `password_reset_temp` WHERE `email` = :mailBox');
+    $sth->bindValue(':mailBox', $recuperationMailbox, PDO::PARAM_STR);
+    $sth->execute();
+} catch (PDOException $e) {
+    echo "Erreur : " . $e->getMessage();
+}
 if (empty($userInformations)) {
     $errors['recuperationMailbox'] = 'Aucun compte n\'est associé à l\'adresse ' . $recuperationMailbox . '.';
 } else {
@@ -35,11 +43,13 @@ if (empty($userInformations)) {
 
 Veuillez cliquer sur le lien suivant pour réinitialiser votre mot de passe.
 
-https://filldemo.000webhostapp.com/views/reset-password.php?key=' . $key . '&email=' . $recuperationMailbox . '&action=reset
+https://filldemo.000webhostapp.com/views/reset-password.php?key=' . $key . '&email=' . $recuperationMailbox . '
 
 ------------------------------------------------------------------------------
 Merci de bien vouloir copier le lien entier dans votre navigateur.
 Ce lien expirera après un jour pour des raisons de sécurité.
+
+Si vous avez effectué plusieurs récupérations de mot de passe merci d\'effectuer la démarche avec le dernier lien reçu.
 
 Si vous n\'êtes pas à l\'origine de cette demande, aucune action n\'est requise, votre mot de passe ne sera pas réinitialisé.
 Cependant, vous devriez vous connecter à votre compte et changez votre mot de passe de sécurité car quelqu\'un l\'a peut-être deviné.
