@@ -43,6 +43,14 @@ audio{
   color: #114E7F;
 }
 
+.playlistTable{
+  background-color: #7C66A5;
+}
+
+.darkHref{
+  color: black;
+}
+
 #scroll{
   height: 100vh;
 }

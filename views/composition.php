@@ -6,7 +6,7 @@ require_once 'require/header.php';
 <div class="container text-center bg-light mt-2 opacity">
     <h1><?= $title ?> :</h1>
 </div>
-<div class="container bg-light mt-2 opacity">
+<div class="container mt-2 playlistTable">
     <p>
     Style : <?= $style ?>.
     <br>

@@ -6,7 +6,7 @@ echo $successfulDelete ?? ''
 <div class="container text-center bg-light mt-2 opacity">
     <h1>Playlist | <?= $playlistTitle ?> :</h1>
 </div>
-<table class="container bg-light">
+<table class="container playlistTable">
     <div class="row">
         <thead class="text-center">
         <th class="col-2 float-left">Titre :</th>
@@ -18,9 +18,9 @@ echo $successfulDelete ?? ''
         <tbody class="text-center">
         <?php foreach ($compositionsList as $value):?>
             <tr>
-                <td class="col-2 float-left"><a target="_blank" title="Page composition | <?= $value['title'] ?>" href="composition.php?id=<?= $value['compositionid'] ?>"><?= $value['title'] ?></a></td>
-                <td class="col-2 float-left"><a target="_blank" title="Page compositeur | <?= $value['pseudo'] ?>" href="compositor.php?id=<?= $value['id'] ?>"><?= $value['pseudo'] ?></a></td>
-                <td class="col-2 float-left"><a target="_blank" title="Page style <?= $value['style'] ?>" href="stylePage.php?style=<?= $value['style'] ?>"><?= $value['style'] ?></a></td>
+                <td class="col-2 float-left"><a rel="noopener" class="darkHref" target="_blank" title="Page composition | <?= $value['title'] ?>" href="composition.php?id=<?= $value['compositionid'] ?>"><?= $value['title'] ?></a></td>
+                <td class="col-2 float-left"><a rel="noopener" class="darkHref" target="_blank" title="Page compositeur | <?= $value['pseudo'] ?>" href="compositor.php?id=<?= $value['id'] ?>"><?= $value['pseudo'] ?></a></td>
+                <td class="col-2 float-left"><a rel="noopener" class="darkHref" target="_blank" title="Page style <?= $value['style'] ?>" href="stylePage.php?style=<?= $value['style'] ?>"><?= $value['style'] ?></a></td>
                 <td class="col-3 float-left"><audio style="height: 20px;" controls controlsList="nodownload">
                         <source src="<?= $value['file'] ?>">
                     </audio></td>

@@ -44,17 +44,18 @@ echo $successfullDelete ?? '';
         </div>
     </div>
 </div>
-<div class="container bg-light opacity mt-2">
-    <div class="row">
+<div class="container playlistTable mt-2">
+    <div class="row playlistTable">
         <a class="col-3 float-left"><i class="fas fa-music"></i><b> Compositions :</b></a>
-        <a class="col-7 float-left"><b>Style :</b></a>
+        <a class="col-2 float-left"><b>Style :</b></a>
+        <a class="col-5"><b>Fichier :</b></a>
         <a class="col-2"><b>Supprimer :</b></a>
         <?php foreach ($compositionsList as $composition) {
             //récupération du titre sans l'extension de fichier (array)
             $compositionTitle = explode('.', $composition['title']);
             $file = $composition['file'];
-            echo '<a title="Page composition ' .$compositionTitle[0]. '" href="composition.php?id=' .$composition['id']. '" class="col-3">' . $compositionTitle[0] . '</a>' . '
-<a title="Page style ' .$composition['style']. '" href="stylePage.php?style=' .$composition['style']. '" class="col-2">' .$composition['style']. '</a>
+            echo '<a title="Page composition ' .$compositionTitle[0]. '" href="composition.php?id=' .$composition['id']. '" class="col-3 darkHref">' . $compositionTitle[0] . '</a>' . '
+<a title="Page style ' .$composition['style']. '" href="stylePage.php?style=' .$composition['style']. '" class="col-2 darkHref">' .$composition['style']. '</a>
 <audio style="height: 20px;" class="float-right col-5" controls>
             <source src="' . $file . '" type="audio/mp3">
             </audio>

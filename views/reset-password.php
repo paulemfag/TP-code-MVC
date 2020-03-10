@@ -13,6 +13,7 @@ if (filter_input(INPUT_GET, 'email', FILTER_SANITIZE_STRING)
     $keyLength = strlen($key);
     //si la clé ne fais pas 42 charactères
     if ($keyLength !== 42) {
+        //redirige vers l'index
         header('location:../index.php');
         exit();
     }
