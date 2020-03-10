@@ -43,7 +43,7 @@ if (empty($userInformations)) {
 
 Veuillez cliquer sur le lien suivant pour réinitialiser votre mot de passe.
 
-https://filldemo.000webhostapp.com/views/reset-password.php?key=' . $key . '&email=' . $recuperationMailbox . '
+https://filldemo.000webhostapp.com/views/reset-password.php?key=' . $key . '&email=' . $recuperationMailbox . ' ' .'
 
 ------------------------------------------------------------------------------
 Merci de bien vouloir copier le lien entier dans votre navigateur.

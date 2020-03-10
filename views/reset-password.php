@@ -1,5 +1,9 @@
 <?php
 require_once '../controllers/sqlparameters.php';
+//Définition fuseau horaire
+date_default_timezone_set('Europe/Paris');
+//Définition format de la date
+$actualDatetime = date('Y-m-d H:i:s');
 //vérifie que les paramètres GET sont valables
 if (filter_input(INPUT_GET, 'email', FILTER_SANITIZE_STRING)
     && filter_input(INPUT_GET, 'key', FILTER_SANITIZE_STRING)) {
@@ -12,10 +16,16 @@ if (filter_input(INPUT_GET, 'email', FILTER_SANITIZE_STRING)
         header('location:../index.php');
         exit();
     }
-    $stmt = $db->prepare('SELECT `key` FROM `password_reset_temp` WHERE `email` = :email ');
+    $stmt = $db->prepare('SELECT `key`, `expiration_date` FROM `password_reset_temp` WHERE `email` = :email ');
     if ($stmt->execute(array(':email' => $mailBox)) && $row = $stmt->fetchAll(PDO::FETCH_ASSOC)) {
         foreach ($row as $rowinfo) {
             $bddKey = $rowinfo['key'];
+            $expirationDate = $rowinfo['expiration_date'];
+        }
+        //Si la date d'expiration est passée (comparaison de la date en BDD avec la date actuelle)
+        if($actualDatetime > $expirationDate){
+            header('location:../index.php');
+            exit();
         }
         //Si la clé en BDD n'est pas égale à celle de l'url
         if ($bddKey !== $key) {
@@ -54,7 +64,6 @@ require_once '../controllers/form_validation.php'; ?>
 <div class="container text-center bg-light mt-2 opacity">
     <h1>Récupération du mot de passe :</h1>
 </div>
-<input type="hidden" id="actualDatetime">
 <form class="container" action="#" method="post" novalidate>
     <div class="form-group">
         <label class="text-light" for="passwordAfterReset">Nouveau mot de passe :</label>
