@@ -45,10 +45,10 @@ echo $successfullDelete ?? '';
     </div>
 </div>
 <div class="container playlistTable mt-2">
-    <div class="row playlistTable">
+    <div class="row playlistTable text-center">
         <a class="col-3 float-left"><i class="fas fa-music"></i><b> Compositions :</b></a>
         <a class="col-2 float-left"><b>Style :</b></a>
-        <a class="col-5"><b>Fichier :</b></a>
+        <a class="col-5 float-left"><b>Fichier :</b></a>
         <a class="col-2"><b>Supprimer :</b></a>
         <?php foreach ($compositionsList as $composition) {
             //récupération du titre sans l'extension de fichier (array)
@@ -59,7 +59,7 @@ echo $successfullDelete ?? '';
 <audio style="height: 20px;" class="float-right col-5" controls>
             <source src="' . $file . '" type="audio/mp3">
             </audio>
-            <a title="Suprimmer la composition : ' .$compositionTitle[0]. '" class="col-1 ml-3 mr-auto btn-sm btn-outline-danger text-center" href="?idcomposition=' .$composition['id']. '"><i class="fas fa-trash-alt"></i></a>';
+            <a title="Suprimmer la composition : ' .$compositionTitle[0]. '" class="col-1 ml-auto mr-auto btn-sm btn-outline-danger text-center" href="?idcomposition=' .$composition['id']. '"><i class="fas fa-trash-alt"></i></a>';
         } ?>
     </div>
 </div>
