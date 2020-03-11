@@ -104,7 +104,7 @@ if ($_SESSION['id'] === '12'){
 <div class="container text-center bg-light mt-2 opacity">
     <h1>Administration Panel :</h1>
 </div>
-<table class="table-striped table-bordered container bg-info">
+<table class="table-striped playlistTable container">
     <thead class="text-center">
     <th>ID :</th>
     <th>Pseudo :</th>

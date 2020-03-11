@@ -24,11 +24,11 @@ try {
             //génération des cases du tableau
             $composition =
                 '<tr>
-            <td><a title="Page composition | ' .$fileTitle. '" href="composition.php?id=' .$rowInfo['id']. '">' .$fileTitle. '</a></td>';
+            <td><a class="darkHref" title="Page composition | ' .$fileTitle. '" href="composition.php?id=' .$rowInfo['id']. '">' .$fileTitle. '</a></td>';
             $stmt = $db->prepare('SELECT `id`, `pseudo` FROM `users` WHERE id = :id');
             if ($stmt->execute(array(':id' => $idUser)) && $row = $stmt->fetch()) {
                 //ajout du pseudo du compositeur au cases du tableaus
-                $composition = $composition . '<td><a title="Profil compositeur | ' .$row['pseudo']. '" href="compositor.php?id=' .$row['id']. '">' . $row['pseudo'] . '</a></td>';
+                $composition = $composition . '<td><a class="darkHref" title="Profil compositeur | ' .$row['pseudo']. '" href="compositor.php?id=' .$row['id']. '">' . $row['pseudo'] . '</a></td>';
             }
             $composition = $composition .
                 '<td> 
@@ -36,7 +36,7 @@ try {
             <source src="' . $rowInfo['file'] . '" type="audio/mp3">
             </audio>
             </td>
-            <td><a href="#" class="dropdown-toggle btn btn-outline-success" id="playlistList' .$playlistListIdNumber. '" data-toggle="dropdown"  aria-haspopup="true" aria-expanded="false">Ajouter a la playlist <i class="fas fa-plus"></i></a>
+            <td><a href="#" class="mt-2 dropdown-toggle btn btn-outline-success" id="playlistList' .$playlistListIdNumber. '" data-toggle="dropdown"  aria-haspopup="true" aria-expanded="false">Ajouter a la playlist <i class="fas fa-plus"></i></a>
                         <div class="dropdown-menu" aria-labelledby="playlistList' .$playlistListIdNumber. '">';
             //déclaration d'une variable récupérant l'affichage pour chaque playlist
             foreach ($playlists as $playlist) {

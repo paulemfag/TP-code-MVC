@@ -10,7 +10,7 @@ require_once 'require/header.php';
 <div class="container text-center bg-light mt-2 opacity">
     <h1>Compositions Style <?= $style ?> :</h1>
 </div>
-<table class="container bg-warning table-bordered border mt-2 text-center">
+<table class="container playlistTable mt-2 text-center">
     <thead>
     <tr>
     <th>Nom de la composition :</th>
