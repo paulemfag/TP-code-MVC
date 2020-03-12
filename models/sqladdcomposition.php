@@ -30,7 +30,7 @@ try {
 try {
     $sth = $db->prepare('INSERT INTO `compositions` (`title`, `file`, `id_users`, `id_categories`) VALUES (:title, :file, :idUser, :idCategory)');
     $sth->bindValue(':title', $title[0], PDO::PARAM_STR);
-    $sth->bindValue(':file', '../uploads/_'. $fileName, PDO::PARAM_STR);
+    $sth->bindValue(':file', 'uploads/_'. $fileName, PDO::PARAM_STR);
     $sth->bindValue(':idUser', $id, PDO::PARAM_INT);
     $sth->bindValue(':idCategory', $idComposition, PDO::PARAM_INT);
     $sth->execute();
