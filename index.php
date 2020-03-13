@@ -172,6 +172,14 @@ echo $activeYourAccount ?? '' ?>
         <input id="recuperationMailbox" class="col-12 inputColor" name="recuperationMailbox" type="text"
                value="<?= $recuperationMailbox ?>" required>
     </div>
+<div class="captcha">
+                <div
+                        class="g-recaptcha"
+                        data-sitekey="6Lc2seAUAAAAABg_R6mlOzQuKOkLNxYkyQiRLf7x"
+                        style="display: inline-block;">
+
+                </div>
+            </div>
     <button id="recuperation" name="recuperation" class="btn btn-outline-success col-12 text-center mt-1" type="submit"
             value="<?= $recuperation ?? '' ?>">Récupérer mon mot de passe
     </button>
