@@ -6,6 +6,16 @@ if (empty($_GET['style'])) {
 $style = $_GET['style'];
 $title = 'Fill | ' . $style;
 require_once 'require/header.php';
+//Si l'entrée en base s'est correctement effectuée (récupération des paramètres d'url) affiche une alert bootstrap pour avertir l'utilisateur
+if (filter_input(INPUT_GET, 'idPlaylist', FILTER_SANITIZE_NUMBER_INT) && filter_input(INPUT_GET, 'idComposition', FILTER_SANITIZE_NUMBER_INT)) {
+    echo '
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+          <p>La composition a bien été ajoutée à la playlist.</p>
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>';
+}
 ?>
 <div class="container text-center bg-light mt-2 opacity">
     <h1>Compositions Style <?= $style ?> :</h1>

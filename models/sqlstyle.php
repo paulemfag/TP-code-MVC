@@ -36,7 +36,7 @@ try {
             <source src="' . $rowInfo['file'] . '" type="audio/mp3">
             </audio>
             </td>
-            <td><a href="#" class="mt-2 dropdown-toggle btn btn-outline-success" id="playlistList' .$playlistListIdNumber. '" data-toggle="dropdown"  aria-haspopup="true" aria-expanded="false">Ajouter a la playlist <i class="fas fa-plus"></i></a>
+            <td><a href="#" class="mt-2 dropdown-toggle mb-1 btn btn-sm btn-outline-success" id="playlistList' .$playlistListIdNumber. '" data-toggle="dropdown"  aria-haspopup="true" aria-expanded="false">Ajouter a la playlist <i class="fas fa-plus"></i></a>
                         <div class="dropdown-menu" aria-labelledby="playlistList' .$playlistListIdNumber. '">';
             //déclaration d'une variable récupérant l'affichage pour chaque playlist
             foreach ($playlists as $playlist) {
