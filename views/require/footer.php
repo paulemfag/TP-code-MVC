@@ -8,8 +8,8 @@
                                                width="25"></a>
     </div>
     <!-- Copyright -->
-    <div class="footer-copyright text-center py-1"><img src="../assets/img/keyboards.png" alt="logo_clavier" height="30"
+    <div class="footer-copyright text-center"><img src="../assets/img/keyboards.png" alt="logo_clavier" height="30"
                                                         width="50">
-        FILL 2019
+        FILL 2020
     </div>
 </footer>
