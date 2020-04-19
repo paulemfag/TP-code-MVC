@@ -6,7 +6,7 @@ echo $successfulDelete ?? ''
 <div class="container text-center bg-light mt-2 opacity">
     <h1>Playlist | <?= $playlistTitle ?> :</h1>
 </div>
-<table class="container playlistTable">
+<table class="container compositionsTables">
     <div class="row">
         <thead class="text-center">
         <th class="col-2 float-left">Titre :</th>

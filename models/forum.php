@@ -1,7 +1,7 @@
 <?php
 require_once 'sqlparameters.php';
 //pagination
-if (isset($_GET['pageno'])) {
+/*if (isset($_GET['pageno'])) {
     $pageno = $_GET['pageno'];
 } else {
     $pageno = 1;
@@ -25,7 +25,7 @@ $sql = 'SELECT * FROM `topics` LIMIT $offset, $no_of_records_per_page';
 $res_data = mysqli_query($conn,$sql);
 while($row = mysqli_fetch_array($res_data)){
     //here goes the data
-}
+}*/
 //récupère les informations de la table topic
 try {
     $query = 'SELECT `id`, `title`, DATE_FORMAT(`created_at`, \'le %d/%m/%Y\ à %HH%i\') `created_at_formatted`, `id_users` FROM `topics` ORDER BY `created_at` DESC';

@@ -33,6 +33,14 @@ require_once '../controllers/form_validation.php';
             <span class="text-danger float-right"><?= ($errors['newPasswordConfirm']) ?? '' ?></span>
             <input id="newPasswordConfirm" class="col-12 inputColor" name="newPasswordConfirm" type="password" value="<?= $newPasswordConfirm ?>" required>
         </div>
+        <div class="captcha">
+            <div
+                    class="g-recaptcha"
+                    data-sitekey="6Lc2seAUAAAAABg_R6mlOzQuKOkLNxYkyQiRLf7x"
+                    style="display: inline-block;">
+
+            </div>
+        </div>
         <button class="btn btn-outline-success col-12" id="changeMyPassword" name="changeMyPassword" type="submit" value="<?= $changeMyPassword ?? '' ?>">Changer mon mot de passe</button>
     </form>
 </div>
@@ -53,7 +61,15 @@ require_once '../controllers/form_validation.php';
             <input class="col-12 inputColor" id="changeAccountPassword" name="changeAccountPassword" type="password" value="<?= $_POST['changeAccountPassword'] ?? '' ?>">
         </div>
         <div class="container bg-light opacity">
-            <h2 class="text-danger">Attention après ces changements [...], vous serez déconnecté et devrez donc vous reconnecter.</h2>
+            <h2 class="text-danger"><i class="fas fa-exclamation-triangle"></i> Attention après ces changements [...], vous serez déconnecté et devrez donc vous reconnecter.</h2>
+        </div>
+        <div class="captcha">
+            <div
+                    class="g-recaptcha"
+                    data-sitekey="6Lc2seAUAAAAABg_R6mlOzQuKOkLNxYkyQiRLf7x"
+                    style="display: inline-block;">
+
+            </div>
         </div>
         <button class="btn btn-outline-success col-12" id="changeAccountType" name="changeAccountType" type="submit" value="<?= $changeAccount ?? '' ?>">Changer mon type de compte</button>
     </form>
@@ -67,13 +83,22 @@ require_once '../controllers/form_validation.php';
             <input id="Password" class="col-12 inputColor" name="Password" type="password" value="<?= $actualPassword ?>" required>
         </div>
         <div class="bg-light opacity">
-            <h2 class="ml-2 text-danger">Attention après ces changements votre compte sera archivé.</h2>
+            <h2 class="ml-2 text-danger"><i class="fas fa-exclamation-triangle"></i> Attention après ces changements votre compte sera archivé.</h2>
+        </div>
+        <div class="captcha">
+            <div
+                    class="g-recaptcha"
+                    data-sitekey="6Lc2seAUAAAAABg_R6mlOzQuKOkLNxYkyQiRLf7x"
+                    style="display: inline-block;">
+
+            </div>
         </div>
         <button class="btn btn-outline-danger col-12" id="removeMyAccount" name="removeMyAccount" type="submit" value="<?= $removeMyAccount ?? '' ?>"><i class="far fa-times-circle"></i> Supprimer mon compte</button>
     </form>
 </div>
 </div>
 <?php require_once 'require/footer.php'; ?>
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>

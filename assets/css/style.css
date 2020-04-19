@@ -1,6 +1,7 @@
 html,body{
   height: 100vh;
   overflow-y: auto;
+  overflow-x: hidden;
 }
 
 body{
@@ -17,7 +18,7 @@ body{
 }
 
 img[src="https://cdn.000webhost.com/000webhost/logo/footer-powered-by-000webhost-white2.png"]{
-    display: none;
+  display: none;
 }
 
 audio{
@@ -47,7 +48,7 @@ audio{
   color: #114E7F;
 }
 
-.playlistTable{
+.compositionsTables{
   background-color: #7C66A5;
 }
 
@@ -60,11 +61,11 @@ audio{
 }
 
 .navbar-nav > li > .dropdown-menu {
-    background-color: #727d87; 
+  background-color: #727d87;
 }
 
 .modal > .modal-dialog > .modal-content{
-    background-color: #BD5C44;
+  background-color: #BD5C44;
 }
 
 h1{
