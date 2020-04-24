@@ -42,15 +42,15 @@ WHERE playlists.id = :id'
 }
 //Si on clique sur le bouton "suprimmer la composition" requiert le fichier playlist.js (view : ligne 79) qui affiche la modal de confiramation
 if (filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT) && filter_input(INPUT_GET, 'idcomposition', FILTER_SANITIZE_NUMBER_INT)) {
-    $show_modal = true;
+    $show_modal_composition = true;
 }
 else{
-    $show_modal = false;
+    $show_modal_composition = false;
 }
 //Si les paramètres d'url sont définis (id playlist, id composition et que la suppression a été confirmée)
 if (filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT) && filter_input(INPUT_GET, 'idcomposition', FILTER_SANITIZE_NUMBER_INT) && filter_input(INPUT_GET, 'delete', FILTER_SANITIZE_NUMBER_INT) == 1) {
     //N'affiche pas la modal de confirmation
-    $show_modal = false;
+    $show_modal_composition = false;
     //Stocakge de l'id récupéré en GET dans une variable
     $idcomposition = $_GET['idcomposition'];
     //suppression dans la table compo_in_playlist
@@ -66,7 +66,7 @@ if (filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT) && filter_input(IN
         die('Connexion échoué');
     }
 }
-//Si la suppression s'est bien passée affiche une alert bootstrap pour prévenir l'utilisateur
+//Si la suppression de la composition s'est bien passée affiche une alert bootstrap pour prévenir l'utilisateur
 if (filter_input(INPUT_GET, 'success', FILTER_SANITIZE_NUMBER_INT) == 1){
     $successfulDelete = '
         <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -76,4 +76,31 @@ if (filter_input(INPUT_GET, 'success', FILTER_SANITIZE_NUMBER_INT) == 1){
           </button>
         </div>';
 }
-
+//Si les paramètres d'url sont définis (id playlist et que la suppression a été confirmée)
+if (filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT) && filter_input(INPUT_GET, 'playlistDelete', FILTER_SANITIZE_NUMBER_INT) == 1) {
+    //suppression des compositions dans la table compo_in_playlist
+    try {
+        $sth = $db->prepare('DELETE FROM compo_in_playlist WHERE `id_playlists` = :idplaylist');
+        $sth->bindValue(':idplaylist', $idPlaylist, PDO::PARAM_INT);
+        $sth->execute();
+    }
+    catch (Exception $ex) {
+        die('Connexion échoué');
+    }
+    //suppression de la playlist dans la table playlists
+    try {
+        $sth = $db->prepare('DELETE FROM playlists WHERE `id` = :idplaylist');
+        $sth->bindValue(':idplaylist', $idPlaylist, PDO::PARAM_INT);
+        $sth->execute();
+    }
+    catch (Exception $ex) {
+        die('suppresion de la playlist échoué');
+    }
+    $successfulDelete = '
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+          <p>La playlist '. $playlistTitle .' a bien été suprimmée.</p>
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>';
+}

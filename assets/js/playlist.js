@@ -1,0 +1,3 @@
+$(function () {
+    $('#deleteComposition').modal('show');
+})

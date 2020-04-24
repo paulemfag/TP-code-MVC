@@ -1,5 +1,10 @@
 <?php
 require_once '../controllers/sqlplaylist.php';
+//Si la playlist n'existe pas (récupération du titre) redirige vers l'accueil
+if ($playlistTitle == NULL){
+    header('location:accueil.php');
+    exit();
+}
 require_once 'require/header.php';
 echo $successfulDelete ?? '';
 ?>
@@ -24,7 +29,7 @@ echo $successfulDelete ?? '';
             </div>
             <div class="modal-footer">
                 <button type="button" class="mr-auto ml-auto btn btn-danger" data-dismiss="modal">Annuler la suppression</button>
-                <button type="button" class="mr-auto ml-auto btn btn-success">Suprimmer la playlist</button>
+                <a href="playlist.php?id=<?= $_GET['id'] ?>&playlistDelete=1" type="button" class="mr-auto ml-auto btn btn-success">Suprimmer la playlist</a>
             </div>
         </div>
     </div>
@@ -75,9 +80,9 @@ echo $successfulDelete ?? '';
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
-<?php if($show_modal):?>
+<?php if($show_modal_composition):?>
     <script src="../assets/js/playlist.js"></script>
-<?php endif;?>
+<?php endif; ?>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
         integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
         crossorigin="anonymous"></script>
