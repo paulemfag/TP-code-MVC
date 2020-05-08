@@ -1,7 +1,5 @@
 <?php
 require_once 'sqlparameters.php';
-//Lancement de la session pour récupérer l'id et le pseudo de l'utilisateur
-session_start();
 //Déclaration variable
 $id_composition = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
 try {

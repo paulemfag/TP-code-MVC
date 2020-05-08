@@ -1,7 +1,7 @@
 <?php
 require_once '../controllers/sqlcomposition.php';
-require_once '../controllers/form_validation.php';
 require_once 'require/header.php';
+require_once '../controllers/form_validation.php';
 echo $commentReturn ?? '';
 ?>
 <div class="container text-center bg-light mt-2 opacity">
@@ -31,9 +31,8 @@ echo $commentReturn ?? '';
 </div>
 <form class="container mt-2" method="post" action="#">
     <span class="text-danger float-right"><?= $errors['comment'] ?? '' ?></span>
-    <input value="<?= $_POST['comment'] ?? '' ?>" id="comment" name="comment" class="col-12" type="text">
-<!--    <textarea name="" id="" cols="30" rows="10"></textarea>
--->    <input name="submitComment" id="submitComment" class="btn btn-outline-success mt-2 col-12" value="Envoyer" type="submit">
+    <textarea name="comment" id="comment" cols="121" rows="4"><?= $_POST['comment'] ?? '' ?></textarea>
+    <input name="submitComment" id="submitComment" class="btn btn-outline-success mt-2 col-12" value="Envoyer" type="submit">
 </form>
 <?php require_once 'require/footer.php'; ?>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
