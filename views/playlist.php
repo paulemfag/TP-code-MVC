@@ -11,11 +11,11 @@ echo $successfulDelete ?? '';
 <div class="container text-center bg-light mt-2 opacity">
     <h1>Playlist | <?= $playlistTitle ?> :</h1>
 </div>
-<div class="container text-center">
-    <a title="Suprimmer la playlist <?= $playlistTitle ?>" class="col-12 btn btn-success" href="">Changer le titre de la playlist</a>
-    <button type="button" class="col-12 mt-2 btn btn-danger" data-toggle="modal" data-target="#deletePlaylist">
+<div class="container text-light text-center">
+    <a title="Changer le titre de la playlist <?= $playlistTitle ?>" class="col-12 btn btn-success" href="">Changer le titre de la playlist</a>
+    <a title="Suprimmer la playlist <?= $playlistTitle ?>" type="button" class="col-12 mt-2 btn btn-danger" data-toggle="modal" data-target="#deletePlaylist">
         Suprimmer la playlist
-    </button>
+    </a>
 </div>
 <!--Modal Suprimmer la playlist-->
 <div class="modal fade" id="deletePlaylist" tabindex="-1" role="dialog" aria-labelledby="deletePlaylist" aria-hidden="true">

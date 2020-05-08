@@ -58,7 +58,7 @@ echo $successfullDelete ?? '';
             echo '<a title="Page composition ' .$compositionTitle[0]. '" href="composition.php?id=' .$composition['id']. '" class="col-3 darkHref">' . $compositionTitle[0] . '</a>' . '
 <a title="Page style ' .$composition['style']. '" href="stylePage.php?style=' .$composition['style']. '" class="col-2 darkHref">' .$composition['style']. '</a>
 <audio style="height: 20px;" class="float-right col-5" controls>
-            <source src="' . $file . '" type="audio/mp3">
+            <source src="' . $file . '" preload="auto" controls type="audio/mp3">
             </audio>
             <a title="Suprimmer la composition : ' .$compositionTitle[0]. '" class="col-1 ml-auto mr-auto btn-sm btn-outline-danger text-center" href="?idcomposition=' .$composition['id']. '"><i class="fas fa-trash-alt"></i></a>';
         } ?>

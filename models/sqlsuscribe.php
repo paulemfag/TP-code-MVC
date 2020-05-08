@@ -1,6 +1,5 @@
 <?php
 require_once 'sqlparameters.php';
-
 $Url = "https://www.google.com/recaptcha/api/siteverify";
 $SecretKey = "----Secret Key----";
 $Response = file_get_contents($Url."?secret=".$SecretKey."&response=".$_POST['Response']);
@@ -41,6 +40,8 @@ VALUES (:pseudo, :mailbox, :password, :accountType)');
   </button>
 </div>';
     }
+    //vidage des champs du formulaire
+    $suscribepseudo = $suscribemailbox = $suscribepassword = $suscribepasswordconfirmation = $accountType = '';
 } catch (PDOException $e) {
     echo "Erreur : " . $e->getMessage();
 }

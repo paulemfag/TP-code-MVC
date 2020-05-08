@@ -22,6 +22,8 @@ $playlistName = $_POST['playlistName'] ?? '';
 $compositionStyle = $_POST['compositionStyle'] ?? '';
 //formulaire récupération mot de passe
 $recuperationMailbox = $_POST['recuperationMailbox'] ?? '';
+//formulaire ajout de commentaire
+$comment = $_POST['comment'] ?? '';
 //formulaire reset password
 $passwordAfterReset = $_POST['passwordAfterReset'] ?? '';
 $confirmPasswordAfterReset = $_POST['confirmPasswordAfterReset'] ?? '';
@@ -176,7 +178,7 @@ if (isset($_POST['newComposition'])) {
                     $errors['file'] = 'La taille de votre fichier est trop grande.';
                 }
             } else {
-                $errors['file'] = 'Une erreur c\'est produite durant l\'upload de votre fichier merci de réessayer.';
+                $errors['file'] = 'Une erreur s\'est produite durant l\'upload de votre fichier merci de réessayer.';
             }
         } else {
             $errors['file'] = 'Le format de votre fichier n\'est pas valide.';
@@ -218,7 +220,7 @@ if (isset($_POST['submitsubject'])) {
     if (empty($subject)) {
         $errors['subject'] = 'Veuillez renseigner le sujet.';
     }
-    if (count($errors) == 0) {
+    elseif (count($errors) == 0) {
         require_once 'sqlnewsubject.php';
     }
 }
@@ -232,8 +234,20 @@ if (isset ($_POST['recuperation'])) {
         $errors['recuperationMailbox'] = 'Veuillez renseigner votre adresse mail.';
     } elseif (!filter_var($recuperationMailbox, FILTER_VALIDATE_EMAIL)) {
         $errors['recuperationMailbox'] = 'Veuillez saisir une adresse mail valide.';
-    } else {
+    } elseif (count($errors) == 0){
         require_once 'sqlrecuperation.php';
+    }
+}
+//Formulaire ajout de commentaire
+if (isset($_POST['submitComment'])){
+    if (empty($comment)){
+        $errors['comment'] = 'Veuillez saisir un commentaire.';
+    }
+    elseif (!filter_input(INPUT_POST, 'comment', FILTER_SANITIZE_STRING)){
+        $errors['comment'] = 'Votre commentaire contient des caractères non valides.';
+    }
+    elseif (count($errors) == 0){
+        require_once 'sqladdComment.php';
     }
 }
 //Formulaire reset mot de passe après récupération
@@ -248,7 +262,7 @@ if (isset($_POST['resetMyPassword'])){
         $errors['passwordAfterReset'] = 'Les mots de passe ne correspondent pas.';
         $errors['confirmPasswordAfterReset'] = 'Les mots de passe ne correspondent pas.';
     }
-    if (count($errors) == 0) {
+    elseif (count($errors) == 0) {
         require_once '../controllers/sqlreset-password.php';
     }
 }
@@ -261,7 +275,7 @@ if (isset($_POST['changeAccountType'])) {
         $errors['changeAccountPassword'] = 'Veuillez renseigner votre mot de passe.';
     }
     //Si il n'y a pas d'erreurs requiert le fichier "parameterspage.php" qui compare le mot de passe de la BDD
-    if (count($errors) == 0) {
+    elseif (count($errors) == 0) {
         require_once 'parameterspage.php';
     }
 }
@@ -272,22 +286,20 @@ if (isset ($_POST['changeMyPassword'])) {
     if (empty($actualPassword)) {
         $errors['actualPassword'] = 'Veuillez saisir votre mot de passe.';
     }
-    if (empty ($newPassword)) {
+    elseif (empty ($newPassword)) {
         $errors['newPassword'] = 'Veuillez choisir un nouveau mot de passe.';
     } elseif ($actualPassword == $newPassword) {
         $errors['newPassword'] = 'Le nouveau mot de passe et l\'ancien ne peuvent être identiques';
     }
-    if (empty ($newPasswordConfirm)) {
+    elseif (empty ($newPasswordConfirm)) {
         $errors['newPasswordConfirm'] = 'Veuillez confirmer votre nouveau mot de passe.';
     }
-    if ($newPassword != $newPasswordConfirm) {
+    elseif ($newPassword != $newPasswordConfirm) {
         $errors['newPassword'] = 'Les mots de passes ne correspondent pas.';
         $errors['newPasswordConfirm'] = 'Les mots de passes ne correspondent pas.';
     }
-    if (count($errors) == 0) {
+    elseif (count($errors) == 0) {
         require_once 'updatePassword.php';
-    }
-    if (isset($_POST['changeMyPassword']) && empty($errors)) {
         $errors['isok'] = 'Votre mot de passe à bien été changé.';
     }
 }
@@ -298,7 +310,7 @@ if (isset($_POST['removeMyAccount'])) {
     if (empty($removeMyAccountPassword)) {
         $errors['Password'] = 'Veuillez renseigner un mot de passe.';
     }
-    if (empty($errors)) {
+    elseif (count($errors) == 0) {
         require_once 'sqldeleteaccount.php';
     }
 }
