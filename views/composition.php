@@ -9,7 +9,7 @@ echo $commentReturn ?? '';
 </div>
 <div class="container mt-2 compositionsTables">
     <p>
-    Style : <?= $style ?>.
+        Style : <a class="text-dark" href="stylePage.php?style=<?= $style ?>"><?= $style ?>.</a>
     <br>
     Compositeur : <?= $compositorPseudo ?>.
     <br>

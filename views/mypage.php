@@ -55,8 +55,8 @@ echo $successfullDelete ?? '';
             //récupération du titre sans l'extension de fichier (array)
             $compositionTitle = explode('.', $composition['title']);
             $file = $composition['file'];
-            echo '<a title="Page composition ' .$compositionTitle[0]. '" href="composition.php?id=' .$composition['id']. '" class="col-3 darkHref">' . $compositionTitle[0] . '</a>' . '
-<a title="Page style ' .$composition['style']. '" href="stylePage.php?style=' .$composition['style']. '" class="col-2 darkHref">' .$composition['style']. '</a>
+            echo '<a title="Page composition ' .$compositionTitle[0]. '" href="composition.php?id=' .$composition['id']. '" class="col-3 text-dark">' . $compositionTitle[0] . '</a>' . '
+<a title="Page style ' .$composition['style']. '" href="stylePage.php?style=' .$composition['style']. '" class="col-2 text-dark">' .$composition['style']. '</a>
 <audio style="height: 20px;" class="float-right col-5" controls>
             <source src="' . $file . '" preload="auto" controls type="audio/mp3">
             </audio>
