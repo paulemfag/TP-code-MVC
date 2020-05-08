@@ -2,9 +2,7 @@
 require_once '../controllers/sqlcomposition.php';
 require_once '../controllers/form_validation.php';
 require_once 'require/header.php';
-echo $successfullyCommented ?? '';
-$user_id = $_SESSION['id']. 'ok';
-var_dump($_SESSION['id']);
+echo $commentReturn ?? '';
 ?>
 <div class="container text-center bg-light mt-2 opacity">
     <h1><?= $title ?> :</h1>
