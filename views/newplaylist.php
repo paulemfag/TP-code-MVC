@@ -4,8 +4,8 @@ require_once 'require/header.php';
 require_once '../controllers/form_validation.php';
 echo $successfullyCreated ?? '';
 ?>
-<div class="container text-center bg-light mt-2 opacity">
-    <h1>Nouvelle Playlist :</h1>
+<div class="row">
+    <h1 class="text-center bg-light col-10 opacity mt-2 ml-auto mr-auto">Nouvelle Playlist :</h1>
 </div>
 <form class="container" action="#" method="post">
     <div class="form-group">

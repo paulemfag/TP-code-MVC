@@ -62,8 +62,8 @@ require_once '../controllers/form_validation.php'; ?>
     <a id="FILL" class="navbar-brand text-light" style="font-weight: bold;">FILL</a>
 </nav>
 <?= $recuperationStatus ?? '' ?>
-<div class="container text-center bg-light mt-2 opacity">
-    <h1>Récupération du mot de passe :</h1>
+<div class="row">
+    <h1 class="text-center bg-light col-10 opacity mt-2 ml-auto mr-auto">Récupération du mot de passe :</h1>
 </div>
 <form class="container" action="#" method="post" novalidate>
     <div class="form-group">

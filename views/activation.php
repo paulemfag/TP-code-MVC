@@ -22,8 +22,8 @@ require_once '../controllers/sqlactivation.php';
     <img src="../assets/img/keyboards.png" alt="logo_clavier" height="40" width="60">
     <a id="FILL" class="navbar-brand text-light" style="font-weight: bold;">FILL</a>
 </nav>
-<div class="container text-center bg-light mt-2 opacity">
-    <h1 class="text-primary ml-auto mr-auto"><?= $message ?></h1>
+<div class="row">
+    <h1 class="text-center bg-light col-10 opacity mt-2 ml-auto mr-auto"><?= $message ?></h1>
 </div>
 <div class="container">
     <a href="http://fill.info?connectMe=isOk" id="login" class="btn btn-outline-success col-12 ">Me connecter</a>

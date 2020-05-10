@@ -17,8 +17,8 @@ if (filter_input(INPUT_GET, 'idPlaylist', FILTER_SANITIZE_NUMBER_INT) && filter_
         </div>';
 }
 ?>
-<div class="container text-center bg-light mt-2 opacity">
-    <h1>Compositions Style <?= $style ?> :</h1>
+<div class="row">
+    <h1 class="text-center bg-light col-10 opacity mt-2 ml-auto mr-auto">Compositions Style <?= $style ?> :</h1>
 </div>
 <table class="container compositionsTables mt-2 text-center">
     <thead>

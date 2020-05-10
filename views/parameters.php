@@ -4,8 +4,8 @@ require_once 'require/header.php';
 require_once '../controllers/form_validation.php';
 ?>
 <?= $message ?? '' ?>
-<div class="container text-center bg-light mt-2 opacity">
-    <h1>Paramètres :</h1>
+<div class="row">
+    <h1 class="text-center bg-light col-10 opacity mt-2 ml-auto mr-auto">Paramètres :</h1>
 </div>
 <div id="parametersMenu" class="container bg-light mt-2 opacity">
     <ul id="parameters">
@@ -14,9 +14,8 @@ require_once '../controllers/form_validation.php';
         <li><a id="removeAccount" href="#"><i class="fas fa-arrow-circle-right"></i> Supprimmer mon compte</a></li>
     </ul>
 </div>
-<div id="scroll">
-<div id="changePasswordItems">
-    <h2 class="container bg-light opacity">Changement du mot de passe :</h2>
+<div class="row" id="changePasswordItems">
+    <h2 class="text-center bg-light col-10 opacity mt-3 ml-auto mr-auto">Changement du mot de passe :</h2>
     <form class="container" action="#" method="post" novalidate>
         <div class="form-group">
             <label class="text-light" for="actualPassword">Mot de passe actuel :</label>
@@ -44,8 +43,8 @@ require_once '../controllers/form_validation.php';
         <button class="btn btn-outline-success col-12" id="changeMyPassword" name="changeMyPassword" type="submit" value="<?= $changeMyPassword ?? '' ?>">Changer mon mot de passe</button>
     </form>
 </div>
-<div id="changeTypeOfAccount">
-    <h2 class="container bg-light opacity">Changement du type de compte :</h2>
+<div class="row" id="changeTypeOfAccount">
+    <h2 class="text-center bg-light col-10 opacity mt-3 ml-auto mr-auto">Changement du type de compte :</h2>
     <form class="container" action="#" method="post" novalidate>
         <div class="form-group">
             <label class="text-light" for="actualType">Type de compte actuel :</label>
@@ -74,8 +73,8 @@ require_once '../controllers/form_validation.php';
         <button class="btn btn-outline-success col-12" id="changeAccountType" name="changeAccountType" type="submit" value="<?= $changeAccount ?? '' ?>">Changer mon type de compte</button>
     </form>
 </div>
-<div id="removeAccountItems">
-    <h2 class="container bg-light opacity">Suppression du compte :</h2>
+<div class="row" id="removeAccountItems">
+    <h2 class="text-center bg-light col-10 opacity mt-3 ml-auto mr-auto">Suppression du compte :</h2>
     <form class="container" action="#" method="post" novalidate>
         <div class="form-group">
             <label class="text-light" for="Password">Veuillez taper votre mot de passe :</label>
@@ -95,7 +94,6 @@ require_once '../controllers/form_validation.php';
         </div>
         <button class="btn btn-outline-danger col-12" id="removeMyAccount" name="removeMyAccount" type="submit" value="<?= $removeMyAccount ?? '' ?>"><i class="far fa-times-circle"></i> Supprimer mon compte</button>
     </form>
-</div>
 </div>
 <?php require_once 'require/footer.php'; ?>
 <script src="https://www.google.com/recaptcha/api.js" async defer></script>

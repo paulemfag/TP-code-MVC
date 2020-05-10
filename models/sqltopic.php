@@ -19,7 +19,6 @@ try {
         <a title="Fill | Forum" href="forum.php"><i class="mt-2 fas fa-home"></i></a>
         <h1 class="text-center ml-auto mr-auto"><?= $topics['title'] ?></h1>
     </div>
-    <div id="scroll">
     <form action="post" method="post" name="post" id="quick_reply">
         <div id="card" class="bg-light card container mb-2">
             <div class="card-body">
@@ -215,7 +214,6 @@ try {
                 </div>
             </div>
         <?php endforeach; ?>
-    </div>
 <?php
 if (isset($_POST['submitResponse']) && !empty($_POST['response'])) {
 //Update en BDD
@@ -231,8 +229,3 @@ if (isset($_POST['submitResponse']) && !empty($_POST['response'])) {
 } else {
     $errors['changeAccountPassword'] = 'Veuillez renseigner votre réponse.';
 }
-//Le type de votre base de données.
-//L’adresse du serveur de votre base de données ou DSN.
-//Le port du serveur de votre base de données (dans bon nombre de cas cette information n’est pas nécessaire).
-//Le nom de votre base de données.
-//Le nom d’utilisateur et le mot de passe d’accès à votre base de données.

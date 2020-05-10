@@ -8,7 +8,6 @@ echo $subjectAdded ?? ''; ?>
     <a title="Fill | Forum" href="forum.php"><i class="mt-2 fas fa-home"></i></a>
     <h1 class="text-center ml-auto mr-auto">Nouveau Sujet :</h1>
 </div>
-<div id="scroll">
 <form class="container" action="?id=<?= $id ?? '' ?>" method="post" novalidate>
     <div class="form-group">
         <label class="text-light" for="subject">Sujet :</label>
@@ -18,7 +17,6 @@ echo $subjectAdded ?? ''; ?>
     <input name="submitsubject" class="btn btn-outline-success col-12 text-center mt-1" value="Créer le Sujet"
            type="submit">
 </form>
-</div>
 <?php require_once 'require/footer.php'; ?>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"

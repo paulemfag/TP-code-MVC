@@ -1,3 +1,6 @@
+<div class="content">
+    <p><br><br><br><br></p>
+</div>
 <!-- Footer -->
 <footer class="page-footer font-small text-light bg-secondary">
     <!-- logos hrefs -->

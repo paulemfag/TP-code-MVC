@@ -5,10 +5,9 @@ require_once  '../controllers/sqlfile.php';
 require_once '../controllers/form_validation.php';
 echo $compositionAdded ?? '';
 ?>
-<div class="container bg-light mt-2 opacity">
-    <h1 class="text-center ml-auto mr-auto">Ajouter une composition :</h1>
+<div class="row">
+    <h1 class="text-center bg-light col-10 opacity mt-2 ml-auto mr-auto">Ajouter une composition :</h1>
 </div>
-<div id="scroll">
 <form class="container" method="post" action="#" novalidate enctype="multipart/form-data">
     <div class="form-group">
         <label class="text-light float-left" for="file">Veuillez ajouter un fichier ( format mp3, m4a, m4b, aac, aax, mpc) :</label>
@@ -63,7 +62,6 @@ echo $compositionAdded ?? '';
     </div>
     <button id="newComposition" name="newComposition" value="<?= $isOk ?? '' ?>" class="btn btn-success col-12" type="submit">Ajouter la composition</button>
 </form>
-</div>
 <?php require_once 'require/footer.php'; ?>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"

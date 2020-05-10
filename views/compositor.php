@@ -2,8 +2,8 @@
 require_once '../controllers/sqlcompositor.php';
 require_once 'require/header.php';
 ?>
-<div id="scroll" class="mb-2">
-    <div class="col-12">
+<div class="mb-2">
+    <div class="row">
         <h1 class="text-center bg-light col-10 opacity mt-2 ml-auto mr-auto"><?= $pseudo ?> | Informations personnelles
             :</h1>
     </div>
@@ -38,15 +38,16 @@ require_once 'require/header.php';
             </div>
         </div>
     </div>
-    <div class="container bg-light opacity mt-2">
+    <div class="container compositionsTables mt-2">
             <div class="row">
                 <a class="col-5 float-left"><i class="fas fa-music"></i><b> Compositions :</b></a>
-                <a class="col-7 float-left"><b>Style :</b></a>
+                <a class="col-4 float-left"><b>Style :</b></a>
+                <a class="col-3 float-left"><b>Morceau :</b></a>
                 <?php foreach ($compositionsList as $composition) {
                     //récupération du titre sans l'extension de fichier (array)
                     $file = $composition['file'];
-                    echo '<a title="Page composition ' .$composition['title']. '" href="composition.php?id=' .$composition['id']. '" class="col-5">' .$composition['title']. '</a>' . '
-<a title="Page style ' .$composition['style']. '" href="stylePage.php?style=' .$composition['style']. '" class="col-2">' .$composition['style']. '</a>
+                    echo '<a title="Page composition ' .$composition['title']. '" href="composition.php?id=' .$composition['id']. '" class="col-5 text-dark">' .$composition['title']. '</a>' . '
+<a title="Page style ' .$composition['style']. '" href="stylePage.php?style=' .$composition['style']. '" class="col-2 text-dark">' .$composition['style']. '</a>
 <audio style="height: 20px;" class="float-right col-5" controls controlsList="nodownload">
             <source src="' . $file . '" type="audio/mp3">
             </audio>';

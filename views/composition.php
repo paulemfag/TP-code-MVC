@@ -4,10 +4,10 @@ require_once 'require/header.php';
 require_once '../controllers/form_validation.php';
 echo $commentReturn ?? '';
 ?>
-<div class="container text-center bg-light mt-2 opacity">
-    <h1><?= $title ?> :</h1>
+<div class="row">
+    <h1 class="text-center bg-light col-10 opacity mt-2 ml-auto mr-auto"><?= $title ?> :</h1>
 </div>
-<div class="container mt-2 compositionsTables">
+<div class="container mt-1 compositionsTables">
     <p>
         Style : <a class="text-dark" href="stylePage.php?style=<?= $style ?>"><?= $style ?>.</a>
     <br>
@@ -26,10 +26,10 @@ echo $commentReturn ?? '';
     </audio>
     </div>
 </div>
-<div class="container text-center bg-light mt-2 opacity">
-    <h2>Laisser un commentaire :</h2>
+<div class="row">
+    <h2 class="text-center bg-light col-10 opacity mt-2 ml-auto mr-auto">Laisser un commentaire :</h2>
 </div>
-<form class="container mt-2" method="post" action="#">
+<form class="container mt-1" method="post" action="#">
     <span class="text-danger float-right"><?= $errors['comment'] ?? '' ?></span>
     <textarea name="comment" id="comment" cols="121" rows="4"><?= $_POST['comment'] ?? '' ?></textarea>
     <input name="submitComment" id="submitComment" class="btn btn-outline-success mt-2 col-12" value="Envoyer" type="submit">

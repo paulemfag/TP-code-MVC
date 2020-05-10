@@ -8,8 +8,8 @@ if ($playlistTitle == NULL){
 require_once 'require/header.php';
 echo $successfulDelete ?? '';
 ?>
-<div class="container text-center bg-light mt-2 opacity">
-    <h1>Playlist | <?= $playlistTitle ?> :</h1>
+<div class="row">
+    <h1 class="text-center bg-light col-10 opacity mt-3 ml-auto mr-auto">Playlist | <?= $playlistTitle ?> :</h1>
 </div>
 <div class="container text-light text-center">
     <a title="Changer le titre de la playlist <?= $playlistTitle ?>" class="col-12 btn btn-success" href="">Changer le titre de la playlist</a>

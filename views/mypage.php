@@ -10,8 +10,7 @@ require_once '../controllers/sqlmypage.php';
 //message d'alerte en cas de suppression de composition
 echo $successfullDelete ?? '';
 ?>
-<div id="scroll">
-<div class="col-12">
+<div class="row">
     <h1 class="text-center bg-light col-10 opacity mt-2 ml-auto mr-auto"><?= $_SESSION['pseudo'] ?> | Informations personnelles :</h1>
 </div>
 <!-- container -->
@@ -63,7 +62,6 @@ echo $successfullDelete ?? '';
             <a title="Suprimmer la composition : ' .$compositionTitle[0]. '" class="col-1 ml-auto mr-auto btn-sm btn-outline-danger text-center" href="?idcomposition=' .$composition['id']. '"><i class="fas fa-trash-alt"></i></a>';
         } ?>
     </div>
-</div>
 </div>
 <?php require_once 'require/footer.php'; ?>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
