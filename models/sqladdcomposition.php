@@ -1,6 +1,5 @@
 <?php
 require_once 'sqlparameters.php';
-
 //Déclaration variables
 $fileName = $_FILES['file']['name'];
 $compositionStyle = $_POST['compositionStyle'] ?? '';
@@ -15,7 +14,6 @@ try {
 } catch (PDOException $e) {
     echo "Erreur : " . $e->getMessage();
 }
-
 //Récupération en BDD : id de la compo dans la table `categories`
 try {
     $stmt = $db->prepare('SELECT `id`, `style` FROM `categories`  WHERE `title` LIKE :title');

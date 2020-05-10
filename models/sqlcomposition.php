@@ -15,7 +15,7 @@ if ($stmt->execute(array(':id' => $id)) && $row = $stmt->fetchAll(PDO::FETCH_ASS
         $file = $rowInfo['file'];
         $idUser = $rowInfo['id_users'];
         $chords = $rowInfo['chords'];
-        $instruments = $rowInfo['instrumentsUsed'];
+        $instrumentsUsed = $rowInfo['instrumentsUsed'];
         $style = $rowInfo['style'];
     }
     //Définition du titre de l'onglet / du <h1>

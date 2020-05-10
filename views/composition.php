@@ -3,6 +3,7 @@ require_once '../controllers/sqlcomposition.php';
 require_once 'require/header.php';
 require_once '../controllers/form_validation.php';
 echo $commentReturn ?? '';
+echo $instruments;
 ?>
 <div class="row">
     <h1 class="text-center bg-light col-10 opacity mt-2 ml-auto mr-auto"><?= $title ?> :</h1>
@@ -11,9 +12,9 @@ echo $commentReturn ?? '';
     <p>
         Style : <a class="text-dark" href="stylePage.php?style=<?= $style ?>"><?= $style ?>.</a>
     <br>
-    Compositeur : <?= $compositorPseudo ?>.
+    Compositeur : <a class="text-dark" href="compositor.php?id=<?= $idUser ?>"><?= $compositorPseudo ?>.</a>
     <br>
-    Instruments employés : <?= $instruments ?? 'non définis' ?>.
+    Instruments employés : <?= $instrumentsUsed ?? 'non définis' ?>.
     <br>
     Accords employés : <?= $chords ?? 'non définis' ?>.
     </p>

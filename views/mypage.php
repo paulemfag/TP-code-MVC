@@ -1,5 +1,5 @@
 <?php
-if (isset ($successfullDelete)){
+if (isset ($deleteStatus)){
     sleep(2);
     header('location:mypage.php');
     exit();
@@ -8,7 +8,11 @@ $title = 'Fill | Ma page';
 require_once 'require/header.php';
 require_once '../controllers/sqlmypage.php';
 //message d'alerte en cas de suppression de composition
-echo $successfullDelete ?? '';
+echo $deleteStatus ?? '';
+fclose(uploads/_HIGH.mp3);
+if (fclose('uploads/_HIGH.mp3')) {
+    echo '<h1>Close ok</h1>';
+}
 ?>
 <div class="row">
     <h1 class="text-center bg-light col-10 opacity mt-2 ml-auto mr-auto"><?= $_SESSION['pseudo'] ?> | Informations personnelles :</h1>
@@ -46,7 +50,7 @@ echo $successfullDelete ?? '';
 </div>
 <div class="container compositionsTables mt-2">
     <div class="row playlistTable text-center">
-        <a class="col-3 float-left"><i class="fas fa-music"></i><b> Compositions :</b></a>
+        <a class="col-3 float-left"><i class="fas fa-music"></i><b> Composition :</b></a>
         <a class="col-2 float-left"><b>Style :</b></a>
         <a class="col-5 float-left"><b>Fichier :</b></a>
         <a class="col-2"><b>Supprimer :</b></a>

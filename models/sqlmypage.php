@@ -37,14 +37,29 @@ if (filter_input(INPUT_GET, 'idcomposition', FILTER_SANITIZE_NUMBER_INT)){
         $sth->bindValue(':composition_id', $idcomposition, PDO::PARAM_INT);
         $sth->execute();
     } catch (PDOException $e) {
-        $successfullDelete = '<div class="alert alert-warning alert-dismissible fade show" role="alert">
+        $deleteStatus = '<div class="alert alert-warning alert-dismissible fade show" role="alert">
   <p>Une erreur est survenue pendant la suppression, merci de réessayer ultérieurement.</p>
   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
     <span aria-hidden="true">&times;</span>
   </button>
 </div>';
+        exit();
     }
-    //récupération du titre dans la table compositions pour permettre la suppresion dans la table catégories
+    //suppression des commentaires de la composition
+    try {
+        $sth = $db->prepare('DELETE FROM `comments` WHERE `id_compositions` = :composition_id');
+        $sth->bindValue(':composition_id', $idcomposition, PDO::PARAM_INT);
+        $sth->execute();
+    } catch (PDOException $e) {
+        $deleteStatus = '<div class="alert alert-warning alert-dismissible fade show" role="alert">
+  <p>Une erreur est survenue pendant la suppression, merci de réessayer ultérieurement.</p>
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>';
+        exit();
+    }
+    //récupération du titre et du chemin dans la table compositions pour permettre la suppresion dans la table catégories et dans le dossier
     try {
         $sth = $db->prepare('SELECT `title` FROM `compositions` WHERE `id` = :composition_id');
         $sth->bindValue(':composition_id', $idcomposition, PDO::PARAM_INT);
@@ -52,15 +67,17 @@ if (filter_input(INPUT_GET, 'idcomposition', FILTER_SANITIZE_NUMBER_INT)){
         $stmt = $sth->fetchAll(PDO::FETCH_ASSOC);
         foreach ($row as $rowinfo){
             $compositionsTitle = $rowinfo['title'];
+            $path = $rowinfo['file'];
         }
         
     }  catch (PDOException $e) {
-        $successfullDelete = '<div class="alert alert-warning alert-dismissible fade show" role="alert">
+        $deleteStatus = '<div class="alert alert-warning alert-dismissible fade show" role="alert">
   <p>Une erreur est survenue pendant la suppression, merci de réessayer ultérieurement.</p>
   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
     <span aria-hidden="true">&times;</span>
   </button>
 </div>';
+        exit();
     }
     //suppression de la composition dans la table compositions
     try {
@@ -68,31 +85,47 @@ if (filter_input(INPUT_GET, 'idcomposition', FILTER_SANITIZE_NUMBER_INT)){
         $sth->bindValue(':composition_id', $idcomposition, PDO::PARAM_INT);
         $sth->execute();
     } catch (PDOException $e) {
-        $successfullDelete = '<div class="alert alert-warning alert-dismissible fade show" role="alert">
+        $deleteStatus = '<div class="alert alert-warning alert-dismissible fade show" role="alert">
   <p>Une erreur est survenue pendant la suppression, merci de réessayer ultérieurement.</p>
   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
     <span aria-hidden="true">&times;</span>
   </button>
 </div>';
+        exit();
     }
     //suppression de la composition dans la table categories
     try {
         $sth = $db->prepare('DELETE FROM `categories` WHERE `title` = :title');
         $sth->bindValue(':title', $compositionsTitle, PDO::PARAM_STR);
         $sth->execute();
-        $successfullDelete = '<div class="alert alert-warning alert-dismissible fade show" role="alert">
+    } catch (PDOException $e) {
+        $deleteStatus = '<div class="alert alert-warning alert-dismissible fade show" role="alert">
+  <p>Une erreur est survenue pendant la suppression, merci de réessayer ultérieurement.</p>
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>';
+        exit();
+    }
+    //fermeture du fichier
+    if (fclose($path)){
+        echo '<h1>Close ok</h1>';
+    //suppression de la composition du dossier uploads
+    if (unlink($path)){
+        $deleteStatus = '<div class="alert alert-success alert-dismissible fade show" role="alert">
   <p>Votre composition a bien été suprimmée.</p>
   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
     <span aria-hidden="true">&times;</span>
   </button>
 </div>';
-    } catch (PDOException $e) {
-        $successfullDelete = '<div class="alert alert-warning alert-dismissible fade show" role="alert">
+    }
+    else{
+        $deleteStatus = '<div class="alert alert-warning alert-dismissible fade show" role="alert">
   <p>Une erreur est survenue pendant la suppression, merci de réessayer ultérieurement.</p>
   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
     <span aria-hidden="true">&times;</span>
   </button>
 </div>';
     }
+    }
 }
-print_r($compositionsTitle);
