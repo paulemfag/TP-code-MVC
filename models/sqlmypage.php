@@ -107,9 +107,6 @@ if (filter_input(INPUT_GET, 'idcomposition', FILTER_SANITIZE_NUMBER_INT)){
 </div>';
         exit();
     }
-    //fermeture du fichier
-    if (fclose($path)){
-        echo '<h1>Close ok</h1>';
     //suppression de la composition du dossier uploads
     if (unlink($path)){
         $deleteStatus = '<div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -126,6 +123,5 @@ if (filter_input(INPUT_GET, 'idcomposition', FILTER_SANITIZE_NUMBER_INT)){
     <span aria-hidden="true">&times;</span>
   </button>
 </div>';
-    }
     }
 }

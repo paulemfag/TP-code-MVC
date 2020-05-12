@@ -32,12 +32,26 @@ try {
     $sth->bindValue(':idUser', $id, PDO::PARAM_INT);
     $sth->bindValue(':idCategory', $idComposition, PDO::PARAM_INT);
     $sth->execute();
-    $compositionAdded = '<div class="alert alert-success alert-dismissible fade show" role="alert">
-  <p>Votre composition "' .$title[0]. '" a bien été ajoutée.</p>
+} catch (PDOException $e) {
+    echo "Erreur : " . $e->getMessage();
+}
+//récupération de l'id de la composition grâce au titre afin de rediriger vers la page de la composition
+try {
+    $sth = $db->prepare('SELECT `id` FROM `compositions` WHERE `title` = :title');
+    $sth->bindValue(':title', $title[0], PDO::PARAM_STR);
+    $sth->execute();
+    $composition = $sth->fetchAll(PDO::FETCH_ASSOC);
+} catch (Exception $ex) {
+    echo "Erreur : " . $e->getMessage();
+}
+//Stockage de l'id dans une variable $id
+foreach ($composition as $rowInfo){
+    $id = $rowInfo['id'];
+}
+//Message de retour utilisateur comme quoi la composition a bien été enregistrée avec lien vers la page composition
+$compositionAdded = '<div class="alert alert-success alert-dismissible fade show" role="alert">
+  <p>Votre composition " <a href="composition.php?id=' .$id. '"><i>' .$title[0]. '</i></a> " a bien été enregistrée.</p>
   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
     <span aria-hidden="true">&times;</span>
   </button>
 </div>';
-} catch (PDOException $e) {
-    echo "Erreur : " . $e->getMessage();
-}

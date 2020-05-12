@@ -4,7 +4,6 @@ require_once 'require/header.php';
 require_once  '../controllers/sqlfile.php';
 require_once '../controllers/form_validation.php';
 echo $compositionAdded ?? '';
-echo $_FILES ?? 'vide';
 ?>
 <div class="row">
     <h1 class="text-center bg-light col-10 opacity mt-2 ml-auto mr-auto">Ajouter une composition :</h1>
@@ -13,8 +12,7 @@ echo $_FILES ?? 'vide';
     <div class="form-group">
         <label class="text-light float-left" for="file">Veuillez ajouter un fichier ( format mp3, m4a, m4b, aac, aax, mpc) :</label>
         <span class="text-danger float-right"><?= $errors['file'] ?? '' ?></span>
-        <input type="hidden" name="MAX_FILE_SIZE" value="20000000">
--->        <input id="fileInput"  class="bg-light col-12" type="file" name="file" accept="audio/*">
+        <input id="fileInput" class="bg-light col-12" type="file" name="file" accept="audio/*">
     </div>
     <div class="form-group">
         <label class="text-light" for="compositionName">Nom de la composition :</label>

@@ -168,7 +168,7 @@ if (isset($_POST['newComposition'])) {
                         $compositionAdded = '';
                     } else {
                         $compositionAdded = '<div class="alert alert-warning alert-dismissible fade show" role="alert">
-  <p>Une erreur c\'est produite durant l\'upload du fichier "' . basename($_FILES['file']['name']) . '" merci de réessayer.</p>
+  <p>Une erreur s\'est produite durant l\'upload du fichier "' . basename($_FILES['file']['name']) . '" merci de réessayer.</p>
   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
     <span aria-hidden="true">&times;</span>
   </button>

@@ -9,10 +9,6 @@ require_once 'require/header.php';
 require_once '../controllers/sqlmypage.php';
 //message d'alerte en cas de suppression de composition
 echo $deleteStatus ?? '';
-fclose(uploads/_HIGH.mp3);
-if (fclose('uploads/_HIGH.mp3')) {
-    echo '<h1>Close ok</h1>';
-}
 ?>
 <div class="row">
     <h1 class="text-center bg-light col-10 opacity mt-2 ml-auto mr-auto"><?= $_SESSION['pseudo'] ?> | Informations personnelles :</h1>
