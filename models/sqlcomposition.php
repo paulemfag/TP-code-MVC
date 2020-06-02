@@ -31,3 +31,16 @@ try {
     die('Connexion échoué !');
 }
 $compositorPseudo = $user['pseudo'];
+//récupération des commentaires de la composition (dans l'ordre de publication)
+try {
+    $query = 'SELECT `pseudo`, `comment`, DATE_FORMAT(`published_at`, \'le %d/%m/%Y\ à %HH%i\') `published_at_formatted` FROM `comments` ORDER BY `published_at` DESC';
+    $commentQueryStat = $db->query($query);
+    $commentList = $commentQueryStat->fetchAll(PDO::FETCH_ASSOC);
+} catch (Exception $ex) {
+    die('Connexion échoué');
+}
+if ($commentList){
+    $commentsAnnouncement = '<div class="row">
+    <h2 class="text-center bg-light col-10 opacity mt-2 ml-auto mr-auto">Commentaires :</h2>
+</div>';
+}

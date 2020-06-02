@@ -69,7 +69,6 @@ if (filter_input(INPUT_GET, 'idcomposition', FILTER_SANITIZE_NUMBER_INT)){
             $compositionsTitle = $rowinfo['title'];
             $path = $rowinfo['file'];
         }
-        
     }  catch (PDOException $e) {
         $deleteStatus = '<div class="alert alert-warning alert-dismissible fade show" role="alert">
   <p>Une erreur est survenue pendant la suppression, merci de réessayer ultérieurement.</p>
@@ -108,7 +107,7 @@ if (filter_input(INPUT_GET, 'idcomposition', FILTER_SANITIZE_NUMBER_INT)){
         exit();
     }
     //suppression de la composition du dossier uploads
-    if (unlink($path)){
+    if (unlink(''.$path. '\'')){
         $deleteStatus = '<div class="alert alert-success alert-dismissible fade show" role="alert">
   <p>Votre composition a bien été suprimmée.</p>
   <button type="button" class="close" data-dismiss="alert" aria-label="Close">

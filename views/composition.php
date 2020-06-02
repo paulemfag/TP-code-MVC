@@ -3,7 +3,6 @@ require_once '../controllers/sqlcomposition.php';
 require_once 'require/header.php';
 require_once '../controllers/form_validation.php';
 echo $commentReturn ?? '';
-echo $instruments;
 ?>
 <div class="row">
     <h1 class="text-center bg-light col-10 opacity mt-2 ml-auto mr-auto"><?= $title ?> :</h1>
@@ -35,7 +34,18 @@ echo $instruments;
     <textarea name="comment" id="comment" cols="121" rows="4"><?= $_POST['comment'] ?? '' ?></textarea>
     <input name="submitComment" id="submitComment" class="btn btn-outline-success mt-2 col-12" value="Envoyer" type="submit">
 </form>
-<?php require_once 'require/footer.php'; ?>
+<?php echo $commentsAnnouncement. '<div class="container mt-1">' ?? '';
+foreach ($commentList as $comment):
+?>
+<div class="bg-primary">
+    <p class="ml-1"><i><?= $comment['pseudo'] .', '. $comment['published_at_formatted'] .' :</i><br><br>'. $comment['comment'] ?></p>
+</div>
+<?php
+endforeach;
+if ($commentsAnnouncement){
+    echo '</div>';
+}
+require_once 'require/footer.php'; ?>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
