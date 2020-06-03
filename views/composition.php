@@ -2,7 +2,9 @@
 require_once '../controllers/sqlcomposition.php';
 require_once 'require/header.php';
 require_once '../controllers/form_validation.php';
-echo $commentReturn ?? '';
+if ($successfullCommented){
+    header('test.php');
+}
 ?>
 <div class="row">
     <h1 class="text-center bg-light col-10 opacity mt-2 ml-auto mr-auto"><?= $title ?> :</h1>
@@ -31,14 +33,23 @@ echo $commentReturn ?? '';
 </div>
 <form class="container mt-1" method="post" action="#">
     <span class="text-danger float-right"><?= $errors['comment'] ?? '' ?></span>
-    <textarea name="comment" id="comment" cols="121" rows="4"><?= $_POST['comment'] ?? '' ?></textarea>
+    <textarea class="comment" placeholder="Veuillez saisir un commentaire" maxlength="500" name="comment" id="comment" cols="121" rows="4"><?= $_POST['comment'] ?? '' ?></textarea>
     <input name="submitComment" id="submitComment" class="btn btn-outline-success mt-2 col-12" value="Envoyer" type="submit">
 </form>
 <?php echo $commentsAnnouncement. '<div class="container mt-1">' ?? '';
+echo $commentReturn ?? '';
 foreach ($commentList as $comment):
+    //Récupération du nombre de caractères du pseudo et de la date
+    $pseudoAndPublishedAtLength = strlen($comment['pseudo'] .', '. $comment['published_at_formatted'] .' :');
+    //Determination du nombre d'espaces à ajouter (largeur du text area - pseudo et date)
+    $numberOfSpace = 225 - $pseudoAndPublishedAtLength;
+    //Stockage des espaces dans une varialbe
+    $spaces = str_repeat(' ', $numberOfSpace);
+    //Stockage du pseudo + de la date + des espaces dans une variable
+    $pseudoAndPublishedAtAndSpaces = $comment['pseudo'] .', '. $comment['published_at_formatted'] .' :'. $spaces;
 ?>
-<div class="bg-primary">
-    <p class="ml-1"><i><?= $comment['pseudo'] .', '. $comment['published_at_formatted'] .' :</i><br><br>'. $comment['comment'] ?></p>
+<div class="bg-prima$ry">
+    <textarea class="comment bg-primary text-light" wrap="hard" cols="121" rows="4" disabled><?= $pseudoAndPublishedAtAndSpaces. $comment['comment'] ?? '' ?></textarea>
 </div>
 <?php
 endforeach;

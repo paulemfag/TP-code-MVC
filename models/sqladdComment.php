@@ -9,6 +9,7 @@ try {
     $sth->bindValue(':id_users', $_SESSION['id'], PDO::PARAM_INT);
     $sth->bindValue(':pseudo', $_SESSION['pseudo'], PDO::PARAM_STR);
     $sth->execute();
+    $successfullCommented = true;
     $commentReturn = '<div class="alert alert-success alert-dismissible fade show" role="alert">
           <p>Votre commentaire a bien été publié.</p>
           <button type="button" class="close" data-dismiss="alert" aria-label="Close">
