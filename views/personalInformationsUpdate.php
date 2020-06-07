@@ -1,4 +1,5 @@
 <?php
+session_start();
 $title = $_SESSION['pseudo'] .'| Mise à jour des informations personnelles';
 require_once 'require/header.php';
 require_once '../controllers/form_validation.php';
