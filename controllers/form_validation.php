@@ -18,6 +18,8 @@ $pseudo = $_POST['pseudo'] ?? '';
 $password = $_POST['password'] ?? '';
 //création de playlist
 $playlistName = $_POST['playlistName'] ?? '';
+//formumaire changement du titre de la playlist
+$playlistNewTitle = $_POST['playlistNewTitle'] ?? '';
 //Ajout d'une composition
 $compositionStyle = $_POST['compositionStyle'] ?? '';
 //formulaire récupération mot de passe
@@ -131,6 +133,18 @@ if (isset($_POST['submitPlaylist'])) {
     }
     if (count($errors) == 0) {
         require_once 'sqlNewPlaylist.php';
+    }
+}
+//vérifications changement du titre de la playlist
+if (isset($_POST['playlistTitleChange'])){
+    //si le nouveau titre de la playlist n'est pas défini
+    if (empty($playlistNewTitle)){
+        $errors['playlistNewTitle'] = 'Veuillez saisir le nouveau titre de la playlist.';
+    }
+    //si il n'y a pas d'erreurs
+    if (count($errors) === 0){
+        //définie la variable changeTitle à 'true' pour permettre l'update en base dans le fichier sqlplaylistUpdate
+        $changeTitle = true;
     }
 }
 //option sélectionné page 'ajouter une composition'

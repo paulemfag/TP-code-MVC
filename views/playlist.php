@@ -12,7 +12,7 @@ echo $successfulDelete ?? '';
     <h1 class="text-center bg-light col-10 opacity mt-3 ml-auto mr-auto">Playlist | <?= $playlistTitle ?> :</h1>
 </div>
 <div class="container text-light text-center">
-    <a title="Changer le titre de la playlist <?= $playlistTitle ?>" class="col-12 btn btn-success" href="">Changer le titre de la playlist</a>
+    <a title="Changer le titre de la playlist <?= $playlistTitle ?>" class="col-12 btn btn-success" href="playlistUpdate.php?id=<?= $_GET['id'] ?>">Changer le titre de la playlist</a>
     <a title="Suprimmer la playlist <?= $playlistTitle ?>" type="button" class="col-12 mt-2 btn btn-danger" data-toggle="modal" data-target="#deletePlaylist">
         Suprimmer la playlist
     </a>
