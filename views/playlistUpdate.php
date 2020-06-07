@@ -19,14 +19,21 @@ echo $anErrorOccured ?? '';
             <span class="text-danger float-right"><?= $errors['playlistNewTitle'] ?? '' ?></span>
             <input name="playlistNewTitle" id="playlistNewTitle" class="col-12 inputColor" type="text" placeholder="Veuillez saisir le nouvea titre de la playlist" value="<?= $playlistNewTitle ?>">
         </div>
+        <div class="captcha">
+            <div
+                    class="g-recaptcha"
+                    data-sitekey="6Lf-Dd8UAAAAAB6ROCZ8e2TWVp3-2PBzzz34y67X"
+                    style="display: inline-block;">
+
+            </div>
+        </div>
         <div class="form-group">
             <input class="btn btn-outline-success col-12" name="playlistTitleChange" id="playlistTitleChange" type="submit" value="Changer le titre de la playlist">
         </div>
     </form>
 </div>
-<?php
-require_once 'require/footer.php';
-?>
+<?php require_once 'require/footer.php'; ?>
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
