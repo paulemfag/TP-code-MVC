@@ -1,42 +1,42 @@
 <?php
 //initialisations variables vides
 //formulaire inscription
-$accounttype = $_POST['typeOfAccount'] ?? '';
-$suscribepseudo = $_POST['suscribepseudo'] ?? '';
-$suscribemailbox = $_POST['suscribemailbox'] ?? '';
-$suscribepassword = $_POST['suscribepassword'] ?? '';
-$suscribepasswordconfirmation = $_POST['suscribepasswordconfirmation'] ?? '';
+$accounttype = $_POST['typeOfAccount'] ?? NULL;
+$suscribepseudo = $_POST['suscribepseudo'] ?? NULL;
+$suscribemailbox = $_POST['suscribemailbox'] ?? NULL;
+$suscribepassword = $_POST['suscribepassword'] ?? NULL;
+$suscribepasswordconfirmation = $_POST['suscribepasswordconfirmation'] ?? NULL;
 //formulaire informations personnelles
-$biography = $_POST['biography'] ?? '';
-$instruments = $_POST['instruments'] ?? '';
-$software = $_POST['software'] ?? $_POST['otherSoftware'] ?? '';
-$tagsCompositorOne = $_POST['tagsCompositorOne'] ?? '';
-$facebook = $_POST['facebookId'] ?? '';
-$twitter = $_POST['twitterId'] ?? '';
+$biography = $_POST['biography'] ?? NULL;
+$instruments = $_POST['instruments'] ?? NULL;
+$software = $_POST['software'] ?? $_POST['otherSoftware'] ?? NULL;
+$tagsCompositorOne = $_POST['tagsCompositorOne'] ?? NULL;
+$facebook = $_POST['facebookId'] ?? NULL;
+$twitter = $_POST['twitterId'] ?? NULL;
 //formulaire login
-$pseudo = $_POST['pseudo'] ?? '';
-$password = $_POST['password'] ?? '';
+$pseudo = $_POST['pseudo'] ?? NULL;
+$password = $_POST['password'] ?? NULL;
 //création de playlist
-$playlistName = $_POST['playlistName'] ?? '';
+$playlistName = $_POST['playlistName'] ?? NULL;
 //formumaire changement du titre de la playlist
-$playlistNewTitle = $_POST['playlistNewTitle'] ?? '';
+$playlistNewTitle = $_POST['playlistNewTitle'] ?? NULL;
 //Ajout d'une composition
-$compositionStyle = $_POST['compositionStyle'] ?? '';
+$compositionStyle = $_POST['compositionStyle'] ?? NULL;
 //formulaire récupération mot de passe
-$recuperationMailbox = $_POST['recuperationMailbox'] ?? '';
+$recuperationMailbox = $_POST['recuperationMailbox'] ?? NULL;
 //formulaire ajout de commentaire
-$comment = $_POST['comment'] ?? '';
+$comment = $_POST['comment'] ?? NULL;
 //formulaire reset password
-$passwordAfterReset = $_POST['passwordAfterReset'] ?? '';
-$confirmPasswordAfterReset = $_POST['confirmPasswordAfterReset'] ?? '';
+$passwordAfterReset = $_POST['passwordAfterReset'] ?? NULL;
+$confirmPasswordAfterReset = $_POST['confirmPasswordAfterReset'] ?? NULL;
 //formulaire changement du type de compte
-$changeAccountPassword = $_POST['changeAccountPassword'] ?? '';
+$changeAccountPassword = $_POST['changeAccountPassword'] ?? NULL;
 //formulaire changement de mot de passe
-$actualPassword = $_POST['actualPassword'] ?? '';
-$newPassword = $_POST['newPassword'] ?? '';
-$newPasswordConfirm = $_POST['newPasswordConfirm'] ?? '';
+$actualPassword = $_POST['actualPassword'] ?? NULL;
+$newPassword = $_POST['newPassword'] ?? NULL;
+$newPasswordConfirm = $_POST['newPasswordConfirm'] ?? NULL;
 //formulaire supperession du compte
-$removeMyAccountPassword = $_POST['Password'] ?? '';
+$removeMyAccountPassword = $_POST['Password'] ?? NULL;
 //regex pour le contrôle des formulaires
 $regexPseudo = "/^[A-Za-zéÉ][A-Za-záàâäãåçéèêëíìîïñóòôöõúùûüýÿæœ]+((-| )[A-Za-záàâäãåçéèêëíìîïñóòôöõúùûüýÿæœ]+)?$/";
 $regexCompositionName = '/^(([A-Z|a-z|áàâäãåçéèêëíìîïñóòôöõúùûüýÿæœ]{0,50})+((-|\s)?)+([A-Z|a-z|áàâäãåçéèêëíìîïñóòôöõúùûüýÿæœ]{0,50})((-|\s)+){0,5})$/';
@@ -122,15 +122,31 @@ if (isset($_POST['submitSuscribeCompositor'])) {
     if (!empty($twitter) && !preg_match($regexTwitter, $twitter)) {
         $errors['twitterId'] = 'Veuillez saisir un url correct.';
     }
+    //si le tableau d'erreurs est vide, requiert le fichier qui fait l'insertion en BDD
     if (count($errors) == 0){
         require_once 'sqlpersonalInformations.php';
     }
 }
-//vérifications nouvelle playlist
+//Vérifications modifications des informations personnelles page personalInformationsUpdate.php
+if (isset($_POST['updatePersonalInformations'])){
+    //si le champ facebook est rempli et que l'url fourni n'est pas bon
+    if (!empty($facebook) && !preg_match($regexFacebook, $facebook)) {
+        $errors['facebookId'] = 'Veuillez saisir un url correct.';
+    }
+    //si le champ twitter est rempli et que l'url fourni n'est pas bon
+    if (!empty($twitter) && !preg_match($regexTwitter, $twitter)) {
+        $errors['twitterId'] = 'Veuillez saisir un url correct.';
+    }
+    if (count($errors) == 0){
+        $changePersonalInformations = true;
+    }
+}
+//Vérifications nouvelle playlist
 if (isset($_POST['submitPlaylist'])) {
     if (!filter_input(INPUT_POST, 'playlistName', FILTER_SANITIZE_STRING)) {
         $errors['playlistName'] = 'Veuillez saisir un titre valide.';
     }
+    //si le tableau d'erreurs est vide, requiert le fichier qui fait l'update en BDD
     if (count($errors) == 0) {
         require_once 'sqlNewPlaylist.php';
     }
