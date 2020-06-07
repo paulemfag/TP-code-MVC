@@ -35,12 +35,21 @@ require_once '../controllers/sqlpersonalInformationsUpdate.php';
             <span class="float-right text-danger"><?= $errors['twitterId'] ?? '' ?></span>
             <input class="col-12 inputColor" name="twitterId" id="twitterId" type="text" value="<?= $twitter ?? $twitterIdInDb ?>">
         </div>
+        <div class="captcha">
+            <div
+                    class="g-recaptcha"
+                    data-sitekey="6Lc2seAUAAAAABg_R6mlOzQuKOkLNxYkyQiRLf7x"
+                    style="display: inline-block;">
+
+            </div>
+        </div>
         <div class="form-group">
             <input class="btn btn-outline-success col-12" name="updatePersonalInformations" id="updatePersonalInformations" type="submit" value="Modifier mes informations personnelles">
         </div>
     </form>
 </div>
 <?php require_once 'require/footer.php'?>
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
