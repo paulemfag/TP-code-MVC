@@ -1,0 +1,1 @@
+$(function(){setInterval(function(){var t=$("#software option:selected").text();"Autre"===t?$("#otherSoftware").show():"Autre"!==t&&$("#otherSoftware").hide()},1),"checked"===$("#particular").attr("checked")&&($("#particularItems").show(),$("#compositorItems").hide()),"checked"===$("#compositor").attr("checked")&&($("#particularItems").hide(),$("#compositorItems").show())});

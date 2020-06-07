@@ -1,0 +1,1 @@
+$(function(){$("#rules").modal({backdrop:"static",keyboard:!1}),localStorage.getItem("rulesAuthorization")?$("#rules").modal("hide"):$("#rules").modal("show"),$("#storageDecline").click(function(){location.href="https://www.google.com/"}),$("#storageAllow").click(function(){localStorage.setItem("rulesAuthorization","true")})});

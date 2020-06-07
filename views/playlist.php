@@ -81,7 +81,7 @@ echo $successfulDelete ?? '';
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
 <?php if($show_modal_composition):?>
-    <script src="../assets/js/playlist.js"></script>
+    <script src="../assets/js/playlist_min.js"></script>
 <?php endif; ?>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
         integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
