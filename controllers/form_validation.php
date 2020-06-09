@@ -22,10 +22,14 @@ $playlistName = $_POST['playlistName'] ?? NULL;
 $playlistNewTitle = $_POST['playlistNewTitle'] ?? NULL;
 //Ajout d'une composition
 $compositionStyle = $_POST['compositionStyle'] ?? NULL;
+//formulaire nouveau sujet Forum
+$subject = trim(filter_input(INPUT_POST, 'subject', FILTER_SANITIZE_STRING)) ?? NULL;
 //formulaire récupération mot de passe
 $recuperationMailbox = $_POST['recuperationMailbox'] ?? NULL;
 //formulaire ajout de commentaire
 $comment = $_POST['comment'] ?? NULL;
+//formulaire ajout de message sur un topic
+$message = $_POST['message'] ?? NULL;
 //formulaire reset password
 $passwordAfterReset = $_POST['passwordAfterReset'] ?? NULL;
 $confirmPasswordAfterReset = $_POST['confirmPasswordAfterReset'] ?? NULL;
@@ -53,24 +57,24 @@ if (isset($_POST['suscribe'])) {
     //contrôle pseudo
     $suscribepseudo = trim(filter_input(INPUT_POST, 'suscribepseudo', FILTER_SANITIZE_STRING));
     if (empty($suscribepseudo)) {
-        $errors['suscribepseudo'] = 'Veuillez renseigner votre pseudo.';
+        $errors['suscribepseudo'] = '<i class="fas fa-exclamation-triangle"></i> Veuillez renseigner votre pseudo.';
     } elseif (!preg_match($regexPseudo, $suscribepseudo)) {
-        $errors['suscribepseudo'] = 'Votre pseudo contient des caractères non autorisés !';
+        $errors['suscribepseudo'] = '<i class="fas fa-exclamation-triangle"></i> Votre pseudo contient des caractères non autorisés !';
     }
     //contrôle adresse mail
     $suscribemailbox = trim(htmlspecialchars($_POST['suscribemailbox']));
     if (empty($suscribemailbox)) {
-        $errors['suscribemailbox'] = 'Veuillez renseigner votre adresse mail.';
+        $errors['suscribemailbox'] = '<i class="fas fa-exclamation-triangle"></i> Veuillez renseigner votre adresse mail.';
     } elseif (!filter_var($suscribemailbox, FILTER_VALIDATE_EMAIL)) {
-        $errors['suscribemailbox'] = 'Veuillez saisir une adresse mail valide.';
+        $errors['suscribemailbox'] = '<i class="fas fa-exclamation-triangle"></i> Veuillez saisir une adresse mail valide.';
     }
     //contrôle mots de passe
     if (empty($suscribepassword)) {
-        $errors['suscribepassword'] = 'Veuillez renseigner votre mot de passe.';
+        $errors['suscribepassword'] = '<i class="fas fa-exclamation-triangle"></i> Veuillez renseigner votre mot de passe.';
     } elseif (isset($suscribepassword) && empty($suscribepasswordconfirmation)) {
-        $errors['suscribepassword'] = 'Veuillez confirmer votre mot de passe';
+        $errors['suscribepassword'] = '<i class="fas fa-exclamation-triangle"></i> Veuillez confirmer votre mot de passe';
     } elseif ($suscribepasswordconfirmation != $suscribepassword) {
-        $errors['suscribepassword'] = 'Les mots de passe ne correspondent pas.';
+        $errors['suscribepassword'] = '<i class="fas fa-exclamation-triangle"></i> Les mots de passe ne correspondent pas.';
     }
     //Si il n'y a pas d'erreurs execute l'insertion dans la BDD
     if (count($errors) == 0) {
@@ -82,10 +86,10 @@ if (isset($_POST['login'])) {
     //ajoute une value au bouton me connecter
     $login = 'alreadySubmittedOnce';
     if (empty($pseudo)) {
-        $errors['pseudo'] = 'Veuillez renseigner votre pseudo.';
+        $errors['pseudo'] = '<i class="fas fa-exclamation-triangle"></i> Veuillez renseigner votre pseudo.';
     }
     if (empty($password)) {
-        $errors['password'] = 'Veuillez renseigner votre mot de passe.';
+        $errors['password'] = '<i class="fas fa-exclamation-triangle"></i> Veuillez renseigner votre mot de passe.';
     }
     //Si il n'y a pas d'erreurs execute les vérifications en BDD et renvoi vers la page 'accueil.php'
     if (count($errors) == 0) {
@@ -104,23 +108,23 @@ if (isset($_POST['submitSuscribeCompositor'])) {
     $submitSuscribeCompositor = 'alreadySubmittedOnce';
     //Vérifie que le logiciel employé est bien dans la liste ( que le select n'as pas été modifié ).
     if (!empty($software) && !preg_match($regexSoftware, $software)) {
-        $errors['software'] = 'Une erreur c\'est produite merci de réessayer ultérieurement.';
+        $errors['software'] = '<i class="fas fa-exclamation-triangle"></i> Une erreur c\'est produite merci de réessayer ultérieurement.';
     }
     //Vérifie le style préféré
     if (empty($tagsCompositorOne)) {
-        $errors['tagsCompositor'] = 'Veuillez choisir un style correct.';
+        $errors['tagsCompositor'] = '<i class="fas fa-exclamation-triangle"></i> Veuillez choisir un style correct.';
     }
     //Vérifie que la valeur du select soit bonne si elle est définie
     if (!preg_match($regexStyle, $tagsCompositorOne)) {
-        $errors['tagsCompositor'] = 'Veuillez choisir un style correct.';
+        $errors['tagsCompositor'] = '<i class="fas fa-exclamation-triangle"></i> Veuillez choisir un style correct.';
     }
     //si le champ facebook est rempli et que l'url fourni n'est pas bon
     if (!empty($facebook) && !preg_match($regexFacebook, $facebook)) {
-        $errors['facebookId'] = 'Veuillez saisir un url correct.';
+        $errors['facebookId'] = '<i class="fas fa-exclamation-triangle"></i> Veuillez saisir un url correct.';
     }
     //si le champ twitter est rempli et que l'url fourni n'est pas bon
     if (!empty($twitter) && !preg_match($regexTwitter, $twitter)) {
-        $errors['twitterId'] = 'Veuillez saisir un url correct.';
+        $errors['twitterId'] = '<i class="fas fa-exclamation-triangle"></i> Veuillez saisir un url correct.';
     }
     //si le tableau d'erreurs est vide, requiert le fichier qui fait l'insertion en BDD
     if (count($errors) == 0){
@@ -131,11 +135,11 @@ if (isset($_POST['submitSuscribeCompositor'])) {
 if (isset($_POST['updatePersonalInformations'])){
     //si le champ facebook est rempli et que l'url fourni n'est pas bon
     if (!empty($facebook) && !preg_match($regexFacebook, $facebook)) {
-        $errors['facebookId'] = 'Veuillez saisir un url correct.';
+        $errors['facebookId'] = '<i class="fas fa-exclamation-triangle"></i> Veuillez saisir un url correct.';
     }
     //si le champ twitter est rempli et que l'url fourni n'est pas bon
     if (!empty($twitter) && !preg_match($regexTwitter, $twitter)) {
-        $errors['twitterId'] = 'Veuillez saisir un url correct.';
+        $errors['twitterId'] = '<i class="fas fa-exclamation-triangle"></i> Veuillez saisir un url correct.';
     }
     if (count($errors) == 0){
         $changePersonalInformations = true;
@@ -144,7 +148,7 @@ if (isset($_POST['updatePersonalInformations'])){
 //Vérifications nouvelle playlist
 if (isset($_POST['submitPlaylist'])) {
     if (!filter_input(INPUT_POST, 'playlistName', FILTER_SANITIZE_STRING)) {
-        $errors['playlistName'] = 'Veuillez saisir un titre valide.';
+        $errors['playlistName'] = '<i class="fas fa-exclamation-triangle"></i> Veuillez saisir un titre valide.';
     }
     //si le tableau d'erreurs est vide, requiert le fichier qui fait l'update en BDD
     if (count($errors) == 0) {
@@ -155,7 +159,7 @@ if (isset($_POST['submitPlaylist'])) {
 if (isset($_POST['playlistTitleChange'])){
     //si le nouveau titre de la playlist n'est pas défini
     if (empty($playlistNewTitle)){
-        $errors['playlistNewTitle'] = 'Veuillez saisir le nouveau titre de la playlist.';
+        $errors['playlistNewTitle'] = '<i class="fas fa-exclamation-triangle"></i> Veuillez saisir le nouveau titre de la playlist.';
     }
     //si il n'y a pas d'erreurs
     if (count($errors) === 0){
@@ -205,21 +209,21 @@ if (isset($_POST['newComposition'])) {
 </div>';
                     }
                 } else {
-                    $errors['file'] = 'La taille de votre fichier est trop grande.';
+                    $errors['file'] = '<i class="fas fa-exclamation-triangle"></i> La taille de votre fichier est trop grande.';
                 }
             } else {
-                $errors['file'] = 'Une erreur s\'est produite durant l\'upload de votre fichier merci de réessayer.';
+                $errors['file'] = '<i class="fas fa-exclamation-triangle"></i> Une erreur s\'est produite durant l\'upload de votre fichier merci de réessayer.';
             }
         } else {
-            $errors['file'] = 'Le format de votre fichier n\'est pas valide.';
+            $errors['file'] = '<i class="fas fa-exclamation-triangle"></i> Le format de votre fichier n\'est pas valide.';
         }
     }
     //Si le message de validation du fichier n'est pas défini
     if (!isset($compositionAdded)) {
-        $errors['file'] = 'Veuillez ajouter un fichier.';
+        $errors['file'] = '<i class="fas fa-exclamation-triangle"></i> Veuillez ajouter un fichier.';
     }
     if (empty($compositionStyle)) {
-        $errors['compositionStyle'] = 'Veuillez choisir le style musical de la composition.';
+        $errors['compositionStyle'] = '<i class="fas fa-exclamation-triangle"></i> Veuillez choisir le style musical de la composition.';
     }
     // Si on choisi un style dans le select
     if (isset($compositionStyle)) {
@@ -228,15 +232,15 @@ if (isset($_POST['newComposition'])) {
         if ($compositionStyle == 'Autre') {
             // si le champ autre est vide
             if (empty($_POST['otherChoice'])) {
-                $errors['otherChoice'] = 'Veuillez préciser le style musical de la composition.';
+                $errors['otherChoice'] = '<i class="fas fa-exclamation-triangle"></i> Veuillez préciser le style musical de la composition.';
             }
         }
     }
     $compositionName = trim(filter_input(INPUT_POST, 'compositionName', FILTER_SANITIZE_STRING));
     if (empty($compositionName)) {
-        $errors['compositionName'] = 'Veuillez ajouter un titre à la composition.';
+        $errors['compositionName'] = '<i class="fas fa-exclamation-triangle"></i> Veuillez ajouter un titre à la composition.';
     } elseif (!preg_match($regexCompositionName, $compositionName)) {
-        $errors['compositionName'] = 'Votre titre contient des caratères non autorisés.';
+        $errors['compositionName'] = '<i class="fas fa-exclamation-triangle"></i> Votre titre contient des caratères non autorisés.';
     }
     //Si il n'y a pas d'erreurs requiert le fichier 'sqladdcomposition.php' qui fait l'ajout en BDD
     if (count($errors) == 0) {
@@ -246,12 +250,20 @@ if (isset($_POST['newComposition'])) {
 //Vérifification nouveau sujet
 if (isset($_POST['submitsubject'])) {
     //vérification sujet
-    $subject = trim(filter_input(INPUT_POST, 'subject', FILTER_SANITIZE_STRING));
     if (empty($subject)) {
-        $errors['subject'] = 'Veuillez renseigner le sujet.';
+        $errors['subject'] = '<i class="fas fa-exclamation-triangle"></i> Veuillez renseigner le sujet.';
     }
     elseif (count($errors) == 0) {
         require_once 'sqlnewsubject.php';
+    }
+}
+if (isset($_POST['topicMessageSubmit'])){
+    if (empty($message)){
+        $errors['message'] = '<i class="fas fa-exclamation-triangle"></i> Veuillez saisir votre message.';
+    }
+    if (count($errors) == 0){
+        //Si il n'y pas d'erreurs initialise la variable insertMessage à true pour permettre l'insert en BDD
+        $insertMessage = true;
     }
 }
 //Vérifications RECUPERATION MOT DE PASSE
@@ -261,9 +273,9 @@ if (isset ($_POST['recuperation'])) {
     //déclaration variable
     $recuperationMailbox = trim(htmlspecialchars($recuperationMailbox));
     if (empty($recuperationMailbox)) {
-        $errors['recuperationMailbox'] = 'Veuillez renseigner votre adresse mail.';
+        $errors['recuperationMailbox'] = '<i class="fas fa-exclamation-triangle"></i> Veuillez renseigner votre adresse mail.';
     } elseif (!filter_var($recuperationMailbox, FILTER_VALIDATE_EMAIL)) {
-        $errors['recuperationMailbox'] = 'Veuillez saisir une adresse mail valide.';
+        $errors['recuperationMailbox'] = '<i class="fas fa-exclamation-triangle"></i> Veuillez saisir une adresse mail valide.';
     } elseif (count($errors) == 0){
         require_once 'sqlrecuperation.php';
     }
@@ -271,10 +283,10 @@ if (isset ($_POST['recuperation'])) {
 //Formulaire ajout de commentaire
 if (isset($_POST['submitComment'])){
     if (empty($comment)){
-        $errors['comment'] = 'Veuillez saisir un commentaire.';
+        $errors['comment'] = '<i class="fas fa-exclamation-triangle"></i> Veuillez saisir un commentaire.';
     }
     elseif (!filter_input(INPUT_POST, 'comment', FILTER_SANITIZE_STRING)){
-        $errors['comment'] = 'Votre commentaire contient des caractères non valides.';
+        $errors['comment'] = '<i class="fas fa-exclamation-triangle"></i> Votre commentaire contient des caractères non valides.';
     }
     elseif (count($errors) == 0){
         require_once 'sqladdComment.php';
@@ -283,17 +295,17 @@ if (isset($_POST['submitComment'])){
 //Formulaire reset mot de passe après récupération
 if (isset($_POST['resetMyPassword'])){
     if (empty($passwordAfterReset)){
-        $errors['passwordAfterReset'] = 'Veuillez renseigner votre nouveau mot de passe';
+        $errors['passwordAfterReset'] = '<i class="fas fa-exclamation-triangle"></i> Veuillez renseigner votre nouveau mot de passe';
     }
     elseif (empty($confirmPasswordAfterReset)){
-        $errors['confirmPasswordAfterReset'] = 'Veuillez confirmer votre nouveau mot de passe';
+        $errors['confirmPasswordAfterReset'] = '<i class="fas fa-exclamation-triangle"></i> Veuillez confirmer votre nouveau mot de passe';
     }
     elseif($passwordAfterReset !== $confirmPasswordAfterReset){
-        $errors['passwordAfterReset'] = 'Les mots de passe ne correspondent pas.';
-        $errors['confirmPasswordAfterReset'] = 'Les mots de passe ne correspondent pas.';
+        $errors['passwordAfterReset'] = '<i class="fas fa-exclamation-triangle"></i> Les mots de passe ne correspondent pas.';
+        $errors['confirmPasswordAfterReset'] = '<i class="fas fa-exclamation-triangle"></i> Les mots de passe ne correspondent pas.';
     }
     elseif (count($errors) == 0) {
-        require_once '../controllers/sqlreset-password.php';
+        require_once 'sqlreset-password.php';
     }
 }
 //Vérification changement du type de compte
@@ -302,7 +314,7 @@ if (isset($_POST['changeAccountType'])) {
     $changeAccount = 'alreadySubmittedOnce';
     //vérification champ mot de passe
     if (!isset($changeAccountPassword)) {
-        $errors['changeAccountPassword'] = 'Veuillez renseigner votre mot de passe.';
+        $errors['changeAccountPassword'] = '<i class="fas fa-exclamation-triangle"></i> Veuillez renseigner votre mot de passe.';
     }
     //Si il n'y a pas d'erreurs requiert le fichier "parameterspage.php" qui compare le mot de passe de la BDD
     elseif (count($errors) == 0) {
@@ -314,19 +326,19 @@ if (isset ($_POST['changeMyPassword'])) {
     //ajoute une value au bouton me connecter
     $changeMyPassword = 'alreadySubmittedOnce';
     if (empty($actualPassword)) {
-        $errors['actualPassword'] = 'Veuillez saisir votre mot de passe.';
+        $errors['actualPassword'] = '<i class="fas fa-exclamation-triangle"></i> Veuillez saisir votre mot de passe.';
     }
     elseif (empty ($newPassword)) {
-        $errors['newPassword'] = 'Veuillez choisir un nouveau mot de passe.';
+        $errors['newPassword'] = '<i class="fas fa-exclamation-triangle"></i> Veuillez choisir un nouveau mot de passe.';
     } elseif ($actualPassword == $newPassword) {
-        $errors['newPassword'] = 'Le nouveau mot de passe et l\'ancien ne peuvent être identiques';
+        $errors['newPassword'] = '<i class="fas fa-exclamation-triangle"></i> Le nouveau mot de passe et l\'ancien ne peuvent être identiques';
     }
     elseif (empty ($newPasswordConfirm)) {
-        $errors['newPasswordConfirm'] = 'Veuillez confirmer votre nouveau mot de passe.';
+        $errors['newPasswordConfirm'] = '<i class="fas fa-exclamation-triangle"></i> Veuillez confirmer votre nouveau mot de passe.';
     }
     elseif ($newPassword != $newPasswordConfirm) {
-        $errors['newPassword'] = 'Les mots de passes ne correspondent pas.';
-        $errors['newPasswordConfirm'] = 'Les mots de passes ne correspondent pas.';
+        $errors['newPassword'] = '<i class="fas fa-exclamation-triangle"></i> Les mots de passes ne correspondent pas.';
+        $errors['newPasswordConfirm'] = '<i class="fas fa-exclamation-triangle"></i> Les mots de passes ne correspondent pas.';
     }
     elseif (count($errors) == 0) {
         require_once 'updatePassword.php';
@@ -338,7 +350,7 @@ if (isset($_POST['removeMyAccount'])) {
     //ajoute une value au bouton me connecter
     $removeMyAccount = 'alreadySubmittedOnce';
     if (empty($removeMyAccountPassword)) {
-        $errors['Password'] = 'Veuillez renseigner un mot de passe.';
+        $errors['Password'] = '<i class="fas fa-exclamation-triangle"></i> Veuillez renseigner un mot de passe.';
     }
     elseif (count($errors) == 0) {
         require_once 'sqldeleteaccount.php';

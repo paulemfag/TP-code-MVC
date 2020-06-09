@@ -30,10 +30,8 @@ require_once 'require/header.php';
                 </tbody>
             </table>
         </div>
-    </div>
     <!-- bouton réglement -->
-        <div class="row" style="justify-content: center;">
-            <button type="button" class="btn btn-outline-danger col-10" data-toggle="modal" data-target="#rules"><i
+            <button type="button" class="btn btn-outline-danger col-12 mt-2" data-toggle="modal" data-target="#rules"><i
                         class="fas fa-list-ol"></i> Réglement
             </button>
         </div>
