@@ -32,9 +32,21 @@ if ($successfullCommented){
     <h2 class="text-center bg-light col-10 opacity mt-2 ml-auto mr-auto">Laisser un commentaire :</h2>
 </div>
 <form class="container mt-1" method="post" action="#">
-    <span class="text-danger float-right"><?= $errors['comment'] ?? '' ?></span>
-    <textarea class="comment" placeholder="Veuillez saisir un commentaire" maxlength="500" name="comment" id="comment" cols="121" rows="4"><?= $_POST['comment'] ?? '' ?></textarea>
-    <input name="submitComment" id="submitComment" class="btn btn-outline-success mt-2 col-12" value="Envoyer" type="submit">
+    <div class="form-group">
+        <span class="text-danger float-right"><?= $errors['comment'] ?? '' ?></span>
+        <textarea class="comment" placeholder="Veuillez saisir un commentaire" maxlength="500" name="comment" id="comment" cols="121" rows="4"><?= $_POST['comment'] ?? '' ?></textarea>
+    </div>
+    <div class="captcha">
+        <div
+                class="g-recaptcha"
+                data-sitekey="6Lc2seAUAAAAABg_R6mlOzQuKOkLNxYkyQiRLf7x"
+                style="display: inline-block;">
+
+        </div>
+    </div>
+    <div class="form-group">
+        <input name="submitComment" id="submitComment" class="btn btn-outline-success mt-2 col-12" value="Envoyer" type="submit">
+    </div>
 </form>
 <?php echo $commentsAnnouncement. '<div class="container mt-1">' ?? '';
 echo $commentReturn ?? '';
@@ -57,6 +69,7 @@ if ($commentsAnnouncement){
     echo '</div>';
 }
 require_once 'require/footer.php'; ?>
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
