@@ -1,1 +1,1 @@
-$(function(){$("#deleteComposition").modal("show")});
+$(function(){$('#deleteComposition').modal('show')});
