@@ -14,7 +14,7 @@ require_once '../controllers/sqltopic.php';
         <div class="form-group">
             <label class="text-light" for="message">Poster un message :</label>
             <span class="text-danger float-right"><?= $errors['message'] ?? '' ?></span>
-            <textarea name="message" id="message" cols="121" rows="5" placeholder="Veuillez saisir un message"><?= $message ?></textarea>
+            <textarea class="noResize" maxlength="500" name="message" id="message" cols="121" rows="5" placeholder="Veuillez saisir un message"><?= $message ?></textarea>
         </div>
         <div class="captcha">
             <div
@@ -30,8 +30,8 @@ require_once '../controllers/sqltopic.php';
     </form>
 <?php foreach ($publicationsList AS $publication): ?>
     <div class="card mt-2">
-        <div class="card-body">
-            <p class="card-text"><i><a title="Profil de <?= $publication['pseudo'] ?>" href="mypage.php?id=<?= $publication['id_users'] ?>"><?= $publication['pseudo'] .'</a>, '. $publication['published_at'] .' :' ?></i></p>
+        <div class="card-body compositionsTables">
+            <p class="card-text"><i><a class="text-dark" title="Profil de <?= $publication['pseudo'] ?>" href="mypage.php?id=<?= $publication['id_users'] ?>"><?= $publication['pseudo'] .'</a>, '. $publication['published_at'] .' :' ?></i></p>
             <p class="card-text"><?= $publication['message'] ?></p>
         </div>
     </div>

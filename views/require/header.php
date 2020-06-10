@@ -93,7 +93,7 @@ if (empty($_SESSION)) {
                         </div>
                     </li>
                     <li>
-                        <a class="btn btn-light text-dark" href="forum.php" role="button">Forum</a>
+                        <a class="btn btn-light text-dark" href="forum.php?page=1" role="button">Forum</a>
                     </li>
                 </ul>
             </div>

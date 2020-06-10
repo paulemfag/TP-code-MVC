@@ -34,7 +34,7 @@ if ($successfullCommented){
 <form class="container mt-1" method="post" action="#">
     <div class="form-group">
         <span class="text-danger float-right"><?= $errors['comment'] ?? '' ?></span>
-        <textarea class="comment" placeholder="Veuillez saisir un commentaire" maxlength="500" name="comment" id="comment" cols="121" rows="4"><?= $_POST['comment'] ?? '' ?></textarea>
+        <textarea class="noResize" placeholder="Veuillez saisir un commentaire" maxlength="500" name="comment" id="comment" cols="121" rows="4"><?= $_POST['comment'] ?? '' ?></textarea>
     </div>
     <div class="captcha">
         <div
@@ -61,7 +61,7 @@ foreach ($commentList as $comment):
     $pseudoAndPublishedAtAndSpaces = $comment['pseudo'] .', '. $comment['published_at_formatted'] .' :'. $spaces;
 ?>
 <div class="bg-prima$ry">
-    <textarea class="comment bg-primary text-light" wrap="hard" cols="121" rows="4" disabled><?= $pseudoAndPublishedAtAndSpaces. $comment['comment'] ?? '' ?></textarea>
+    <textarea class="noResize bg-primary text-light" wrap="hard" cols="121" rows="4" disabled><?= $pseudoAndPublishedAtAndSpaces. $comment['comment'] ?? '' ?></textarea>
 </div>
 <?php
 endforeach;
