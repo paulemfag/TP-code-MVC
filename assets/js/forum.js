@@ -12,7 +12,4 @@ $(function () {
     $('#storageAllow').click(function () {
         localStorage.setItem('rulesAuthorization', 'true');
     });
-    $('#limit-records').change(function () {
-        $('form').submit();
-    })
 });

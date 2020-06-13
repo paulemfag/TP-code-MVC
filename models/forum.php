@@ -1,14 +1,14 @@
 <?php
 try {
     //Récupération des informations de la table topic
-    $topicQueryStat = $db->query("SELECT `id`, `title`, DATE_FORMAT(`created_at`, 'le %d/%m/%Y\ à %HH%i') `created_at_formatted`, `id_users` FROM `topics` ORDER BY `created_at` DESC LIMIT $start, $limit");
+    $topicQueryStat = $db->query("SELECT `id`, `title`, DATE_FORMAT(`created_at`, 'le %d/%m/%Y\ à %HH%i') `created_at_formatted`, DATE_FORMAT(`updated_at`, 'le %d/%m/%Y\ à %HH%i') `updated_at`, `id_users` FROM `topics` ORDER BY `created_at` DESC LIMIT $start, $limit");
     $topicList = $topicQueryStat->fetchAll(PDO::FETCH_ASSOC);
 } catch (Exception $ex) {
     die('Connexion échoué');
 }
 foreach ($topicList AS $topic): ?>
     <tr class="shadow">
-    <td class="text-light"><a title="<?= $topic['title'] ?>" href="topic.php?id=<?= $topic['id'] ?>"><?= $topic['title'] ?></a></td>
+    <td><a class="text-dark" title="<?= $topic['title'] ?>" href="topic.php?id=<?= $topic['id'] ?>&page=1"><?= $topic['title'] ?></a></td>
     <?php
     try {
         $query = 'SELECT `pseudo` FROM `users` WHERE id =' . $topic['id_users'];
@@ -21,7 +21,7 @@ foreach ($topicList AS $topic): ?>
     } catch (Exception $ex) {
         die('Connexion échoué');
     } ?>
-    <td class="text-light"><?= $topic['id_users'] ?></td>
-    <td class="text-light"><?= 'à définir' ?></td>
-    <td class="text-light"><?= $topic['created_at_formatted'] ?></td>
+    <td class="text-dark"><?= $topic['id_users'] ?></td>
+    <td class="text-dark"><?= $topic['updated_at'] ?></td>
+    <td class="text-dark"><?= $topic['created_at_formatted'] ?></td>
 <?php endforeach;

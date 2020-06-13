@@ -1,15 +1,16 @@
 <?php
 $title = 'Forum | Sujet';
 require_once 'require/header.php';
+require_once '../controllers/sqltopicPagination.php';
 require_once '../controllers/form_validation.php';
 require_once '../controllers/sqltopic.php';
 ?>
-<div class="container bg-light mt-2 opacity">
-    <a id="returnArrow" title="Fill | Forum" href="forum.php"><i class="mt-2 fas fa-home"
-                                                                 style="font-size: 50px;"></i></a>
-    <h1 class="text-center ml-auto mr-auto"><?= $topics['title'] ?></h1>
-</div>
 <div class="container">
+    <div class="row bg-light mt-2 opacity">
+        <a class="col-2" id="returnArrow" title="Fill | Forum" href="forum.php?page=1"><i class="fas fa-home"
+                                                                     style="font-size: 50px;"></i></a>
+        <h1 class="col-10"><?= $topics['title'] ?></h1>
+    </div>
     <form class="mt-3" action="#" method="post" novalidate>
         <div class="form-group">
             <label class="text-light" for="message">Poster un message :</label>
@@ -28,6 +29,34 @@ require_once '../controllers/sqltopic.php';
             <input name="topicMessageSubmit" id="topicMessageSubmit" class="btn btn-outline-success col-12" type="submit" value="Poster le message">
         </div>
     </form>
+    <?php //Pagination si il n'y a pas qu'une seule page
+    if ($pages > 1) : ?>
+        <nav class="col-md-12 mt-2 d-flex justify-content-center">
+            <ul class="pagination custom-pagination">
+                <?php //Si on ne se trouve pas sur la première page.
+                if ($page != 1) : ?>
+                    <li class="page-item"><a class="page-link" href="topic.php?id=<?= $_GET['id'] ?>&page=1" aria-label="Previous"><span aria-hidden="true">&laquo;&laquo; Première page</span></a></li>
+                    <li class="page-item"><a class="page-link" href="topic.php?id=<?= $_GET['id'] ?>&page=<?= $previous; ?>" aria-label="Previous"><span aria-hidden="true">&laquo; Page précédenter</span></a></li>
+                <?php endif; ?>
+                <li>
+                    <select class="form-control" onchange="location = this.value;">
+                        <?php for($i = 1; $i<= $page - 1; $i++) : ?>
+                            <option value="topic.php?id=<?= $_GET['id'] ?>&page=<?= $i ?>"><?= $i ?></option>
+                        <?php endfor; ?>
+                        <option value="forum.php?page=<?= $page ?>" disabled selected><?= $page ?></option>
+                        <?php for($i = $page + 1; $i<= $pages; $i++) : ?>
+                            <option value="topic.php?id=<?= $_GET['id'] ?>&page=<?= $i ?>"><?= $i ?></option>
+                        <?php endfor; ?>
+                    </select>
+                </li>
+                <?php //Si on ne se trouve pas sur la dernière page.
+                if ($pages != $page) : ?>
+                    <li class="page-item"><a class="page-link" href="topic.php?id=<?= $_GET['id'] ?>&page=<?= $next; ?>" aria-label="Next"><span aria-hidden="true">Page suivante &raquo;</span></a></li>
+                    <li class="page-item"><a class="page-link" href="topic.php?id=<?= $_GET['id'] ?>&page=<?= $pages; ?>" aria-label="Next"><span aria-hidden="true">Dernière page &raquo;&raquo;</span></a></li>
+                <?php endif; ?>
+            </ul>
+        </nav>
+    <?php endif; ?>
 <?php foreach ($publicationsList AS $publication): ?>
     <div class="card mt-2">
         <div class="card-body compositionsTables">
@@ -37,12 +66,40 @@ require_once '../controllers/sqltopic.php';
     </div>
 <?php endforeach; ?>
 </div>
-<?php require_once 'require/footer.php'; ?>
+<?php //Pagination si il n'y a pas qu'une seule page
+if ($pages > 1) : ?>
+    <nav class="col-md-12 mt-2 d-flex justify-content-center">
+        <ul class="pagination custom-pagination">
+            <?php //Si on ne se trouve pas sur la première page.
+            if ($page != 1) : ?>
+                <li class="page-item"><a class="page-link" href="topic.php?id=<?= $_GET['id'] ?>&page=1" aria-label="Previous"><span aria-hidden="true">&laquo;&laquo; Première page</span></a></li>
+                <li class="page-item"><a class="page-link" href="topic.php?id=<?= $_GET['id'] ?>&page=<?= $previous; ?>" aria-label="Previous"><span aria-hidden="true">&laquo; Page précédenter</span></a></li>
+            <?php endif; ?>
+            <li>
+                <select class="form-control" onchange="location = this.value;">
+                    <?php for($i = 1; $i<= $page - 1; $i++) : ?>
+                        <option value="topic.php?id=<?= $_GET['id'] ?>&page=<?= $i ?>"><?= $i ?></option>
+                    <?php endfor; ?>
+                    <option value="forum.php?page=<?= $page ?>" disabled selected><?= $page ?></option>
+                    <?php for($i = $page + 1; $i<= $pages; $i++) : ?>
+                        <option value="topic.php?id=<?= $_GET['id'] ?>&page=<?= $i ?>"><?= $i ?></option>
+                    <?php endfor; ?>
+                </select>
+            </li>
+            <?php //Si on ne se trouve pas sur la dernière page.
+            if ($pages != $page) : ?>
+                <li class="page-item"><a class="page-link" href="topic.php?id=<?= $_GET['id'] ?>&page=<?= $next; ?>" aria-label="Next"><span aria-hidden="true">Page suivante &raquo;</span></a></li>
+                <li class="page-item"><a class="page-link" href="topic.php?id=<?= $_GET['id'] ?>&page=<?= $pages; ?>" aria-label="Next"><span aria-hidden="true">Dernière page &raquo;&raquo;</span></a></li>
+            <?php endif; ?>
+        </ul>
+    </nav>
+<?php endif;
+require_once 'require/footer.php'; ?>
 <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
-<script src="assets/js/topic_min.js"></script>
+<script src="assets/js/topic.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
         integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"

@@ -10,5 +10,5 @@ try {
     die('Connexion échoué');
 }
 foreach ($playlists as $playlist){
-    echo '<a class="dropdown-item" target="_blank" rel="noopener noreferrer" href="playlist.php?id='. $playlist['id'] .'">'. $playlist['title'] .'</a>';
+    echo '<a class="dropdown-item" target="_blank" rel="noopener noreferrer" href="playlist.php?id='. $playlist['id'] .'&page=1">'. $playlist['title'] .'</a>';
 }

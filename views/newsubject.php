@@ -1,23 +1,33 @@
 <?php
-require_once '../controllers/form_validation.php';
 $title = 'Fill | Nouveau Sujet';
 require_once 'require/header.php';
-$id = $_SESSION['id'];
-echo $subjectAdded ?? ''; ?>
+require_once '../controllers/form_validation.php';
+$id = $_SESSION['id']; ?>
 <div class="container bg-light mt-2 opacity">
-    <a title="Fill | Forum" href="forum.php"><i class="mt-2 fas fa-home"></i></a>
+    <a title="Fill | Forum" href="forum.php?page=1"><i class="mt-2 fas fa-home"></i></a>
     <h1 class="text-center ml-auto mr-auto">Nouveau Sujet :</h1>
 </div>
-<form class="container" action="?id=<?= $id ?? '' ?>" method="post" novalidate>
+<form class="container mt-1" action="?id=<?= $id ?? '' ?>" method="post" novalidate>
     <div class="form-group">
         <label class="text-light" for="subject">Sujet :</label>
         <span class="text-danger float-right"><?= $errors['subject'] ?? '' ?></span>
         <input id="subject" name="subject" type="text" class="col-12" value="<?= $_POST['subject'] ?? '' ?>">
     </div>
-    <input name="submitsubject" class="btn btn-outline-success col-12 text-center mt-1" value="Créer le Sujet"
-           type="submit">
+    <div class="captcha">
+        <div
+                class="g-recaptcha"
+                data-sitekey="6Lc2seAUAAAAABg_R6mlOzQuKOkLNxYkyQiRLf7x"
+                style="display: inline-block;">
+
+        </div>
+    </div>
+    <div class="form-group">
+        <input name="submitsubject" class="btn btn-outline-success col-12 text-center mt-1" value="Créer le Sujet"
+                type="submit">
+    </div>
 </form>
 <?php require_once 'require/footer.php'; ?>
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>

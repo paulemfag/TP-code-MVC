@@ -1,5 +1,4 @@
 <?php
-require_once 'sqlparameters.php';
 $id = $_SESSION['id'];
 //Récupération de la liste des playlists de l'utilisateur
 try {
@@ -12,7 +11,7 @@ try {
 }
 try {
     //Récupération des informations de la table composition selon le style
-    $stmt = $db->prepare('SELECT compositions.id, compositions.title, compositions.file, compositions.id_users FROM compositions INNER JOIN categories ON compositions.title = categories.title AND categories.style = :style ORDER BY title ASC');
+    $stmt = $db->prepare("SELECT compositions.id, compositions.title, compositions.file, compositions.id_users FROM compositions INNER JOIN categories ON compositions.title = categories.title AND categories.style = :style ORDER BY title ASC LIMIT $start , $limit");
     if ($stmt->execute(array(':style' => $style)) && $row = $stmt->fetchAll(PDO::FETCH_ASSOC)) {
         //Pour chaque composition
         $playlistListIdNumber = 1;

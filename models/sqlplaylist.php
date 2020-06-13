@@ -27,12 +27,15 @@ $title = 'Fill | ' . $playlistTitle;
 //récupératioon de toutes les informations des titres de la playlist dans les tables
 try {
     $sth = $db->prepare(
-        'SELECT compositions.id as compositionid, compositions.title, compositions.file, categories.style, users.id, users.pseudo  FROM `compo_in_playlist` 
+        "SELECT compositions.id as compositionid, compositions.title, compositions.file, categories.style, users.id, users.pseudo  FROM `compo_in_playlist` 
 JOIN compositions ON compositions.id = compo_in_playlist.id_compositions
 JOIN categories ON categories.title = compositions.title
 JOIN users ON compositions.id_users = users.id
 JOIN playlists ON playlists.id = compo_in_playlist.id_playlists 
-WHERE playlists.id = :id'
+WHERE playlists.id = :id
+ORDER BY `added_at` DESC
+LIMIT $start, $limit
+"
     );
     $sth->bindValue(':id', $idPlaylist, PDO::PARAM_INT);
     $sth->execute();

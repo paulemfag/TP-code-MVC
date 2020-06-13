@@ -60,22 +60,22 @@ if (empty($_SESSION)) {
                             Tags
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownTags">
-                            <a class="dropdown-item" href="stylePage.php?style=Afro">Afro</a>
-                            <a class="dropdown-item" href="stylePage.php?style=Blues">Blues</a>
-                            <a class="dropdown-item" href="stylePage.php?style=Classique">Classique</a>
-                            <a class="dropdown-item" href="stylePage.php?style=Disco">Disco</a>
-                            <a class="dropdown-item" href="stylePage.php?style=Electro">Electro</a>
-                            <a class="dropdown-item" href="stylePage.php?style=Funk">Funk</a>
-                            <a class="dropdown-item" href="stylePage.php?style=Gospel">Gospel</a>
-                            <a class="dropdown-item" href="stylePage.php?style=Kompa">Kompa</a>
-                            <a class="dropdown-item" href="stylePage.php?style=Metal">Metal</a>
-                            <a class="dropdown-item" href="stylePage.php?style=Pop">Pop</a>
-                            <a class="dropdown-item" href="stylePage.php?style=Punk">Punk</a>
-                            <a class="dropdown-item" href="stylePage.php?style=Raï">Raï</a>
-                            <a class="dropdown-item" href="stylePage.php?style=Rap">Rap</a>
-                            <a class="dropdown-item" href="stylePage.php?style=Reggae">Reggae</a>
-                            <a class="dropdown-item" href="stylePage.php?style=R'n'B">R'n'B</a>
-                            <a class="dropdown-item" href="stylePage.php?style=Rock">Rock</a>
+                            <a title="Page style | Afro" class="dropdown-item" href="stylePage.php?style=Afro&page=1">Afro</a>
+                            <a title="Page style | Blues" class="dropdown-item" href="stylePage.php?style=Blues&page=1">Blues</a>
+                            <a title="Page style | Classique" class="dropdown-item" href="stylePage.php?style=Classique&page=1">Classique</a>
+                            <a title="Page style | Disco" class="dropdown-item" href="stylePage.php?style=Disco&page=1">Disco</a>
+                            <a title="Page style | Electro" class="dropdown-item" href="stylePage.php?style=Electro&page=1">Electro</a>
+                            <a title="Page style | Funk" class="dropdown-item" href="stylePage.php?style=Funk&page=1">Funk</a>
+                            <a title="Page style | Gospel" class="dropdown-item" href="stylePage.php?style=Gospel&page=1">Gospel</a>
+                            <a title="Page style | Kompa" class="dropdown-item" href="stylePage.php?style=Kompa&page=1">Kompa</a>
+                            <a title="Page style | Metal" class="dropdown-item" href="stylePage.php?style=Metal&page=1">Metal</a>
+                            <a title="Page style | Pop" class="dropdown-item" href="stylePage.php?style=Pop&page=1">Pop</a>
+                            <a title="Page style | Punk" class="dropdown-item" href="stylePage.php?style=Punk&page=1">Punk</a>
+                            <a title="Page style | Raï" class="dropdown-item" href="stylePage.php?style=Raï&page=1">Raï</a>
+                            <a title="Page style | Rap" class="dropdown-item" href="stylePage.php?style=Rap&page=1">Rap</a>
+                            <a title="Page style | Reggae" class="dropdown-item" href="stylePage.php?style=Reggae&page=1">Reggae</a>
+                            <a title="Page style | R'n'B" class="dropdown-item" href="stylePage.php?style=R'n'B&page=1">R'n'B</a>
+                            <a title="Page style | Rock" class="dropdown-item" href="stylePage.php?style=Rock&page=1">Rock</a>
                         </div>
                     </li>
                 </ul>

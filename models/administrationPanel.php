@@ -1,7 +1,5 @@
 <?php
-require_once '../controllers/sqlparameters.php';
-$query = 'SELECT id, pseudo, active, mailBox, accounttype, number_of_messages FROM `users`';
-$usersQueryStat = $db->query($query);
+$usersQueryStat = $db->query("SELECT id, pseudo, active, mailBox, accounttype, number_of_messages FROM `users` LIMIT $start , $limit");
 $usersList = $usersQueryStat->fetchAll(PDO::FETCH_ASSOC);
 //récupération de l'id en GET quand on clique sur le bouton
 if (isset($_GET['id']) && filter_input(INPUT_GET,'id', FILTER_SANITIZE_NUMBER_INT)){
