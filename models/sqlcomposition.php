@@ -33,9 +33,10 @@ try {
 $compositorPseudo = $user['pseudo'];
 //récupération des commentaires de la composition (dans l'ordre de publication)
 try {
-    $query = 'SELECT `pseudo`, `comment`, DATE_FORMAT(`published_at`, \'le %d/%m/%Y\ à %HH%i\') `published_at_formatted` FROM `comments` ORDER BY `published_at` DESC';
-    $commentQueryStat = $db->query($query);
-    $commentList = $commentQueryStat->fetchAll(PDO::FETCH_ASSOC);
+    $sth = $db->prepare('SELECT `pseudo`, `comment`, DATE_FORMAT(`published_at`, \'le %d/%m/%Y\ à %HH%i\') `published_at_formatted` FROM `comments` WHERE `id_compositions` = :id_composition ORDER BY `published_at` DESC');
+    $sth->bindValue(':id_composition', $id, PDO::PARAM_INT);
+    $sth->execute();
+    $commentList = $sth->fetchAll(PDO::FETCH_ASSOC);
 } catch (Exception $ex) {
     die('Connexion échoué');
 }
