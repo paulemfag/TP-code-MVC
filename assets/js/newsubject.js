@@ -1,5 +1,6 @@
 $(function () {
-    $('#comment').emojioneArea({
+    $('#subject').emojioneArea({
+        pickerPosition: 'bottom',
         searchPlaceholder: 'Rechercher',
         buttonTitle: 'Utilisez la touche TAB pour insérer des emojis plus rapidement.',
         filters: {
