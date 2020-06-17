@@ -1,10 +1,12 @@
 <?php
 require_once '../controllers/sqlcomposition.php';
+require_once '../vendor/autoload.php';
 require_once 'require/header.php';
 require_once '../controllers/form_validation.php';
-if ($successfullCommented){
-    header('test.php');
-}
+/*if ($successfullCommented){
+    header('location:composition.php?id=60');
+    exit();
+}*/
 ?>
 <div class="row">
     <h1 class="text-center bg-light col-10 opacity mt-2 ml-auto mr-auto"><?= $title ?> :</h1>
@@ -28,13 +30,14 @@ if ($successfullCommented){
     </audio>
     </div>
 </div>
+</div>
 <div class="row">
     <h2 class="text-center bg-light col-10 opacity mt-2 ml-auto mr-auto">Laisser un commentaire :</h2>
 </div>
 <form class="container mt-1" method="post" action="#">
     <div class="form-group">
         <span class="text-danger float-right"><?= $errors['comment'] ?? '' ?></span>
-        <textarea class="noResize" placeholder="Veuillez saisir un commentaire" maxlength="500" name="comment" id="comment" cols="121" rows="4"><?= $_POST['comment'] ?? '' ?></textarea>
+        <textarea class="noResize" placeholder="Veuillez saisir un commentaire." maxlength="500" name="comment" id="comment" cols="121" rows="4"><?= $_POST['comment'] ?? '' ?></textarea>
     </div>
     <div class="captcha">
         <div
@@ -70,9 +73,9 @@ if ($commentsAnnouncement){
 }
 require_once 'require/footer.php'; ?>
 <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript" src="../vendor/mervick/emojionearea/dist/emojionearea.min.js"></script>
+<script type="text/javascript" src="../assets/js/composition_min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
         integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
         crossorigin="anonymous"></script>
