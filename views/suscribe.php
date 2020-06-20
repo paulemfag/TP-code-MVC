@@ -176,6 +176,6 @@ require_once '../controllers/form_validation.php';
 <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type="text/javascript" src="../vendor/mervick/emojionearea/dist/emojionearea.min.js"></script>
-<script src="../assets/js/suscribe.js"></script>
+<script src="../assets/js/suscribe_min.js"></script>
 </body>
 </html>
