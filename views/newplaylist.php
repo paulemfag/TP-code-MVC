@@ -11,12 +11,19 @@ echo $successfullyCreated ?? '';
     <div class="form-group">
         <label class="text-light" for="playlistName">Nom de la playlist :</label>
         <span class="text-danger float-right"><?= $errors['playlistName'] ?? '' ?></span>
-        <input class="col-12 inputColor" id="playlistName" name="playlistName" type="text" value="<?= $playlistName ?>">
+        <input class="col-12" id="playlistName" name="playlistName" type="text" value="<?= $playlistName ?>">
+    </div>
+    <div class="captcha">
+        <div
+                class="g-recaptcha"
+                data-sitekey="6Lc2seAUAAAAABg_R6mlOzQuKOkLNxYkyQiRLf7x"
+                style="display: inline-block;">
+        </div>
     </div>
     <input name="submitPlaylist" value="Créer la playlist" class="btn btn-outline-success col-12" type="submit">
 </form>
-<?php
-require_once 'require/footer.php'; ?>
+<?php require_once 'require/footer.php'; ?>
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type="text/javascript" src="../vendor/mervick/emojionearea/dist/emojionearea.min.js"></script>
 <script src="../assets/js/newplaylist_min.js"></script>

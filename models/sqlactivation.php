@@ -20,13 +20,25 @@ if ($stmt->execute(array(':pseudo' => $pseudo)) && $row = $stmt->fetch()) {
 // On teste la valeur de la variable $active récupérée dans la BDD
 if ($active == '1') {
     // Si le compte est déjà actif on prévient
-    $message = 'Votre compte est déjà activé !';
+    echo '
+<div class="alert alert-success alert-dismissible fade show text-center" role="alert">
+  <p>Votre compte a déjà été activé.</p>
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>';
 } // Si ce n'est pas le cas on passe aux comparaisons
 else {
     if ($activationkey == $activationkeybdd) // On compare nos deux clés
     {
         // Si elles correspondent on active le compte !
-        $message = 'Votre compte a bien été activé !';
+        echo '
+<div class="alert alert-success alert-dismissible fade show text-center" role="alert">
+  <p>Votre compte a bien été activé.</p>
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>';
 
         // La requête qui va passer notre champ actif de 0 à 1
         $stmt = $db->prepare('UPDATE `users` SET active = 1 WHERE pseudo like :pseudo ');

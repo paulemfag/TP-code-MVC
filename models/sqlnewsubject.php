@@ -21,8 +21,8 @@ try {
 /*        header('location:topic.php?id=' .$topicId);
         exit();*/
         echo '
-<div class="alert alert-success alert-dismissible fade show" role="alert">
-<p>Votre topic a bien été crée' .$topicId[0]. '</p>
+<div class="alert alert-success alert-dismissible fade show text-center" role="alert">
+<p>Votre topic a bien été crée.</p>
     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
     <span aria-hidden="true">&times;</span>
   </button>

@@ -26,21 +26,20 @@ require_once '../controllers/sqlpersonalInformationsUpdate.php';
             <input class="col-12 inputColor" name="software" id="software" type="text" value="<?= $software ?? $softwareInDb ?>">
         </div>
         <div class="form-group">
-            <label class="text-light" for="facebookId"><img class="mb-2" height="30" width="35" src="../assets/img/facebook-logo.png" alt="facebook_logo"><b>Url profil Facebook :</b></label>
+            <label class="text-light" for="facebookId"><i class="fab fa-facebook-square"></i><b> Url profil Facebook :</b></label>
             <span class="float-right text-danger"><?= $errors['facebookId'] ?? '' ?></span>
             <input class="col-12 inputColor" name="facebookId" id="facebookId" type="text" value="<?= $facebook ?? $facebookIdInDb ?>">
         </div>
         <div class="form-group">
-            <label class="text-light" for="twitterId"><img class="mb-2" height="27" width="47" src="../assets/img/logo_twitter.png" alt="facebook_logo"><b>Url profil Twitter :</b></label>
+            <label class="text-light" for="twitterId"><i class="fab fa-twitter-square"></i><b> Url profil Twitter :</b></label>
             <span class="float-right text-danger"><?= $errors['twitterId'] ?? '' ?></span>
             <input class="col-12 inputColor" name="twitterId" id="twitterId" type="text" value="<?= $twitter ?? $twitterIdInDb ?>">
         </div>
         <div class="captcha">
             <div
-                    class="g-recaptcha"
-                    data-sitekey="6Lc2seAUAAAAABg_R6mlOzQuKOkLNxYkyQiRLf7x"
-                    style="display: inline-block;">
-
+                class="g-recaptcha"
+                data-sitekey="6Lc2seAUAAAAABg_R6mlOzQuKOkLNxYkyQiRLf7x"
+                style="display: inline-block;">
             </div>
         </div>
         <div class="form-group">

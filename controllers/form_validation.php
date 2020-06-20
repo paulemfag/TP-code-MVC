@@ -10,7 +10,11 @@ $suscribepasswordconfirmation = $_POST['suscribepasswordconfirmation'] ?? NULL;
 $biography = $_POST['biography'] ?? NULL;
 $instruments = $_POST['instruments'] ?? NULL;
 $software = $_POST['software'] ?? $_POST['otherSoftware'] ?? NULL;
-$tagsCompositorOne = $_POST['tagsCompositorOne'] ?? NULL;
+$tagOne = $_POST['tag0'] ?? NULL;
+$tagTwo = $_POST['tag1'] ?? NULL;
+$tagThree = $_POST['tag2'] ?? NULL;
+$tagFour = $_POST['tag3'] ?? NULL;
+$tagFive = $_POST['tag4'] ?? NULL;
 $facebook = $_POST['facebookId'] ?? NULL;
 $twitter = $_POST['twitterId'] ?? NULL;
 //formulaire login
@@ -44,10 +48,9 @@ $removeMyAccountPassword = $_POST['Password'] ?? NULL;
 //regex pour le contrôle des formulaires
 $regexPseudo = "/^[A-Za-zéÉ][A-Za-záàâäãåçéèêëíìîïñóòôöõúùûüýÿæœ]+((-| )[A-Za-záàâäãåçéèêëíìîïñóòôöõúùûüýÿæœ]+)?$/";
 $regexCompositionName = '/^(([A-Z|a-z|áàâäãåçéèêëíìîïñóòôöõúùûüýÿæœ]{0,50})+((-|\s)?)+([A-Z|a-z|áàâäãåçéèêëíìîïñóòôöõúùûüýÿæœ]{0,50})((-|\s)+){0,5})$/';
-$regexSoftware = '/^(Ableton Live|FL Studio|Logic Pro X|Avid Pro Tools|Propellerhead Reason|Garageband|Steinberg Cubase|Cockos Reaper|PreSonus Studio|Acid Pro)$/';
 $regexFacebook = '/^(https?:\/\/)?(www\.)?facebook.com\/[a-zA-Z0-9(\.\?)?]/';
 $regexTwitter = '/^(?:http(s?):\/\/)?(?:www\.)?twitter\.com\/(?:(?:\w)*#!\/)?(?:pages\/)?(?:[\w\-]*\/)*([\w\-]*)$/';
-$regexStyle = '/^(Autre|Blues|Classique|Disco|Electro|Funk|Gospel|Kompa|Metal|Pop|Punk|Raï|Rap|Reggae|R\'n\'B|Rock|)$/';
+$regexStyle = '/^(Afro|Blues|Classique|Disco|Electro|Funk|Gospel|Kompa|Metal|Pop|Punk|Raï|Rap|Reggae|R\'n\'B|Rock|)$/';
 //initialisation tableau d'erreurs vide
 $errors = [];
 //Vérifications formulaire d'inscription
@@ -105,19 +108,35 @@ if (isset($_GET['connectMe'])) {
 // Vérifications formulaire informations personnelles, page 'suscribe.php
 if (isset($_POST['submitSuscribeCompositor'])) {
     //ajoute une value au bouton submit
-    $submitSuscribeCompositor = 'alreadySubmittedOnce';
-    //Vérifie que le logiciel employé est bien dans la liste ( que le select n'as pas été modifié ).
-    if (!empty($software) && !preg_match($regexSoftware, $software)) {
-        $errors['software'] = '<i class="fas fa-exclamation-triangle"></i> Une erreur c\'est produite merci de réessayer ultérieurement.';
+    if (empty($software)){
+        $errors['software'] = '<i class="fas fa-exclamation-triangle"></i> Veuillez sélectionner un logiciel.';
     }
-    //Vérifie le style préféré
-    if (empty($tagsCompositorOne)) {
-        $errors['tagsCompositor'] = '<i class="fas fa-exclamation-triangle"></i> Veuillez choisir un style correct.';
+    //Vérifie qu'il y ai au moins 1 style préféré
+    if (empty($tagOne)) {
+        $errors['tagOne'] = '<i class="fas fa-exclamation-triangle"></i> Veuillez sélectionner au moins un style.';
     }
     //Vérifie que la valeur du select soit bonne si elle est définie
-    if (!preg_match($regexStyle, $tagsCompositorOne)) {
-        $errors['tagsCompositor'] = '<i class="fas fa-exclamation-triangle"></i> Veuillez choisir un style correct.';
+    if (!empty($tagOne) && !preg_match($regexStyle, $tagOne)) {
+        $errors['tagOne'] = '<i class="fas fa-exclamation-triangle"></i> Veuillez sélectionner un style correct.';
+        echo 'test1';
     }
+    if (!empty($tagTwo) && !preg_match($regexStyle, $tagTwo)) {
+        $errors['tagOne'] = '<i class="fas fa-exclamation-triangle"></i> Veuillez sélectionner un style correct.';
+        echo 'test';
+    }
+    if (!empty($tagThree) && !preg_match($regexStyle, $tagThree)) {
+        $errors['tagOne'] = '<i class="fas fa-exclamation-triangle"></i> Veuillez sélectionner un style correct.';
+    }
+    if (!empty($tagFour) && !preg_match($regexStyle, $tagFour)) {
+        $errors['tagOne'] = '<i class="fas fa-exclamation-triangle"></i> Veuillez sélectionner un style correct.';
+    }
+    if (!empty($tagFive) && !preg_match($regexStyle, $tagFive)) {
+        $errors['tagOne'] = '<i class="fas fa-exclamation-triangle"></i> Veuillez choisir un style correct.';
+    }
+    //Vérifications qu'un tag ne soit pas en doublon
+    /*if ($tagOne === $tagTwo || $tagOne === $tagThree || $tagOne === $tagFour || $tagOne === $tagFive || $tagTwo === $tagThree || $tagTwo === $tagFour || $tagTwo === $tagFive || $tagThree === $tagFour || $tagThree === $tagFive || $tagFour === $tagFive){
+        $errors['tagOne'] = '<i class="fas fa-exclamation-triangle"></i> Veuillez sélectionner des styles différents les uns des autres';
+    }*/
     //si le champ facebook est rempli et que l'url fourni n'est pas bon
     if (!empty($facebook) && !preg_match($regexFacebook, $facebook)) {
         $errors['facebookId'] = '<i class="fas fa-exclamation-triangle"></i> Veuillez saisir un url correct.';

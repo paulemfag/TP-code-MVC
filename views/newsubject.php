@@ -11,14 +11,13 @@ $id = $_SESSION['id']; ?>
     <div class="form-group">
         <label class="text-light" for="subject">Sujet :</label>
         <span class="text-danger float-right"><?= $errors['subject'] ?? '' ?></span>
-        <input id="subject" name="subject" type="text" class="col-12" value="<?= $_POST['subject'] ?? '' ?>">
+        <input id="subject" name="subject" type="text" class="col-12" value="<?= $subject ?>">
     </div>
     <div class="captcha">
         <div
-                class="g-recaptcha"
-                data-sitekey="6Lc2seAUAAAAABg_R6mlOzQuKOkLNxYkyQiRLf7x"
-                style="display: inline-block;">
-
+            class="g-recaptcha"
+            data-sitekey="6Lc2seAUAAAAABg_R6mlOzQuKOkLNxYkyQiRLf7x"
+            style="display: inline-block;">
         </div>
     </div>
     <div class="form-group">

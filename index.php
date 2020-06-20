@@ -25,7 +25,7 @@ require_once 'controllers/form_validation.php';
 <body>
 <!-- Navbar bootstrap -->
 <nav class="navbar navbar-expand-lg navbar-light bg-secondary col-12-sm">
-    <img src="../assets/img/keyboards.png" alt="logo_clavier" height="40" width="60">
+    <img src="assets/img/keyboards.png" alt="logo_clavier" height="40" width="60">
     <a id="FILL" class="navbar-brand text-light" style="font-weight: bold;">FILL</a>
     <!-- boutons inscription et connexion -->
     <div class="ml-auto">
@@ -113,9 +113,8 @@ echo $activeYourAccount ?? '' ?>
             <div class="captcha">
                 <div
                         class="g-recaptcha"
-                        data-sitekey="6Lf-Dd8UAAAAAB6ROCZ8e2TWVp3-2PBzzz34y67X"
+                        data-sitekey="6Lc2seAUAAAAABg_R6mlOzQuKOkLNxYkyQiRLf7x"
                         style="display: inline-block;">
-
                 </div>
             </div>
             <button id="suscribe" name="suscribe" class="btn btn-outline-primary col-12 mt-1"
@@ -150,9 +149,8 @@ echo $activeYourAccount ?? '' ?>
         <div class="captcha">
             <div
                     class="g-recaptcha"
-                    data-sitekey="6Lf-Dd8UAAAAAB6ROCZ8e2TWVp3-2PBzzz34y67X"
+                    data-sitekey="6Lc2seAUAAAAABg_R6mlOzQuKOkLNxYkyQiRLf7x"
                     style="display: inline-block;">
-
             </div>
         </div>
         <span class="text-danger float-right"><?= $errors['login'] ?? '' ?></span>
@@ -172,14 +170,13 @@ echo $activeYourAccount ?? '' ?>
         <input id="recuperationMailbox" class="col-12 inputColor" name="recuperationMailbox" type="text"
                value="<?= $recuperationMailbox ?>" required>
     </div>
-<div class="captcha">
-                <div
-                        class="g-recaptcha"
-                        data-sitekey="6Lc2seAUAAAAABg_R6mlOzQuKOkLNxYkyQiRLf7x"
-                        style="display: inline-block;">
-
-                </div>
-            </div>
+    <div class="captcha">
+        <div
+            class="g-recaptcha"
+            data-sitekey="6Lc2seAUAAAAABg_R6mlOzQuKOkLNxYkyQiRLf7x"
+            style="display: inline-block;">
+        </div>
+    </div>
     <button id="recuperation" name="recuperation" class="btn btn-outline-success col-12 text-center mt-1" type="submit"
             value="<?= $recuperation ?? '' ?>">Récupérer mon mot de passe
     </button>
@@ -187,21 +184,7 @@ echo $activeYourAccount ?? '' ?>
 <div class="content">
     <p><br><br><br><br></p>
 </div>
-<!-- Footer -->
-<footer class="page-footer font-small text-light bg-secondary">
-    <!-- logos hrefs -->
-    <div class="container-fluid text-center text-md-center">
-        <a title="Facebook | Fill" rel="noopener" target="_blank" href="https://www.facebook.com"><img src="../assets/img/facebook-logo.png" width="40" height="30"
-                                                                                        alt="logo_fb"></a>
-        <a title="Twitter | Fill" rel="noopener" target="_blank" href="https://www.twitter.com"><img src="../assets/img/logo_twitter.png" alt="logo_twitter" height="20"
-                                                                                      width="25"></a>
-    </div>
-    <!-- Copyright -->
-    <div class="footer-copyright text-center py-1"><img src="../assets/img/keyboards.png" alt="logo_clavier" height="30"
-                                                        width="50">
-        FILL 2019
-    </div>
-</footer>
+<?php require_once 'views/require/footer.php';?>
 <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="assets/js/home_min.js"></script>

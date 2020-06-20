@@ -1,40 +1,23 @@
 <?php
 require_once 'sqlparameters.php';
 $pseudo = $_SESSION['pseudo'];
-//teste les variables pour voir ce qu'elles contiennents
-if (!empty($biography)) {
-    $biography = $_POST['biography'];
-} else {
-    $biography = NULL;
+//Définition de la variable styles pour l'ajout en BDD
+$styles = $tagOne;
+if (!empty($tagTwo)){
+    $styles = $styles .', '. $tagTwo;
 }
-if (!empty($instruments)) {
-    $instruments = $_POST['instruments'] ?? NULL;
-} else {
-    $instruments = NULL;
+if (!empty($tagThree)){
+    $styles = $styles .', '. $tagThree;
 }
-if (!empty($software)) {
-    $software = $_POST['software'] ?? $_POST['otherSoftware'];
-} else {
-    $software = NULL;
+if (!empty($tagFour)){
+    $styles = $styles .', '. $tagFour;
 }
-if (!empty($tagsCompositorOne)) {
-    $tagsCompositorOne = $_POST['tagsCompositorOne'];
-} else {
-    $tagsCompositorOne = NULL;
-}
-if (!empty($facebook)) {
-    $facebook = $_POST['facebookId'];
-} else {
-    $facebook = NULL;
-}
-if (!empty($twitter)) {
-    $twitter = $_POST['twitterId'] ?? NULL;
-} else {
-    $twitter = NULL;
+if (!empty($tagFive)){
+    $styles = $styles .', '. $tagFive;
 }
 try {
-    $stmt = $db->prepare('UPDATE `users` SET `biography` = :biography, `instruments` = :instruments, `facebookId` = :facebookId, `twitterId` = :twitterId, `software` = :software WHERE pseudo = :pseudo');
-    //$stmt->bindParam(':favoritesStyles', $key);
+    $stmt = $db->prepare('UPDATE `users` SET `favoritesStyles` = :favoritesStyles, `biography` = :biography, `instruments` = :instruments, `facebookId` = :facebookId, `twitterId` = :twitterId, `software` = :software WHERE pseudo = :pseudo');
+    $stmt->bindParam(':favoritesStyles', $styles, PDO::PARAM_STR);
     $stmt->bindParam(':biography', $biography, PDO::PARAM_STR);
     $stmt->bindParam(':instruments', $instruments, PDO::PARAM_STR);
     $stmt->bindParam(':facebookId', $facebook, PDO::PARAM_STR);

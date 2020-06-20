@@ -4,7 +4,6 @@ $Url = "https://www.google.com/recaptcha/api/siteverify";
 $SecretKey = "----Secret Key----";
 $Response = file_get_contents($Url."?secret=".$SecretKey."&response=".$_POST['Response']);
 $Robot = json_decode($Response);
-var_dump($Response);
 // récupération des valeurs du formulaire dans des variables
 $pseudo = $_POST['suscribepseudo'];
 $mailbox = $_POST['suscribemailbox'];

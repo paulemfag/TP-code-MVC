@@ -44,7 +44,6 @@ require_once '../controllers/form_validation.php';
                 class="g-recaptcha"
                 data-sitekey="6Lc2seAUAAAAABg_R6mlOzQuKOkLNxYkyQiRLf7x"
                 style="display: inline-block;">
-
         </div>
     </div>
     <div class="form-group">
@@ -63,9 +62,7 @@ foreach ($commentList as $comment):
     //Stockage du pseudo + de la date + des espaces dans une variable
     $pseudoAndPublishedAtAndSpaces = $comment['pseudo'] .', '. $comment['published_at_formatted'] .' :'. $spaces;
 ?>
-<div class="bg-prima$ry">
     <textarea class="noResize bg-primary text-light" wrap="hard" cols="121" rows="4" disabled><?= $pseudoAndPublishedAtAndSpaces. $comment['comment'] ?? '' ?></textarea>
-</div>
 <?php
 endforeach;
 if ($commentsAnnouncement){
