@@ -2,7 +2,7 @@
 session_start();
 // si l'utilisateur n'est pas connecté
 if (empty($_SESSION)) {
-    header('location:index.php');
+    header('location:../index.php');
 }
 ?>
 <!DOCTYPE html>

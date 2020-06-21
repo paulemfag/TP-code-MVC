@@ -304,10 +304,11 @@ if (isset($_POST['submitComment'])){
     if (empty($comment)){
         $errors['comment'] = '<i class="fas fa-exclamation-triangle"></i> Veuillez saisir un commentaire.';
     }
-    elseif (!filter_input(INPUT_POST, 'comment', FILTER_SANITIZE_STRING)){
+    if (!filter_input(INPUT_POST, 'comment', FILTER_SANITIZE_STRING)){
         $errors['comment'] = '<i class="fas fa-exclamation-triangle"></i> Votre commentaire contient des caractères non valides.';
     }
-    elseif (count($errors) == 0){
+    $comment = htmlspecialchars($comment);
+    if (count($errors) == 0){
         require_once 'sqladdComment.php';
     }
 }

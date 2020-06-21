@@ -10,7 +10,7 @@ require_once 'controllers/form_validation.php';
 <head>
     <meta charset="utf-8"/>
     <meta name="description" content="Crée en 2019 par Monsieur FAGOT, FILL est un site d'écoute et de publication musicale
-        développé dans l'optique d'offrir aux auteurs un endroit ou partager leur compositions \' To fill ' et au grand
+        développé dans l'optique d'offrir aux auteurs un endroit ou partager leur compositions ' To fill ' et au grand
     public de découvrir de nouveaux horizons ' To feel '." />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Fill | Bienvenue</title>
@@ -82,7 +82,7 @@ echo $activeYourAccount ?? '' ?>
         <form class="container" id="suscribers" method="post" action="#" novalidate>
             <div class="form-group">
                 <label class="text-light" for="typeOfAccount">Type de compte :</label>
-                <select class="col-12" name="typeOfAccount" id="typeOfAccount">
+                <select class="form-control col-12" name="typeOfAccount" id="typeOfAccount">
                     <option value="particular">Particulier</option>
                     <option value="compositor">Compositeur</option>
                 </select>

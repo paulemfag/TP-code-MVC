@@ -59,6 +59,8 @@ audio{
 
 .noResize{
   resize: none;
+  border: none;
+  background-color: #114E7F;
 }
 
 #scroll{

@@ -48,17 +48,17 @@ require_once '../controllers/form_validation.php';
     <form id="compositorForm" class="container" action="#" method="post" novalidate>
         <div class="form-group">
             <label class="text-light" for="biography"><i class="fas fa-address-card"></i><b> Biographie :</b></label>
-            <input id="biography" name="biography" class="col-12 mt-1" type="text" placeholder="Quelques mots sur vous, votre parcous, vos inspirations" value="<?= $biography ?>">
+            <textarea style="resize: none;" maxlength="250" rows="4" cols="121" wrap="hard" id="biography" name="biography" class="col-12 mt-1" type="text" placeholder="Quelques mots sur vous, votre parcous, vos inspirations"><?= $biography ?></textarea>
         </div>
         <div class="form-group">
             <label class="text-light" for="instruments"><i class="fas fa-drum"></i><b> Instrument(s) :</b></label>
             <span class="text-dange float-right"></span>
-            <input id="instruments" class="col-12" name="instruments" type="text" value="<?= $instruments ?>">
+            <input maxlength="250" id="instruments" class="col-12" name="instruments" type="text" value="<?= $instruments ?>">
         </div>
         <div class="form-group">
             <label class="text-light" for="software"><i class="fas fa-compact-disc"></i><b> Logiciel :</b></label>
             <span class="text-danger float-right"><?= $errors['software'] ?? '' ?></span>
-            <select class="col-12" name="software" id="software">
+            <select class="form-control col-12" name="software" id="software">
                 <?php if (isset($_POST['software'])) { ?>
                     <option value="<?= $software ?>" selected><?= $_POST['software'] ?></option>
                 <?php } else { ?>
@@ -77,7 +77,7 @@ require_once '../controllers/form_validation.php';
                 <option value="Propellerhead Reason">Propellerhead Reason</option>
                 <option value="Autre">Autre</option>
             </select>
-            <input id="otherSoftware" class="col-12 inputColor" name="softwares" type="text"
+            <input maxlength="50" id="otherSoftware" class="col-12 inputColor" name="softwares" type="text"
                    value="<?= $software ?>" placeholder="Veuillez préciser">
         </div>
         <div class="form-group">
@@ -86,7 +86,7 @@ require_once '../controllers/form_validation.php';
             <div>
                 <div class="row">
                 <?php for ($i = 0; $i < 5; $i++): ?>
-                <select class="col-2 mr-auto ml-auto" id="<?= $i ?>" name="tag<?= $i ?>" id="tag<?= $i ?>">
+                <select class="form-control col-2 mr-auto ml-auto" id="<?= $i ?>" name="tag<?= $i ?>" id="tag<?= $i ?>">
                     <option value="" selected disabled>Sélectionner</option>
                     <option value="Afro">Afro</option>
                     <option value="Blues">Blues</option>
@@ -111,22 +111,21 @@ require_once '../controllers/form_validation.php';
             <div class="form-group mt-1">
                 <label class="text-light" for="facebookId"><i class="fab fa-facebook-square"></i><b> Url profil Facebook :</b></label>
                 <span class="text-danger float-right"><?= $errors['facebookId'] ?? '' ?></span>
-                <input name="facebookId" id="facebookId" class="col-12" type="text"
+                <input maxlength="70" name="facebookId" id="facebookId" class="col-12" type="text"
                        value="<?= $facebook ?>">
             </div>
             <div class="form-group">
                 <label class="text-light" for="twitterId"><i class="fab fa-twitter-square"></i><b> Url profil Twitter :</b></label>
                 <span class="text-danger float-right"><?= $errors['twitterId'] ?? '' ?></span>
-                <input name="twitterId" id="twitterId" class="col-12" type="text"
+                <input maxlength="70" name="twitterId" id="twitterId" class="col-12" type="text"
                        value="<?= $twitter ?>">
             </div>
         </div>
         <div class="captcha">
             <div
-                    class="g-recaptcha"
-                    data-sitekey="6Lc2seAUAAAAABg_R6mlOzQuKOkLNxYkyQiRLf7x"
-                    style="display: inline-block;">
-
+                class="g-recaptcha"
+                data-sitekey="6Lc2seAUAAAAABg_R6mlOzQuKOkLNxYkyQiRLf7x"
+                style="display: inline-block;">
             </div>
         </div>
         <div class="row">
@@ -139,7 +138,7 @@ require_once '../controllers/form_validation.php';
     <div id="styles" class="bg-secondary">
         <form action="#" method="post" novalidate>
             <label class="text-light" for="tagsParticular"><i class="fas fa-music"></i> Styles préférés :</label>
-            <select name="tags" id="tagsParticular">
+            <select class="form-control" name="tags" id="tagsParticular">
                 <option value="Afro">Afro</option>
                 <option value="Blues">Blues</option>
                 <option value="Classique">Classique</option>
@@ -161,10 +160,9 @@ require_once '../controllers/form_validation.php';
     </div>
     <div class="captcha">
         <div
-                class="g-recaptcha"
-                data-sitekey="6Lc2seAUAAAAABg_R6mlOzQuKOkLNxYkyQiRLf7x"
-                style="display: inline-block;">
-
+            class="g-recaptcha"
+            data-sitekey="6Lc2seAUAAAAABg_R6mlOzQuKOkLNxYkyQiRLf7x"
+            style="display: inline-block;">
         </div>
     </div>
     <div class="row">
