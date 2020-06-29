@@ -5,7 +5,7 @@ require_once '../controllers/sqladministrationPanelPagination.php';
 require_once '../controllers/administrationPanel.php';
 $title = 'Fill | Administration Panel';
 session_start();
-if ($_SESSION['id'] === '12'){
+if ($_SESSION['pseudo'] === 'Paulemfag'){
 ?>
 <div class="container text-center bg-light mt-2 opacity">
     <h1>Panel d'administration :</h1>
@@ -75,6 +75,6 @@ if ($pages > 1) : ?>
 <?php
 }
 else{
-    header('location:accueil.php');
+    header('location:../views/accueil.php');
     exit();
 }
