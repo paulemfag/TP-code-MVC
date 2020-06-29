@@ -33,7 +33,7 @@ try {
 $compositorPseudo = $user['pseudo'];
 //récupération des commentaires de la composition (dans l'ordre de publication)
 try {
-    $sth = $db->prepare('SELECT `pseudo`, `comment`, DATE_FORMAT(`published_at`, \'le %d/%m/%Y\ à %HH%i\') `published_at_formatted` FROM `comments` WHERE `id_compositions` = :id_composition ORDER BY `published_at` DESC');
+    $sth = $db->prepare('SELECT `id`, `pseudo`, `comment`, DATE_FORMAT(`published_at`, \'le %d/%m/%Y\ à %HH%i\') `published_at_formatted` FROM `comments` WHERE `id_compositions` = :id_composition ORDER BY `published_at` DESC');
     $sth->bindValue(':id_composition', $id, PDO::PARAM_INT);
     $sth->execute();
     $commentList = $sth->fetchAll(PDO::FETCH_ASSOC);
@@ -43,5 +43,6 @@ try {
 if ($commentList){
     $commentsAnnouncement = '<div class="row">
     <h2 class="text-center bg-light col-10 opacity mt-2 ml-auto mr-auto">Commentaires :</h2>
-</div>';
+</div>
+<div class="container mt-1">';
 }

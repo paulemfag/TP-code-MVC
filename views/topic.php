@@ -7,22 +7,41 @@ require_once '../controllers/sqltopic.php';
 ?>
 <div class="container">
     <div class="row bg-light mt-2 opacity">
-        <a class="col-2" id="returnArrow" title="Fill | Forum" href="forum.php?page=1"><i class="fas fa-home"
-                                                                     style="font-size: 50px;"></i></a>
+        <a class="col-2" id="returnArrow" title="Fill | Forum" href="forum.php?page=1"><i class="fas fa-home" style="font-size: 50px;"></i></a>
         <h1 class="col-10"><?= $topics['title'] ?></h1>
     </div>
+    <?php if ($topics['id_users'] === $_SESSION['id']): ?>
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-outline-danger text-light col-12 mt-2" data-toggle="modal" data-target="#deleteTopicModal">Supprimer le sujet</button>
+        <!-- Modal -->
+        <div class="modal fade" id="deleteTopicModal" tabindex="-1" role="dialog" aria-labelledby="deleteTopicModal" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Voulez vous vraiment supprimer ce topic ?</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+                        <a type="button" title="Supprimer le sujet | <?= $topics['title'] ?>" href="?id=<?= $_GET['id'] ?>&page=<?= $_GET['page'] ?>&delete=1" class="btn btn-danger">Supprimer</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <?php endif; ?>
     <form class="mt-3" action="#" method="post" novalidate>
         <div class="form-group">
             <label class="text-light" for="message">Poster un message :</label>
             <span class="text-danger float-right"><?= $errors['message'] ?? '' ?></span>
-            <textarea class="noResize" maxlength="500" name="message" id="message" cols="121" rows="5" placeholder="Veuillez saisir un message"><?= $message ?></textarea>
+            <textarea style="resize: none; border: none;" maxlength="500" name="message" id="message" cols="121" rows="5" placeholder="Veuillez saisir un message"><?= $message ?></textarea>
         </div>
         <div class="captcha">
             <div
-                    class="g-recaptcha"
-                    data-sitekey="6Lc2seAUAAAAABg_R6mlOzQuKOkLNxYkyQiRLf7x"
-                    style="display: inline-block;">
-
+                class="g-recaptcha"
+                data-sitekey="6Lc2seAUAAAAABg_R6mlOzQuKOkLNxYkyQiRLf7x"
+                style="display: inline-block;">
             </div>
         </div>
         <div class="form-group">
@@ -58,7 +77,7 @@ require_once '../controllers/sqltopic.php';
         </nav>
     <?php endif; ?>
 <?php foreach ($publicationsList AS $publication): ?>
-    <div class="card mt-2">
+    <div class="card mt-2" style="border: none;">
         <div class="card-body compositionsTables">
             <p class="card-text"><i><a class="text-dark" title="Profil de <?= $publication['pseudo'] ?>" href="mypage.php?id=<?= $publication['id_users'] ?>"><?= $publication['pseudo'] .'</a>, '. $publication['published_at'] .' :' ?></i></p>
             <p class="card-text"><?= $publication['message'] ?></p>
@@ -98,7 +117,7 @@ require_once 'require/footer.php'; ?>
 <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type="text/javascript" src="../vendor/mervick/emojionearea/dist/emojionearea.min.js"></script>
-<script type="text/javascript" src="../assets/js/topic.js"></script>
+<script type="text/javascript" src="../assets/js/topic_min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
         integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"

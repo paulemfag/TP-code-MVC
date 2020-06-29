@@ -9,22 +9,18 @@ require_once '../controllers/form_validation.php';
 </div>
 <form class="container" method="post" action="#" novalidate enctype="multipart/form-data">
     <div class="form-group">
-        <label class="text-light float-left" for="file">Veuillez ajouter un fichier ( format mp3, m4a, m4b, aac, aax, mpc) :</label>
+        <label class="text-light float-left" for="fileInput">Veuillez ajouter un fichier ( format mp3, m4a, m4b, aac, aax, mpc) :</label>
         <span class="text-danger float-right"><?= $errors['file'] ?? '' ?></span>
         <input id="fileInput" class="bg-light col-12" type="file" name="file" accept="audio/*">
     </div>
     <div class="form-group">
-        <label class="text-light" for="compositionName">Nom de la composition :</label>
-        <span class="text-danger float-right"><?= $errors['compositionName'] ?? '' ?></span>
-        <input id="compositionName" class="col-12 inputColor" name="compositionName" type="text"
-               value="<?= $_POST['compositionName'] ?? '' ?>">
+        <p class="text-light col-12"><i>Le titre du fichier mp3 sera pris comme titre officiel.</i></p>
     </div>
     <div class="form-group">
         <label class="text-light" for="compositionStyle"><i class="fas fa-music"></i> Style musical :</label>
         <span class="float-right text-danger"><?= $errors['compositionStyle'] ?? '' ?></span>
         <select class="col-12" name="compositionStyle" id="compositionStyle">
             <?= $styleOption ?>
-            <option value="Autre">Autre</option>
             <option value="Afro">Afro</option>
             <option value="Blues">Blues</option>
             <option value="Classique">Classique</option>
@@ -42,10 +38,6 @@ require_once '../controllers/form_validation.php';
             <option value="R'n'B">R'n'B</option>
             <option value="Rock">Rock</option>
         </select>
-        <div id="otherChoice">
-            <span class="text-danger float-right"><?= $errors['otherChoice'] ?? '' ?></span>
-            <input name="otherChoice" class="col-12 inputColor" type="text" placeholder="Veuillez préciser" value="<?= $_POST['otherChoice'] ?? '' ?>">
-        </div>
     </div>
     <div class="form-group">
         <label class="text-light" for="instruments"><i class="fas fa-drum"></i> Instrument(s) employé(s) : ( facultatif )</label>
@@ -60,10 +52,9 @@ require_once '../controllers/form_validation.php';
     </div>
     <div class="captcha">
         <div
-                class="g-recaptcha"
-                data-sitekey="6Lc2seAUAAAAABg_R6mlOzQuKOkLNxYkyQiRLf7x"
-                style="display: inline-block;">
-
+            class="g-recaptcha"
+            data-sitekey="6Lc2seAUAAAAABg_R6mlOzQuKOkLNxYkyQiRLf7x"
+            style="display: inline-block;">
         </div>
     </div>
     <div class="form-group">
@@ -73,7 +64,6 @@ require_once '../controllers/form_validation.php';
 <?php require_once 'require/footer.php'; ?>
 <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="../assets/js/addcomposition_min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
         integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
         crossorigin="anonymous"></script>

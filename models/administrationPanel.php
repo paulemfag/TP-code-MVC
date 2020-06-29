@@ -14,7 +14,7 @@ if (isset($_GET['id']) && filter_input(INPUT_GET,'id', FILTER_SANITIZE_NUMBER_IN
         <script>
             alert("L'utilisateur a bien été supprimé");
             function redir(){
-                self.location.href="administrationPanel.php"
+                self.location.href="administrationPanel.php&page=1"
             }
             redir();
         </script><?php

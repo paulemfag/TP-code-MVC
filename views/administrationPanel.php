@@ -29,7 +29,7 @@ if ($_SESSION['id'] === '12'){
             <td><?= $user['mailBox'] ?></td>
             <td><?= $user['accounttype'] ?></td>
             <td><?= $user['number_of_messages'] ?></td>
-            <td><a name="submit" href="<?= '?id='. $user['id'] ?>" class="btn btn-sm btn-danger mt-1 mb-1 delete" type="submit"><i class="fas fa-user-times"></i></a></td>
+            <td><a name="submit" href="<?= '?id='. $user['id'] ?>&page=<?= $_GET['page'] ?>" class="btn btn-sm btn-danger mt-1 mb-1 delete" type="submit"><i class="fas fa-user-times"></i></a></td>
         </tr>
     <?php endforeach; ?>
     </tbody>

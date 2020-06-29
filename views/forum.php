@@ -97,6 +97,7 @@ require_once 'require/header.php';
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title"><i class="fas fa-book"></i> Réglement du Forum :</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             </div>
             <div class="modal-body">
                 <p>
@@ -153,19 +154,13 @@ require_once 'require/header.php';
                 </p>
             </div>
             <div class="modal-footer">
-                <button id="rulesDecline" type="button" class="btn btn-outline-danger" data-dismiss="modal"><i
-                            class="fas fa-times"></i> Je refuse
-                </button>
-                <button id="rulesAllow" type="button" class="btn btn-outline-success" data-dismiss="modal"><i
-                            class="fas fa-times"></i> J'accepte
-                </button>
+                <button type="button" class="btn btn-outline-secondary" data-dismiss="modal"><i class="fas fa-times"></i> Fermer</button>
             </div>
         </div><?php // /modal-content ?>
     </div><?php // /modal-dialog ?>
 </div><?php // /modal
 require_once 'require/footer.php'; ?>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="../assets/js/forum_min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
         integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
         crossorigin="anonymous"></script>

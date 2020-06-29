@@ -66,12 +66,12 @@ require_once 'controllers/form_validation.php';
 <?php //Message d'alerte informant que le compte a bien été crée
 echo $activeYourAccount ?? '' ?>
 <div class="opacity bg-light" id="presentationText">
-    <p class="text-center" id="introduction">Crée en 2019 par Monsieur FAGOT, FILL est un site d'écoute et de publication musicale
+    <p class="text-center" id="introduction"><i>Crée en 2019 par Monsieur FAGOT, FILL est un site d'écoute et de publication musicale
         développé dans l'optique d'offrir aux auteurs un endroit ou partager leur compositions " To fill " et au grand
         public de découvrir de nouveaux horizons " To feel ".<br>
         Les membres disposent également d'un espace Forum ou ils peuvent débattre sur des sujets qui leurs tiennent à
         coeur.
-    <p>
+        </i><p>
 </div>
 <div id="suscribeItems">
     <div id="scroll">
@@ -112,9 +112,9 @@ echo $activeYourAccount ?? '' ?>
             </div>
             <div class="captcha">
                 <div
-                        class="g-recaptcha"
-                        data-sitekey="6Lc2seAUAAAAABg_R6mlOzQuKOkLNxYkyQiRLf7x"
-                        style="display: inline-block;">
+                    class="g-recaptcha"
+                    data-sitekey="6Lc2seAUAAAAABg_R6mlOzQuKOkLNxYkyQiRLf7x"
+                    style="display: inline-block;">
                 </div>
             </div>
             <button id="suscribe" name="suscribe" class="btn btn-outline-primary col-12 mt-1"
@@ -148,9 +148,9 @@ echo $activeYourAccount ?? '' ?>
         </div>
         <div class="captcha">
             <div
-                    class="g-recaptcha"
-                    data-sitekey="6Lc2seAUAAAAABg_R6mlOzQuKOkLNxYkyQiRLf7x"
-                    style="display: inline-block;">
+                class="g-recaptcha"
+                data-sitekey="6Lc2seAUAAAAABg_R6mlOzQuKOkLNxYkyQiRLf7x"
+                style="display: inline-block;">
             </div>
         </div>
         <span class="text-danger float-right"><?= $errors['login'] ?? '' ?></span>

@@ -3,10 +3,6 @@ require_once '../controllers/sqlcomposition.php';
 require_once '../vendor/autoload.php';
 require_once 'require/header.php';
 require_once '../controllers/form_validation.php';
-/*if ($successfullCommented){
-    header('location:composition.php?id=60');
-    exit();
-}*/
 ?>
 <div class="row">
     <h1 class="text-center bg-light col-10 opacity mt-2 ml-auto mr-auto"><?= $title ?> :</h1>
@@ -50,23 +46,47 @@ require_once '../controllers/form_validation.php';
         <input name="submitComment" id="submitComment" class="btn btn-outline-success mt-2 col-12" value="Envoyer" type="submit">
     </div>
 </form>
-<?php echo $commentsAnnouncement. '<div class="container mt-1">' ?? '';
+<?php echo $commentsAnnouncement
+?? '';
 echo $commentReturn ?? '';
 foreach ($commentList as $comment):
-    //Récupération du nombre de caractères du pseudo et de la date
+    //Récupération du nombre de caractères du pseudo et de la date.
     $pseudoAndPublishedAtLength = strlen($comment['pseudo'] .', '. $comment['published_at_formatted'] .' :');
-    //Determination du nombre d'espaces à ajouter (largeur du text area - pseudo et date)
-    $numberOfSpace = 225 - $pseudoAndPublishedAtLength;
-    //Stockage des espaces dans une varialbe
+    //Determination du nombre d'espaces à ajouter (largeur du textarea - pseudo et date).
+    $numberOfSpace = 233 - $pseudoAndPublishedAtLength;
+    //Stockage des espaces dans une varialbe.
     $spaces = str_repeat(' ', $numberOfSpace);
-    //Stockage du pseudo + de la date + des espaces dans une variable
+    //Stockage du pseudo + de la date + des espaces dans une variable.
     $pseudoAndPublishedAtAndSpaces = $comment['pseudo'] .', '. $comment['published_at_formatted'] .' :'. $spaces;
+    //On définit le bouton "Supprimer mon commentaire".
+    $deleteButton = '<a data-toggle="modal" data-target="#exampleModal" data-target="#exampleModal" class="btn-sm btn-danger text-light d-flex justify-content-center"><i class="fas fa-arrow-circle-down mt-1 mr-2"></i>Supprimer mon commentaire<i class="fas fa-trash-alt mt-1 ml-2"></i></a>';
 ?>
-    <textarea class="noResize bg-primary text-light" wrap="hard" cols="121" rows="4" disabled><?= $pseudoAndPublishedAtAndSpaces. $comment['comment'] ?? '' ?></textarea>
-<?php
-endforeach;
+<div>
+    <?php
+    //Si c'est cet utilisateur qui a publié le commmentaire.
+    if ($comment['pseudo'] === $_SESSION['pseudo']){
+        //On affiche le bouton "Supprimer mon commentaire".
+        echo $deleteButton;
+    } ?>
+    <textarea class="noResize text-light" wrap="hard" cols="121" rows="4" disabled><?= $pseudoAndPublishedAtAndSpaces. $comment['comment'] ?? '' ?></textarea>
+</div>
+<div class="modal" tabindex="-1" id="exampleModal" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <h5 class="modal-title">Voulez vous vraiment supprimer le commentaire ?</h5>
+            </div>
+            <div class="modal-footer">
+                <a href="composition.php?id=<?= $_GET['id'] ?>&idComment=<?= $comment['id'] ?>" type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</a>
+                <button type="button" class="btn btn-danger">Supprimer</button>
+            </div>
+        </div>
+    </div>
+</div>
+<?php endforeach;
 if ($commentsAnnouncement){
-    echo '</div>';
+    echo
+'</div>';
 }
 require_once 'require/footer.php'; ?>
 <script src="https://www.google.com/recaptcha/api.js" async defer></script>

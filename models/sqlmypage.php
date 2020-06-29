@@ -97,6 +97,12 @@ if (filter_input(INPUT_GET, 'idcomposition', FILTER_SANITIZE_NUMBER_INT)){
         $sth = $db->prepare('DELETE FROM `categories` WHERE `title` = :title');
         $sth->bindValue(':title', $compositionsTitle, PDO::PARAM_STR);
         $sth->execute();
+        $deleteStatus = '<div class="alert alert-success alert-dismissible fade show" role="alert">
+  <p>Votre composition a bien été suprimmée.</p>
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>';
     } catch (PDOException $e) {
         $deleteStatus = '<div class="alert alert-warning alert-dismissible fade show" role="alert">
   <p>Une erreur est survenue pendant la suppression, merci de réessayer ultérieurement.</p>
@@ -107,7 +113,7 @@ if (filter_input(INPUT_GET, 'idcomposition', FILTER_SANITIZE_NUMBER_INT)){
         exit();
     }
     //suppression de la composition du dossier uploads
-    if (unlink(''.$path. '\'')){
+/*    if (unlink(''.$path. '\'')){
         $deleteStatus = '<div class="alert alert-success alert-dismissible fade show" role="alert">
   <p>Votre composition a bien été suprimmée.</p>
   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -122,5 +128,5 @@ if (filter_input(INPUT_GET, 'idcomposition', FILTER_SANITIZE_NUMBER_INT)){
     <span aria-hidden="true">&times;</span>
   </button>
 </div>';
-    }
+    }*/
 }

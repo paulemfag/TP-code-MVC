@@ -34,10 +34,6 @@ audio{
   font-weight: bold;
 }
 
-#introduction{
-  font-style: italic;
-}
-
 .captcha{
   text-align: center;
 }
@@ -61,10 +57,6 @@ audio{
   resize: none;
   border: none;
   background-color: #114E7F;
-}
-
-#scroll{
-  height: 100vh;
 }
 
 .navbar-nav > li > .dropdown-menu {
@@ -101,43 +93,6 @@ h2{
 
 .table{
   position: fixed;
-}
-
-.sceditor-button-flash{
-  background-position: 0 -628px;
-}
-.sceditor-button-servimg{
-  background-position: 0 -644px;
-}
-.sceditor-button-dailymotion{
-  background-position: 0 -660px;
-}
-.sceditor-button-faspoiler{
-  background-position: 0 -676px;
-}
-.sceditor-button-fahide{
-  background-position: 0 -692px;
-}
-.sceditor-button-fascroll{
-  background-position: 0 -708px;
-}
-.sceditor-button-faupdown{
-  background-position: 0 -724px;
-}
-.sceditor-button-farand{
-  background-position: 0 -756px;
-}
-.sceditor-button-faroll{
-  background-position: 0 -772px;
-}
-.sceditor-button-more{
-  background-position: 0 -788px;
-}
-.sceditor-button-emoticon{
-  background-position: 0 -804px;
-}
-.sceditor-button-headers{
-  background-position: 0 -820px;
 }
 
 .fa-home{

@@ -47,7 +47,6 @@ $newPasswordConfirm = $_POST['newPasswordConfirm'] ?? NULL;
 $removeMyAccountPassword = $_POST['Password'] ?? NULL;
 //regex pour le contrôle des formulaires
 $regexPseudo = "/^[A-Za-zéÉ][A-Za-záàâäãåçéèêëíìîïñóòôöõúùûüýÿæœ]+((-| )[A-Za-záàâäãåçéèêëíìîïñóòôöõúùûüýÿæœ]+)?$/";
-$regexCompositionName = '/^(([A-Z|a-z|áàâäãåçéèêëíìîïñóòôöõúùûüýÿæœ]{0,50})+((-|\s)?)+([A-Z|a-z|áàâäãåçéèêëíìîïñóòôöõúùûüýÿæœ]{0,50})((-|\s)+){0,5})$/';
 $regexFacebook = '/^(https?:\/\/)?(www\.)?facebook.com\/[a-zA-Z0-9(\.\?)?]/';
 $regexTwitter = '/^(?:http(s?):\/\/)?(?:www\.)?twitter\.com\/(?:(?:\w)*#!\/)?(?:pages\/)?(?:[\w\-]*\/)*([\w\-]*)$/';
 $regexStyle = '/^(Afro|Blues|Classique|Disco|Electro|Funk|Gospel|Kompa|Metal|Pop|Punk|Raï|Rap|Reggae|R\'n\'B|Rock|)$/';
@@ -160,6 +159,41 @@ if (isset($_POST['updatePersonalInformations'])){
     if (!empty($twitter) && !preg_match($regexTwitter, $twitter)) {
         $errors['twitterId'] = '<i class="fas fa-exclamation-triangle"></i> Veuillez saisir un url correct.';
     }
+/*    //Vérifications Recaptcha
+    function post_captcha($user_response) {
+        $fields_string = '';
+        $fields = array(
+            'secret' => '6Lc2seAUAAAAABg_R6mlOzQuKOkLNxYkyQiRLf7x',
+            'response' => $user_response
+        );
+        foreach($fields as $key=>$value)
+        $fields_string .= $key . '=' . $value . '&';
+        $fields_string = rtrim($fields_string, '&');
+
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, 'https://www.google.com/recaptcha/api/siteverify');
+        curl_setopt($ch, CURLOPT_POST, count($fields));
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $fields_string);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, True);
+
+        $result = curl_exec($ch);
+        curl_close($ch);
+
+        return json_decode($result, true);
+    }
+
+    // Call the function post_captcha
+    $res = post_captcha($_POST['g-recaptcha-response']);
+
+    if (!$res['success']) {
+        // What happens when the CAPTCHA wasn't checked
+        echo '<p>Please go back and make sure you check the security CAPTCHA box.</p><br>';
+    } else {
+        // If CAPTCHA is successfully completed...
+
+        // Paste mail function or whatever else you want to happen here!
+        echo '<br><p>CAPTCHA was completed successfully!</p><br>';
+    }}*/
     if (count($errors) == 0){
         $changePersonalInformations = true;
     }
@@ -255,12 +289,6 @@ if (isset($_POST['newComposition'])) {
             }
         }
     }
-    $compositionName = trim(filter_input(INPUT_POST, 'compositionName', FILTER_SANITIZE_STRING));
-    if (empty($compositionName)) {
-        $errors['compositionName'] = '<i class="fas fa-exclamation-triangle"></i> Veuillez ajouter un titre à la composition.';
-    } elseif (!preg_match($regexCompositionName, $compositionName)) {
-        $errors['compositionName'] = '<i class="fas fa-exclamation-triangle"></i> Votre titre contient des caratères non autorisés.';
-    }
     //Si il n'y a pas d'erreurs requiert le fichier 'sqladdcomposition.php' qui fait l'ajout en BDD
     if (count($errors) == 0) {
         require_once 'sqladdcomposition.php';
@@ -308,6 +336,9 @@ if (isset($_POST['submitComment'])){
         $errors['comment'] = '<i class="fas fa-exclamation-triangle"></i> Votre commentaire contient des caractères non valides.';
     }
     $comment = htmlspecialchars($comment);
+    if (count($comment) > 2){
+        $errors['comment'] = 'Votre commentaire est trop long';
+    }
     if (count($errors) == 0){
         require_once 'sqladdComment.php';
     }
