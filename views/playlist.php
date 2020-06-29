@@ -83,7 +83,7 @@ echo $successfulDelete ?? '';
                         <source src="<?= $value['file'] ?>">
                     </audio>
                 </td>
-                <td class="col-3 float-left"><a title="Suprimmer la composition : <?= $value['title'] ?>" class="col-3 mr-auto btn-sm btn-outline-danger text-center" href="playlist.php?id=<?= $_GET['id'] ?>&page=<?= $_GET['page'] ?>idcomposition=<?= $value['compositionid'] ?>"><i class="col-3 fas fa-trash-alt"></i></a></td>
+                <td class="col-3 float-left"><a title="Suprimmer la composition : <?= $value['title'] ?>" class="col-3 mr-auto btn-sm btn-outline-danger text-center" href="playlist.php?id=<?= $_GET['id'] ?>&page=<?= $_GET['page'] ?>&idcomposition=<?= $value['compositionid'] ?>"><i class="col-3 fas fa-trash-alt"></i></a></td>
             </tr>
         <?php endforeach; ?>
         </tbody>
