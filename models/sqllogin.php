@@ -1,12 +1,13 @@
 <?php
 require_once 'sqlparameters.php';
 // Récupération de la valeur du champ actif pour le login $login
-$stmt = $db->prepare('SELECT `id`, `pseudo`, `mailBox`, `active`, `password`, `accounttype` FROM `users` WHERE pseudo = :pseudo ');
+$stmt = $db->prepare('SELECT `id`, `pseudo`, `mailBox`, `active`, `rôle`, `password`, `accounttype` FROM `users` WHERE pseudo = :pseudo ');
 if ($stmt->execute(array(':pseudo' => $pseudo)) && $row = $stmt->fetch()) {
     $id = $row['id'];
     $pseudo = $row['pseudo'];
     $mailbox = $row['mailBox'];
     $active = $row['active']; // $actif contient alors 0 ou 1
+    $role = $row['rôle'];
     $password = $row['password'];
     $accounttype = $row['accounttype'];
     // Si la valeur de la colonne active est égale à 0, on invite l'utilisateur à confirmer son compte via le mail
@@ -38,6 +39,7 @@ if ($stmt->execute(array(':pseudo' => $pseudo)) && $row = $stmt->fetch()) {
         $_SESSION['pseudo'] = $pseudo;
         $_SESSION['accounttype'] = $accounttype;
         $_SESSION['id'] = $id;
+        $_SESSION['rôle'] = $role;
         header('location:views/suscribe.php');
         exit();
     }

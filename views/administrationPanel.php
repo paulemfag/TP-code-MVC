@@ -34,7 +34,36 @@ if ($_SESSION['pseudo'] === 'Paulemfag'){
     <?php endforeach; ?>
     </tbody>
 </table>
-<?php //Pagination si il n'y a pas qu'une seule page
+    <div class="row bg-info" id="audioPlayer">
+        <div id="audioVolDiv">
+            <input id="audioVol" type="text" name="audioVol" value="1">
+        </div>
+        <div id="audioProgDiv">
+            <input id="audioProg" type="text" name="audioProg">
+        </div>
+        <div id="audioProgStyleDiv">
+            <input id="audioProgStyle" type="text" name="audioProg-style">
+        </div>
+        <div id="controls">
+            <div id="repeatButton" data-repeat="none"><img src="img/repeat/repeat-none.svg"></div>
+            <div id="backButton" class="disabled"><i class="fas fa-step-backward"></i></div>
+            <div id="playButton"><i class="fas fa-play"></i></div>
+            <div id="pauseButton"><i class="fas fa-pause"></i></div>
+            <div id="skipButton"><i class="fas fa-step-forward"></i></div>
+        </div>
+        <div id="loadingDiv">
+            <img id="loadingAnim" src="img/loading.gif" alt="Loading">
+        </div>
+        <div id="playlistControl">
+            <div id="audioInputDiv">
+                <input id="audioInput" type="text" name="audioInput" placeholder="Direct Audio Stream URL (Direct URL to file download). mp3fiber.com can be used to get such a URL">
+                <div id="audioInputBtn"><i class="fas fa-plus"></i></div>
+            </div>
+            <div id="playlistView"></div>
+        </div>
+    </div>
+
+    <?php //Pagination si il n'y a pas qu'une seule page
 if ($pages > 1) : ?>
     <nav class="col-md-12 mt-2 d-flex justify-content-center">
         <ul class="pagination custom-pagination">
@@ -64,13 +93,34 @@ if ($pages > 1) : ?>
 <?php endif; ?>
 <?php require_once 'require/footer.php'; ?>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="/../audio-player-master/assets/js/jquery-ui.min.js"></script>
+<script src="/path/to/jquery.knob.min.js"></script>
+<script src="js/audioPlayer.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
         integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
         crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
-</body>
+
+    <script>
+        playlist:[
+    {
+    localFile:"_EnV_ - Heaven.mp3",
+    hostedFile:"https://dl.dropboxusercontent.com/s/9pamibo40ycabe1/_EnV_%20-%20Heaven.mp3"
+    },
+    {
+    localFile:"ｉ ｎ ｔ ｅ ｒ ｓ ｐ ａ ｃ ｅ.mp3",
+    hostedFile:"https://dl.dropboxusercontent.com/s/p07gh6bur678t5t/%EF%BD%89%20%EF%BD%8E%20%EF%BD%94%20%EF%BD%85%20%EF%BD%92%20%EF%BD%93%20%EF%BD%90%20%EF%BD%81%20%EF%BD%83%20%EF%BD%85.mp3"
+    },
+    {
+    localFile:"Getting Stronger - Michelle Creber Black Gryph0n Baasik.mp3",
+    hostedFile:"https://dl.dropboxusercontent.com/s/mw28fr4lt64mhzt/Getting%20Stronger%20-%20Michelle%20Creber%20Black%20Gryph0n%20Baasik.mp3"
+    },  333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333
+    ...
+    ],
+</script>
+    </body>
 </html>
 <?php
 }

@@ -48,7 +48,7 @@ require_once '../controllers/form_validation.php';
     <form id="compositorForm" class="container" action="#" method="post" novalidate>
         <div class="form-group">
             <label class="text-light" for="biography"><i class="fas fa-address-card"></i><b> Biographie :</b></label>
-            <textarea style="resize: none;" maxlength="250" rows="4" cols="121" wrap="hard" id="biography" name="biography" class="col-12 mt-1" type="text" placeholder="Quelques mots sur vous, votre parcous, vos inspirations"><?= $biography ?></textarea>
+            <textarea style="resize: none;" maxlength="250" rows="4" cols="121" wrap="hard" id="biography" name="biography" class="col-12 mt-1" placeholder="Quelques mots sur vous, votre parcous, vos inspirations"><?= $biography ?></textarea>
         </div>
         <div class="form-group">
             <label class="text-light" for="instruments"><i class="fas fa-drum"></i><b> Instrument(s) :</b></label>
@@ -173,7 +173,7 @@ require_once '../controllers/form_validation.php';
 <?php require_once 'require/footer.php'; ?>
 <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script type="text/javascript" src="../vendor/mervick/emojionearea/dist/emojionearea.min.js"></script>
+<script src="../vendor/mervick/emojionearea/dist/emojionearea.min.js"></script>
 <script src="../assets/js/suscribe_min.js"></script>
 </body>
 </html>

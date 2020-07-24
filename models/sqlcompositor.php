@@ -26,6 +26,10 @@ foreach ($userInformations as $row){
     $facebookId = $row['facebookId'];
     $twitterId = $row['twitterId'];
 }
+if ($pseudo === NULL){
+    header('location:accueil.php');
+    exit();
+}
 //définition du titre de l'onglet
 $title = 'Compositeur | ' .$pseudo;
 //récupération des composition du compositeur

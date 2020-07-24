@@ -29,7 +29,6 @@ if ($changePersonalInformations){
         $sth->bindValue(':facebookId', $facebook, PDO::PARAM_STR);
         $sth->bindValue(':twitterId', $twitter, PDO::PARAM_STR);
         $sth->execute();
-        echo 'ok';
     } catch (PDOException $e) {
         echo "Erreur : " . $e->getMessage();
     }

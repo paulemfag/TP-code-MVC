@@ -66,32 +66,13 @@ echo $deleteStatus ?? '';
                 <div class="modal-content">
                     <div class="modal-body">
                         <p class="text-dark text-center col-12">Voulez vous vraiment supprimer la composition :<br><b>" ' .$compositionTitle[0]. ' " </b>?</p>
-                        <a title="Annuler la suppression" type="button" class="col-5 ml-auto mr-auto btn-sm btn-secondary text-center text-light" data-dismiss="modal"><i class="fas fa-times"></i> Fermer</a>
-                        <a title="Suprimmer la composition : ' .$compositionTitle[0]. '" class="col-5 ml-auto mr-auto btn-sm btn-danger text-center" type="button" href="?idcomposition=' .$composition['id']. '"><i class="fas fa-trash-alt"> Spprimer la composition</i></a>              
+                        <a title="Annuler la suppression" class="col-5 ml-auto mr-auto btn-sm btn-secondary text-center text-light" data-dismiss="modal"><i class="fas fa-times"></i> Fermer</a>
+                        <a title="Suprimmer la composition : ' .$compositionTitle[0]. '" class="col-5 ml-auto mr-auto btn-sm btn-danger text-center" href="?idcomposition=' .$composition['id']. '"><i class="fas fa-trash-alt"> Spprimer la composition</i></a>              
                     </div>
                 </div>
             </div>
         </div>';
         } ?>
-        <div class="modal" tabindex="-1" id="exampleModal" role="dialog">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title">Modal title</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <p>Voulez vous vraiment supprimer le commentaire ?</p>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-danger">Supprimer</button>
-                        <a href="composition.php?id=<?= $_GET['id'] ?>&idComment=<?= $comment['id'] ?>" type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</a>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
 </div>
 <?php require_once 'require/footer.php'; ?>

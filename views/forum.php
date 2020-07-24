@@ -6,8 +6,10 @@ require_once 'require/header.php';
 <div class="container mt-2 12-col">
     <div class="row" style="justify-content: center;">
         <input class="col-md-5 col-sm-2" type="search" placeholder="Entrez un sujet">
-        <button class="btn btn-outline-primary my-2 my-sm-0 ml-2 col-md-2 col-sm-2" type="submit"><i
-                    class="fas fa-search"></i> Rechercher
+        <form action="#" method="post" novalidate>
+            <button class="btn btn-outline-primary my-2 my-sm-0 ml-2 col-md-2 col-sm-2" type="submit"><i class="fas fa-search"></i> Rechercher
+        </form>
+        <button class="btn btn-outline-primary my-2 my-sm-0 ml-2 col-md-2 col-sm-2" formaction="" type="submit"><i class="fas fa-search"></i> Rechercher
         </button>
         <a title="Créer un nouveau sujet" href="newsubject.php"
            class="btn btn-outline-success ml-1 col-md-2 col-sm-2"><i class="fas fa-plus"></i> Nouveau</a>

@@ -78,6 +78,7 @@ if (filter_input(INPUT_GET, 'idcomposition', FILTER_SANITIZE_NUMBER_INT)){
 </div>';
         exit();
     }
+    echo $compositionsTitle;
     //suppression de la composition dans la table compositions
     try {
         $sth = $db->prepare('DELETE FROM `compositions` WHERE `id` = :composition_id');

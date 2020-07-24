@@ -1,4 +1,8 @@
 <?php
+if (!filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT)){
+    header('location:accueil.php');
+    exit();
+}
 require_once '../controllers/sqlplaylistPagination.php';
 require_once '../controllers/sqlplaylist.php';
 //Si la playlist n'existe pas (récupération du titre) redirige vers l'accueil
@@ -14,7 +18,7 @@ echo $successfulDelete ?? '';
 </div>
 <div class="container text-light text-center">
     <a title="Changer le titre de la playlist <?= $playlistTitle ?>" class="col-12 btn btn-success" href="playlistUpdate.php?id=<?= $_GET['id'] ?>">Changer le titre de la playlist</a>
-    <a title="Suprimmer la playlist <?= $playlistTitle ?>" type="button" class="col-12 mt-2 btn btn-danger" data-toggle="modal" data-target="#deletePlaylist">
+    <a title="Suprimmer la playlist <?= $playlistTitle ?>" class="col-12 mt-2 btn btn-danger" data-toggle="modal" data-target="#deletePlaylist">
         Suprimmer la playlist
     </a>
     <?php //Pagination si il n'y a pas qu'une seule page
@@ -44,7 +48,12 @@ echo $successfulDelete ?? '';
                 <?php endif; ?>
             </ul>
         </nav>
-    <?php endif; ?>
+    <?php endif;
+    if(empty($compositionsList)): ?>
+<div class="row">
+    <h1 class="text-center bg-light col-10 opacity mt-3 ml-auto mr-auto">Cette playlist ne contient aucun titre pour le moment.</h1>
+</div>
+<?php endif; ?>
 </div>
 <!--Modal Suprimmer la playlist-->
 <div class="modal fade" id="deletePlaylist" tabindex="-1" role="dialog" aria-labelledby="deletePlaylist" aria-hidden="true">
@@ -58,7 +67,7 @@ echo $successfulDelete ?? '';
             </div>
             <div class="modal-footer">
                 <button type="button" class="mr-auto ml-auto btn btn-danger" data-dismiss="modal">Annuler la suppression</button>
-                <a href="playlist.php?id=<?= $_GET['id'] ?>&playlistDelete=1" type="button" class="mr-auto ml-auto btn btn-success">Suprimmer la playlist</a>
+                <a href="playlist.php?id=<?= $_GET['id'] ?>&page=<?= $_GET['page'] ?>&playlistDelete=1" class="mr-auto ml-auto btn btn-success">Suprimmer la playlist</a>
             </div>
         </div>
     </div>
@@ -100,7 +109,7 @@ echo $successfulDelete ?? '';
             </div>
             <div class="modal-footer">
                 <button type="button" class="mr-auto ml-auto btn btn-danger" data-dismiss="modal">Annuler la suppression</button>
-                <a href="playlist.php?id=<?= $_GET['id'] ?>&page=<?= $_GET['page'] ?>&idcomposition=<?= $_GET['idcomposition'] ?>&delete=1" type="button" id="<?= $_GET['idcomposition'] ?>" class="text-light mr-auto ml-auto btn btn-success">Suprimmer la composition</a>
+                <a href="playlist.php?id=<?= $_GET['id'] ?>&page=<?= $_GET['page'] ?>&idcomposition=<?= $_GET['idcomposition'] ?>&delete=1" id="<?= $_GET['idcomposition'] ?>" class="text-light mr-auto ml-auto btn btn-success">Suprimmer la composition</a>
             </div>
         </div>
     </div>

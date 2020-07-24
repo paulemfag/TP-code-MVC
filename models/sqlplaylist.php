@@ -34,8 +34,7 @@ JOIN users ON compositions.id_users = users.id
 JOIN playlists ON playlists.id = compo_in_playlist.id_playlists 
 WHERE playlists.id = :id
 ORDER BY `added_at` DESC
-LIMIT $start, $limit
-"
+LIMIT $start, $limit"
     );
     $sth->bindValue(':id', $idPlaylist, PDO::PARAM_INT);
     $sth->execute();
@@ -95,15 +94,15 @@ if (filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT) && filter_input(IN
         $sth = $db->prepare('DELETE FROM playlists WHERE `id` = :idplaylist');
         $sth->bindValue(':idplaylist', $idPlaylist, PDO::PARAM_INT);
         $sth->execute();
-    }
-    catch (Exception $ex) {
-        die('suppresion de la playlist échoué');
-    }
-    $successfulDelete = '
+        $successfulDelete = '
         <div class="alert alert-success alert-dismissible fade show" role="alert">
           <p>La playlist '. $playlistTitle .' a bien été suprimmée.</p>
           <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>';
+    }
+    catch (Exception $ex) {
+        die('suppresion de la playlist échoué');
+    }
 }

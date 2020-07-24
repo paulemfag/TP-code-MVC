@@ -332,12 +332,15 @@ if (isset($_POST['submitComment'])){
     if (empty($comment)){
         $errors['comment'] = '<i class="fas fa-exclamation-triangle"></i> Veuillez saisir un commentaire.';
     }
-    if (!filter_input(INPUT_POST, 'comment', FILTER_SANITIZE_STRING)){
+    elseif (!filter_input(INPUT_POST, 'comment', FILTER_SANITIZE_STRING)){
         $errors['comment'] = '<i class="fas fa-exclamation-triangle"></i> Votre commentaire contient des caractères non valides.';
     }
     $comment = htmlspecialchars($comment);
-    if (count($comment) > 2){
-        $errors['comment'] = 'Votre commentaire est trop long';
+    //Récupération de la taille du commentaire
+    $commentLength = strlen($comment);
+    //Si le commentaire est trop long
+    if (($commentLength) > 500){
+        $errors['comment'] = '<i class="fas fa-exclamation-triangle"></i> Votre commentaire est trop long';
     }
     if (count($errors) == 0){
         require_once 'sqladdComment.php';

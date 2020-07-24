@@ -20,10 +20,15 @@ if (empty($_SESSION)) {
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
     <!-- CDN google fonts -->
     <link href="https://fonts.googleapis.com/css?family=Odibee+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.12/css/all.css"
+          integrity="sha384-G0fIWCsCzJIMAVNQPfjH08cyYaUtMwjJwqiRKxxE/rx96Uroj1BtIQ6MLJuheaO9"
+          crossorigin="anonymous">
+    <link rel="stylesheet" href="css/audioPlayer.css">
     <script src='https://www.google.com/recaptcha/api.js'></script>
 </head>
 <body>
-<?php //chargement de la bonne navbar selon le type de compte
+<?php
+//Chargement de la bonne navbar selon le type de compte
 if ($_SESSION['accounttype'] === 'compositor'){
     require_once 'navbar_compositor.php';
 }

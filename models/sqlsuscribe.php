@@ -104,7 +104,7 @@ VALUES (:pseudo, :mailbox, :password, :accountType)');
 Pour activer votre compte, veuillez cliquer sur le lien ci-dessous
 ou le copier/coller dans votre navigateur Internet.
  
-http://fill.info/activation.php?log=' . urlencode($pseudo) . '&cle=' . urlencode($key) . '
+https://filldemo.000webhostapp.com/views/activation.php?log=' . urlencode($pseudo) . '&cle=' . urlencode($key) . '
  
 Cordialement, l\'équipe Fill.
 ------------------------------------------------------------------------------
@@ -112,20 +112,7 @@ Ceci est un mail automatique, Merci de ne pas y répondre.';
 
 //Requiert le fichier "smtpParameters.php" contenant les informations de connexion (constantes)
     require_once 'smtpParameters.php';
-// Informations du transport
-    /*$transport = (new Swift_SmtpTransport('smtp.gmail.com', 465, 'ssl'))
-        ->setUsername(SMTPUSER)
-        ->setPassword(SMTPPASSWORD);
-
-    // Création du mailer en utilisant le transport
-    $mailer = new Swift_Mailer($transport);
-
-    // Création du message
-    $message = (new Swift_Message('Activation de votre compte Fill'))
-        ->setContentType("text/html")
-        ->setFrom(['suscribe@fill.info' => 'Fill | Service inscription'])
-        ->setTo([$mailbox => $pseudo])
-        ->setBody($messageToSend);*/
+// Création du message
     $Name = 'Fill | Suscribe Service';
     $email = 'fill@service.info';
     $header = 'De: ' . $Name . ' <' . $email . '>\r\n';

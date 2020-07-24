@@ -46,3 +46,27 @@ if ($commentList){
 </div>
 <div class="container mt-1">';
 }
+if (filter_input(INPUT_GET, 'idComment', FILTER_SANITIZE_NUMBER_INT)) {
+//Suppression du commentaire dans la table comments.
+    $idComment = $_GET['idComment'];
+    try {
+        $sth = $db->prepare('DELETE FROM `comments` WHERE `id_users` = :id_user AND `id` = :idComment');
+        $sth->bindValue(':id_user', $_SESSION['id'], PDO::PARAM_INT);
+        $sth->bindValue(':idComment', $idComment, PDO::PARAM_INT);
+        $sth->execute();
+        echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
+  <p>Votre commentaire a bien été suprimmé.</p>
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>';
+    } catch (PDOException $e) {
+        echo '<div class="alert alert-warning alert-dismissible fade show" role="alert">
+  <p>Une erreur est survenue pendant la suppression, merci de réessayer ultérieurement.</p>
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>';
+        exit();
+    }
+}

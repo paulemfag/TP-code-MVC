@@ -26,13 +26,12 @@ require_once '../controllers/form_validation.php';
     </audio>
     </div>
 </div>
-</div>
 <div class="row">
     <h2 class="text-center bg-light col-10 opacity mt-2 ml-auto mr-auto">Laisser un commentaire :</h2>
 </div>
 <form class="container mt-1" method="post" action="#">
-    <div class="form-group">
-        <span class="text-danger float-right"><?= $errors['comment'] ?? '' ?></span>
+    <div class="form-group row">
+        <span class="text-danger ml-auto"><?= $errors['comment'] ?? '' ?></span>
         <textarea class="noResize" placeholder="Veuillez saisir un commentaire." maxlength="500" name="comment" id="comment" cols="121" rows="4"><?= $_POST['comment'] ?? '' ?></textarea>
     </div>
     <div class="captcha">
@@ -77,8 +76,8 @@ foreach ($commentList as $comment):
                 <h5 class="modal-title">Voulez vous vraiment supprimer le commentaire ?</h5>
             </div>
             <div class="modal-footer">
-                <a href="composition.php?id=<?= $_GET['id'] ?>&idComment=<?= $comment['id'] ?>" type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</a>
-                <button type="button" class="btn btn-danger">Supprimer</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+                <a title="Supprimer mon commentaire" href="composition.php?id=<?= $_GET['id'] ?>&idComment=<?= $comment['id'] ?>" class="btn btn-danger">Supprimer</a>
             </div>
         </div>
     </div>
@@ -91,8 +90,8 @@ if ($commentsAnnouncement){
 require_once 'require/footer.php'; ?>
 <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script type="text/javascript" src="../vendor/mervick/emojionearea/dist/emojionearea.min.js"></script>
-<script type="text/javascript" src="../assets/js/composition_min.js"></script>
+<script src="../vendor/mervick/emojionearea/dist/emojionearea.min.js"></script>
+<script src="../assets/js/composition_min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
         integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
         crossorigin="anonymous"></script>

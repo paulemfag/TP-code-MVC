@@ -29,13 +29,13 @@ if (!filter_input(INPUT_GET, 'page', FILTER_SANITIZE_NUMBER_INT)){
     exit();
 }
 //Si la page demandée est supérieure à la dernière page
-if ($page > $pages){
+if ($page > $pages && $page > 1){
     //On redirige vers la dernière page
     header('location:playlist.php?id=' .$idPlaylist.'&page=' .$pages);
     exit();
 }
 //Si la page demandée est inférieure à la première page
-elseif ($page < 1){
+elseif ($page < 0){
     header('location:playlist.php?id=' .$idPlaylist. '&page=1');
     exit();
 }
