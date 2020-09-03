@@ -8,6 +8,14 @@ if (empty($_SESSION)) {
 <!DOCTYPE html>
 <html lang="fr" dir="ltr">
 <head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-177227619-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-177227619-1');
+    </script>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title><?= $title ?></title>
@@ -23,7 +31,6 @@ if (empty($_SESSION)) {
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.12/css/all.css"
           integrity="sha384-G0fIWCsCzJIMAVNQPfjH08cyYaUtMwjJwqiRKxxE/rx96Uroj1BtIQ6MLJuheaO9"
           crossorigin="anonymous">
-    <link rel="stylesheet" href="css/audioPlayer.css">
     <script src='https://www.google.com/recaptcha/api.js'></script>
 </head>
 <body>

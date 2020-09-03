@@ -8,6 +8,14 @@ require_once 'controllers/form_validation.php';
 <!DOCTYPE html>
 <html lang="fr" dir="ltr">
 <head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-177227619-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-177227619-1');
+    </script>
     <meta charset="utf-8"/>
     <meta name="description" content="Crée en 2019 par Monsieur FAGOT, FILL est un site d'écoute et de publication musicale
         développé dans l'optique d'offrir aux auteurs un endroit ou partager leur compositions ' To fill ' et au grand
