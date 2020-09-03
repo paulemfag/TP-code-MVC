@@ -48,30 +48,31 @@ echo $successfulDelete ?? '';
                 <?php endif; ?>
             </ul>
         </nav>
-    <?php endif;
-    if(empty($compositionsList)): ?>
+    <?php endif; ?>
+    <!--Modal Suprimmer la playlist-->
+    <div class="modal fade" id="deletePlaylist" tabindex="-1" role="dialog" aria-labelledby="deletePlaylist" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title text-center">Êtes vous sur de vouloir suprimmer la playlist <?= $playlistTitle ?> ?</h3>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="mr-auto ml-auto btn btn-danger" data-dismiss="modal">Annuler la suppression</button>
+                    <a href="playlist.php?id=<?= $_GET['id'] ?>&page=<?= $_GET['page'] ?>&playlistDelete=1" class="mr-auto ml-auto btn btn-success">Suprimmer la playlist</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <?php if(empty($compositionsList)): ?>
 <div class="row">
     <h1 class="text-center bg-light col-10 opacity mt-3 ml-auto mr-auto">Cette playlist ne contient aucun titre pour le moment.</h1>
 </div>
 <?php endif; ?>
 </div>
-<!--Modal Suprimmer la playlist-->
-<div class="modal fade" id="deletePlaylist" tabindex="-1" role="dialog" aria-labelledby="deletePlaylist" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3 class="modal-title text-center">Êtes vous sur de vouloir suprimmer la playlist <?= $playlistTitle ?> ?</h3>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="mr-auto ml-auto btn btn-danger" data-dismiss="modal">Annuler la suppression</button>
-                <a href="playlist.php?id=<?= $_GET['id'] ?>&page=<?= $_GET['page'] ?>&playlistDelete=1" class="mr-auto ml-auto btn btn-success">Suprimmer la playlist</a>
-            </div>
-        </div>
-    </div>
-</div>
+<?php if(!empty($compositionsList)): ?>
 <table class="table-striped container mt-2 compositionsTables">
         <thead class="text-center">
         <tr>
@@ -144,7 +145,8 @@ echo $successfulDelete ?? '';
         </nav>
     <?php endif; ?>
 </div>
-<?php require_once 'require/footer.php'; ?>
+<?php endif;
+require_once 'require/footer.php'; ?>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <?php if($show_modal_composition):?>
     <script src="../assets/js/playlist_min.js"></script>

@@ -7,16 +7,26 @@ html,body{
   flex: 1 0 auto;
 }
 
+#compositions{
+  background: rgb(2,0,36);
+  background: radial-gradient(circle, rgba(2,0,36,1) 0%, rgba(9,121,80,1) 35%, rgba(0,212,255,1) 100%);
+}
+
+.compositionsTablesTextColor{
+  color: #7CAA93;
+}
+
 body{
+  background-image: url('../img/universe-4609408_1280.jpg');
   display: flex;
   flex-direction: column;
-  background-image: url('../img/universe-4609408_1280.jpg');
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
 }
 
 #newplaylist{
+  font-color: blue;
   background-color: transparent;
   border: transparent;
   border: none;

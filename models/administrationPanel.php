@@ -1,6 +1,6 @@
 <?php
 try {
-    $query = $db->prepare('SELECT `rôle` FROM `users` WHERE `pseudo` = :pseudo');
+    $query = $db->prepare('SELECT `role` FROM `users` WHERE `pseudo` = :pseudo');
     $query->bindValue(':pseudo', $_SESSION['pseudo'], PDO::PARAM_STR);
     $query->execute();
     $userList = $sth->fetchAll(PDO::FETCH_ASSOC);
@@ -11,7 +11,7 @@ try {
 } catch (Exception $ex) {
     die('Connexion échoué');
 }
-$usersQueryStat = $db->query("SELECT id, pseudo, active, mailBox, accounttype, number_of_messages FROM `users` LIMIT $start , $limit");
+$usersQueryStat = $db->query("SELECT `id`, `pseudo`, `active`, `rôle`, `mailBox`, `accounttype`, `number_of_messages` FROM `users` LIMIT $start , $limit");
 $usersList = $usersQueryStat->fetchAll(PDO::FETCH_ASSOC);
 //récupération de l'id en GET quand on clique sur le bouton
 if (isset($_GET['id']) && filter_input(INPUT_GET,'id', FILTER_SANITIZE_NUMBER_INT)){

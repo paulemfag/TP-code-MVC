@@ -5,12 +5,10 @@ require_once 'require/header.php';
 //Barre de recherche et bouton rechercher ?>
 <div class="container mt-2 12-col">
     <div class="row" style="justify-content: center;">
-        <input class="col-md-5 col-sm-2" type="search" placeholder="Entrez un sujet">
-        <form action="#" method="post" novalidate>
-            <button class="btn btn-outline-primary my-2 my-sm-0 ml-2 col-md-2 col-sm-2" type="submit"><i class="fas fa-search"></i> Rechercher
+        <form method="post">
+            <input value="<?= $_GET['search'] ?>" name="searchValue" id="searchValue" class="col-md-5 col-sm-2" type="search" placeholder="Entrez un sujet">
         </form>
-        <button class="btn btn-outline-primary my-2 my-sm-0 ml-2 col-md-2 col-sm-2" formaction="" type="submit"><i class="fas fa-search"></i> Rechercher
-        </button>
+        <a class="btn btn-outline-primary my-2 my-sm-0 ml-2 col-md-2 col-sm-2" href="forum.php?page=1&search=<?= $_POST['searchValue'] ?>" type="submit"><i class="fas fa-search"></i> Recherche</a>
         <a title="Créer un nouveau sujet" href="newsubject.php"
            class="btn btn-outline-success ml-1 col-md-2 col-sm-2"><i class="fas fa-plus"></i> Nouveau</a>
         <?php //Pagination si il n'y a pas qu'une seule page

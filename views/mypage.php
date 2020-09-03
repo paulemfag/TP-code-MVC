@@ -45,17 +45,17 @@ echo $deleteStatus ?? '';
         </div>
     </div>
 </div>
-<div class="container compositionsTables mt-2">
+<div id="compositions" class="container mt-2">
     <div class="row playlistTable text-center">
-        <a class="col-3 float-left"><i class="fas fa-music"></i><b> Composition :</b></a>
-        <a class="col-2 float-left"><b>Style :</b></a>
-        <a class="col-5 float-left"><b>Fichier :</b></a>
-        <a class="col-2"><b>Supprimer :</b></a>
+        <a style="color:  #034f84;" class="col-3 compositionsTablesTextColor float-left"><i class="fas fa-music"></i><b> Composition :</b></a>
+        <a style="color:  #034f84;" class="col-2 float-left"><b>Style :</b></a>
+        <a style="color:  #034f84;" class="col-5 float-left"><b>Fichier :</b></a>
+        <a style="color:  #034f84;" class="col-2"><b>Supprimer :</b></a>
         <?php foreach ($compositionsList as $composition) {
             //récupération du titre sans l'extension de fichier (array)
             $compositionTitle = explode('.', $composition['title']);
             $file = $composition['file'];
-            echo '<a title="Page composition ' .$compositionTitle[0]. '" href="composition.php?id=' .$composition['id']. '" class="col-3 text-dark">' . $compositionTitle[0] . '</a>' . '
+            echo '<a style="color:  #034f84;" title="Page composition ' .$compositionTitle[0]. '" href="composition.php?id=' .$composition['id']. '" class="col-3 text-dark">' . $compositionTitle[0] . '</a>' . '
 <a title="Page style ' .$composition['style']. '" href="stylePage.php?style=' .$composition['style']. '" class="col-2 text-dark">' .$composition['style']. '</a>
 <audio style="height: 20px;" class="float-right col-5" controls>
             <source src="' . $file . '" preload="auto" controls type="audio/mp3">
@@ -83,5 +83,5 @@ echo $deleteStatus ?? '';
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
-</body>
+</div>
 </html>

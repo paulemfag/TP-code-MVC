@@ -10,20 +10,21 @@ require_once '../controllers/form_validation.php';
 <div class="container mt-1 compositionsTables">
     <p>
         Style : <a class="text-dark" href="stylePage.php?style=<?= $style ?>"><?= $style ?>.</a>
-    <br>
-    Compositeur : <a class="text-dark" href="compositor.php?id=<?= $idUser ?>"><?= $compositorPseudo ?>.</a>
-    <br>
-    Instruments employés : <?= $instrumentsUsed ?? 'non définis' ?>.
-    <br>
-    Accords employés : <?= $chords ?? 'non définis' ?>.
+        <input name="" id="" class="btn btn-outline-primary float-right mt-2" value="Ajouter à la playlist" type="submit">
+        <br>
+        Compositeur : <a class="text-dark" href="compositor.php?id=<?= $idUser ?>"><?= $compositorPseudo ?>.</a>
+        <br>
+        Instruments employés : <?= $instrumentsUsed ?? 'non définis' ?>.
+        <br>
+        Accords employés : <?= $chords ?? 'non définis' ?>.
     </p>
     <div class="row">
-    <p class="col-6">
-    Fichier :
-    </p>
-    <audio ontimeupdate="updateTime()" style="height: 20px;" class="col-6" controls controlsList="nodownload">
-        <source src="<?= $file ?>" type="audio/mp3">
-    </audio>
+        <p class="col-6">
+            Fichier :
+        </p>
+        <audio ontimeupdate="updateTime()" style="height: 20px;" class="col-6" controls controlsList="nodownload">
+            <source src="<?= $file ?>" type="audio/mp3">
+        </audio>
     </div>
 </div>
 <div class="row">

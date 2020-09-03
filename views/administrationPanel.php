@@ -15,17 +15,20 @@ if ($_SESSION['pseudo'] === 'Paulemfag'){
     <th>ID :</th>
     <th>Pseudo :</th>
     <th>Actif :</th>
+    <th>Rôle :</th>
     <th>Adresse mail :</th>
     <th>Type de compte :</th>
     <th>Nombre de messages publiés :</th>
     <th>Suprimmer :</th>
     </thead>
     <tbody>
-    <?php foreach ($usersList AS $user): ?>
+    <?php foreach } ($usersList AS $user):
+    if($user['rôle'] === 1){ $user['rôle'] === 'Admin' }?>
         <tr class="text-center">
             <td><?= $user['id'] ?></td>
             <td><a class="text-dark" href="compositor.php?id=<?= $user['id'] ?>"><?= $user['pseudo'] ?></a></td>
             <td><?= $user['active'] ?></td>
+            <td><?= $user['rôle'] ?></td>
             <td><?= $user['mailBox'] ?></td>
             <td><?= $user['accounttype'] ?></td>
             <td><?= $user['number_of_messages'] ?></td>
@@ -123,7 +126,6 @@ if ($pages > 1) : ?>
     </body>
 </html>
 <?php
-}
 else{
     header('location:../views/accueil.php');
     exit();
