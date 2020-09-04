@@ -26,14 +26,13 @@ $playlistName = $_POST['playlistName'] ?? NULL;
 $playlistNewTitle = $_POST['playlistNewTitle'] ?? NULL;
 //Ajout d'une composition
 $compositionStyle = $_POST['compositionStyle'] ?? NULL;
-//formulaire nouveau sujet Forum
+//formulaire nouveau sujet Forum et ajout de message sur un topic
 $subject = trim(filter_input(INPUT_POST, 'subject', FILTER_SANITIZE_STRING)) ?? NULL;
+$message = trim(filter_input(INPUT_POST, 'message', FILTER_SANITIZE_STRING)) ?? NULL;
 //formulaire récupération mot de passe
 $recuperationMailbox = $_POST['recuperationMailbox'] ?? NULL;
 //formulaire ajout de commentaire
 $comment = $_POST['comment'] ?? NULL;
-//formulaire ajout de message sur un topic
-$message = $_POST['message'] ?? NULL;
 //formulaire reset password
 $passwordAfterReset = $_POST['passwordAfterReset'] ?? NULL;
 $confirmPasswordAfterReset = $_POST['confirmPasswordAfterReset'] ?? NULL;
@@ -96,8 +95,8 @@ if (isset($_POST['login'])) {
     //Si il n'y a pas d'erreurs execute les vérifications en BDD et renvoi vers la page 'accueil.php'
     if (count($errors) == 0) {
         require_once 'sqllogin.php';
-        $_POST['password'] = '';
-        $pseudo = '';
+        $_POST['password'] = NULL;
+        $pseudo = NULL;
     }
 }
 // Si la personne viens de la page 'activation.php' donne une valeur au bouton / affiche le formulaire de connexion (js)
@@ -299,6 +298,25 @@ if (isset($_POST['submitsubject'])) {
     //vérification sujet
     if (empty($subject)) {
         $errors['subject'] = '<i class="fas fa-exclamation-triangle"></i> Veuillez renseigner le sujet.';
+    }
+    if (strlen($subject) < 4){
+        $errors['subject'] = '<i class="fas fa-exclamation-triangle"></i> Le nom du sujet est trop court.';
+    }
+    if (strlen($subject) > 50){
+        $errors['subject'] = '<i class="fas fa-exclamation-triangle"></i> Le nom du sujet est trop long.';
+    }
+    if (!empty($subject)){
+        //Requiert le fichier sql qui vérifie si le nom du sujet n'existe pas déjà dans la table topics.
+        require_once 'sqlnewsubjectverification.php';
+    }
+    if (empty($message)) {
+        $errors['message'] = '<i class="fas fa-exclamation-triangle"></i> Veuillez renseigner un message.';
+    }
+    if (strlen($message) < 4){
+        $errors['message'] = '<i class="fas fa-exclamation-triangle"></i> Le message est trop court.';
+    }
+    if (strlen($message) > 500){
+        $errors['message'] = '<i class="fas fa-exclamation-triangle"></i> Le message est trop long.';
     }
     elseif (count($errors) == 0) {
         require_once 'sqlnewsubject.php';

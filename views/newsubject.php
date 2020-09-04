@@ -2,21 +2,26 @@
 $title = 'Fill | Nouveau Sujet';
 require_once 'require/header.php';
 require_once '../controllers/form_validation.php';
-$id = $_SESSION['id']; ?>
+?>
 <div class="container bg-light mt-2 opacity">
     <a title="Fill | Forum" href="forum.php?page=1"><i class="mt-2 fas fa-home"></i></a>
     <h1 class="text-center ml-auto mr-auto">Nouveau Sujet :</h1>
 </div>
-<form class="container mt-1" action="?id=<?= $id ?? '' ?>" method="post" novalidate>
+<form class="container mt-1" action="#" method="post" novalidate>
     <div class="form-group">
         <label class="text-light" for="subject">Sujet :</label>
         <span class="text-danger float-right"><?= $errors['subject'] ?? '' ?></span>
-        <input id="subject" name="subject" type="text" class="col-12" value="<?= $subject ?>">
+        <input minlength="4" maxlength="50" id="subject" name="subject" type="text" class="col-12" placeholder="Veuillez saisir un sujet" value="<?= $subject ?>">
+    </div>
+    <div class="form-group">
+        <label class="text-light" for="message">Premier message :</label>
+        <span class="text-danger float-right"><?= $errors['message'] ?? '' ?></span>
+        <textarea style="resize: none; border: none;" minlength="4" maxlength="500" name="message" id="message" cols="121" rows="5" placeholder="Veuillez saisir un message"><?= $message ?></textarea>
     </div>
     <div class="captcha">
         <div
             class="g-recaptcha"
-            data-sitekey="6Lc2seAUAAAAABg_R6mlOzQuKOkLNxYkyQiRLf7x"
+            data-sitekey="6Lf-Dd8UAAAAAB6ROCZ8e2TWVp3-2PBzzz34y67X"
             style="display: inline-block;">
         </div>
     </div>
