@@ -33,13 +33,13 @@ require_once '../controllers/form_validation.php';
 <form class="container mt-1" method="post" action="#">
     <div class="form-group row">
         <span class="text-danger ml-auto"><?= $errors['comment'] ?? '' ?></span>
-        <textarea class="noResize" placeholder="Veuillez saisir un commentaire." maxlength="500" name="comment" id="comment" cols="121" rows="4"><?= $_POST['comment'] ?? '' ?></textarea>
+        <textarea class="noResize" placeholder="Veuillez saisir un commentaire." maxlength="500" name="comment" id="comment" cols="121" rows="4" required><?= $_POST['comment'] ?? '' ?></textarea>
     </div>
     <div class="captcha">
         <div
-                class="g-recaptcha"
-                data-sitekey="6Lf-Dd8UAAAAAB6ROCZ8e2TWVp3-2PBzzz34y67X"
-                style="display: inline-block;">
+            class="g-recaptcha"
+            data-sitekey="6Lf-Dd8UAAAAAB6ROCZ8e2TWVp3-2PBzzz34y67X"
+            style="display: inline-block;">
         </div>
     </div>
     <div class="form-group">

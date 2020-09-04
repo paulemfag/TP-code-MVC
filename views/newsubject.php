@@ -11,12 +11,12 @@ require_once '../controllers/form_validation.php';
     <div class="form-group">
         <label class="text-light" for="subject">Sujet :</label>
         <span class="text-danger float-right"><?= $errors['subject'] ?? '' ?></span>
-        <input minlength="4" maxlength="50" id="subject" name="subject" type="text" class="col-12" placeholder="Veuillez saisir un sujet" value="<?= $subject ?>">
+        <input minlength="4" maxlength="50" id="subject" name="subject" type="text" class="col-12" placeholder="Veuillez saisir un sujet" value="<?= $subject ?>" required>
     </div>
     <div class="form-group">
         <label class="text-light" for="message">Premier message :</label>
         <span class="text-danger float-right"><?= $errors['message'] ?? '' ?></span>
-        <textarea style="resize: none; border: none;" minlength="4" maxlength="500" name="message" id="message" cols="121" rows="5" placeholder="Veuillez saisir un message"><?= $message ?></textarea>
+        <textarea style="resize: none; border: none;" minlength="4" maxlength="500" name="message" id="message" cols="121" rows="5" placeholder="Veuillez saisir un message" required><?= $message ?></textarea>
     </div>
     <div class="captcha">
         <div

@@ -39,9 +39,11 @@ try {
         }
 //Insertion en BDD : table `compositions`
         try {
-            $sth = $db->prepare('INSERT INTO `compositions` (`title`, `file`, `id_users`, `id_categories`) VALUES (:title, :file, :idUser, :idCategory)');
+            $sth = $db->prepare('INSERT INTO `compositions` (`title`, `file`, `chords`, `instrumentsUsed`, `id_users`, `id_categories`) VALUES (:title, :file, :chords, :instrumentsUsed, :idUser, :idCategory)');
             $sth->bindValue(':title', $title[0], PDO::PARAM_STR);
             $sth->bindValue(':file', 'uploads/_'. $fileName, PDO::PARAM_STR);
+            $sth->bindValue(':chords', $compositionChords, PDO::PARAM_STR);
+            $sth->bindValue(':instrumentsUsed', $compositionInstruments, PDO::PARAM_STR);
             $sth->bindValue(':idUser', $id, PDO::PARAM_INT);
             $sth->bindValue(':idCategory', $idComposition, PDO::PARAM_INT);
             $sth->execute();

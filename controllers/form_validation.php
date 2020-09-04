@@ -6,6 +6,9 @@ $suscribepseudo = $_POST['suscribepseudo'] ?? NULL;
 $suscribemailbox = $_POST['suscribemailbox'] ?? NULL;
 $suscribepassword = $_POST['suscribepassword'] ?? NULL;
 $suscribepasswordconfirmation = $_POST['suscribepasswordconfirmation'] ?? NULL;
+//formulaire login
+$pseudo = $_POST['pseudo'] ?? NULL;
+$password = $_POST['password'] ?? NULL;
 //formulaire informations personnelles
 $biography = $_POST['biography'] ?? NULL;
 $instruments = $_POST['instruments'] ?? NULL;
@@ -17,15 +20,14 @@ $tagFour = $_POST['tag3'] ?? NULL;
 $tagFive = $_POST['tag4'] ?? NULL;
 $facebook = $_POST['facebookId'] ?? NULL;
 $twitter = $_POST['twitterId'] ?? NULL;
-//formulaire login
-$pseudo = $_POST['pseudo'] ?? NULL;
-$password = $_POST['password'] ?? NULL;
 //création de playlist
 $playlistName = $_POST['playlistName'] ?? NULL;
 //formumaire changement du titre de la playlist
 $playlistNewTitle = $_POST['playlistNewTitle'] ?? NULL;
 //Ajout d'une composition
 $compositionStyle = $_POST['compositionStyle'] ?? NULL;
+$compositionChords = trim(filter_input(INPUT_POST, 'chords', FILTER_SANITIZE_STRING)) ?? NULL;
+$compositionInstruments = trim(filter_input(INPUT_POST, 'instruments', FILTER_SANITIZE_STRING)) ?? NULL;
 //formulaire nouveau sujet Forum et ajout de message sur un topic
 $subject = trim(filter_input(INPUT_POST, 'subject', FILTER_SANITIZE_STRING)) ?? NULL;
 $message = trim(filter_input(INPUT_POST, 'message', FILTER_SANITIZE_STRING)) ?? NULL;
@@ -61,6 +63,8 @@ if (isset($_POST['suscribe'])) {
         $errors['suscribepseudo'] = '<i class="fas fa-exclamation-triangle"></i> Veuillez renseigner votre pseudo.';
     } elseif (!preg_match($regexPseudo, $suscribepseudo)) {
         $errors['suscribepseudo'] = '<i class="fas fa-exclamation-triangle"></i> Votre pseudo contient des caractères non autorisés !';
+    } elseif (strlen($suscribepseudo) > 50){
+        $errors['suscribepseudo'] = '<i class="fas fa-exclamation-triangle"></i> Votre pseudo est trop long.(Max 50)';
     }
     //contrôle adresse mail
     $suscribemailbox = trim(htmlspecialchars($_POST['suscribemailbox']));
@@ -68,10 +72,14 @@ if (isset($_POST['suscribe'])) {
         $errors['suscribemailbox'] = '<i class="fas fa-exclamation-triangle"></i> Veuillez renseigner votre adresse mail.';
     } elseif (!filter_var($suscribemailbox, FILTER_VALIDATE_EMAIL)) {
         $errors['suscribemailbox'] = '<i class="fas fa-exclamation-triangle"></i> Veuillez saisir une adresse mail valide.';
+    } elseif (strlen($suscribemailbox) > 50){
+        $errors['suscribemailbox'] = '<i class="fas fa-exclamation-triangle"></i> Votre adresse mail est trop longue.(Max 50)';
     }
     //contrôle mots de passe
     if (empty($suscribepassword)) {
         $errors['suscribepassword'] = '<i class="fas fa-exclamation-triangle"></i> Veuillez renseigner votre mot de passe.';
+    } elseif (strlen($suscribepassword) > 60){
+        $errors['suscribepassword'] = '<i class="fas fa-exclamation-triangle"></i> Votre mot de passe est trop long.(Max 60)';
     } elseif (isset($suscribepassword) && empty($suscribepasswordconfirmation)) {
         $errors['suscribepassword'] = '<i class="fas fa-exclamation-triangle"></i> Veuillez confirmer votre mot de passe';
     } elseif ($suscribepasswordconfirmation != $suscribepassword) {
@@ -89,8 +97,14 @@ if (isset($_POST['login'])) {
     if (empty($pseudo)) {
         $errors['pseudo'] = '<i class="fas fa-exclamation-triangle"></i> Veuillez renseigner votre pseudo.';
     }
+    if (strlen($pseudo) > 50){
+        $errors['pseudo'] = '<i class="fas fa-exclamation-triangle"></i> Votre pseudo est trop long.(Max 50)';
+    }
     if (empty($password)) {
         $errors['password'] = '<i class="fas fa-exclamation-triangle"></i> Veuillez renseigner votre mot de passe.';
+    }
+    if (strlen($password) > 60){
+        $errors['password'] = '<i class="fas fa-exclamation-triangle"></i> Votre mot de passe est trop long. (Max 60)';
     }
     //Si il n'y a pas d'erreurs execute les vérifications en BDD et renvoi vers la page 'accueil.php'
     if (count($errors) == 0) {
@@ -199,7 +213,13 @@ if (isset($_POST['updatePersonalInformations'])){
 }
 //Vérifications nouvelle playlist
 if (isset($_POST['submitPlaylist'])) {
-    if (!filter_input(INPUT_POST, 'playlistName', FILTER_SANITIZE_STRING)) {
+    if (empty($playlistName)){
+        $errors['playlistName'] = '<i class="fas fa-exclamation-triangle"></i> Veuillez saisir le titre de la playlist.';
+    }
+    elseif (strlen($playlistName) > 50){
+        $errors['playlistName'] = '<i class="fas fa-exclamation-triangle"></i> Le titre est trop long.(Max 50)';
+    }
+    elseif (!filter_input(INPUT_POST, 'playlistName', FILTER_SANITIZE_STRING)) {
         $errors['playlistName'] = '<i class="fas fa-exclamation-triangle"></i> Veuillez saisir un titre valide.';
     }
     //si le tableau d'erreurs est vide, requiert le fichier qui fait l'update en BDD
@@ -212,6 +232,12 @@ if (isset($_POST['playlistTitleChange'])){
     //si le nouveau titre de la playlist n'est pas défini
     if (empty($playlistNewTitle)){
         $errors['playlistNewTitle'] = '<i class="fas fa-exclamation-triangle"></i> Veuillez saisir le nouveau titre de la playlist.';
+    }
+    elseif (strlen($playlistNewTitle) > 50){
+        $errors['playlistNewTitle'] = '<i class="fas fa-exclamation-triangle"></i> Le titre est trop long.(Max 50)';
+    }
+    elseif (!filter_input(INPUT_POST, 'playlistNewTitle', FILTER_SANITIZE_STRING)) {
+        $errors['playlistNewTitle'] = '<i class="fas fa-exclamation-triangle"></i> Veuillez saisir un titre valide.';
     }
     //si il n'y a pas d'erreurs
     if (count($errors) === 0){
@@ -288,6 +314,12 @@ if (isset($_POST['newComposition'])) {
             }
         }
     }
+    if (strlen($compositionChords) > 200){
+        $errors['chords'] = '<i class="fas fa-exclamation-triangle"></i> Vous avez renseigné trop de caractères.(Max 200)';
+    }
+    if (strlen($compositionInstruments) > 200){
+        $errors['instruments'] = '<i class="fas fa-exclamation-triangle"></i> Vous avez renseigné trop de caractères.(Max 200)';
+    }
     //Si il n'y a pas d'erreurs requiert le fichier 'sqladdcomposition.php' qui fait l'ajout en BDD
     if (count($errors) == 0) {
         require_once 'sqladdcomposition.php';
@@ -326,6 +358,9 @@ if (isset($_POST['topicMessageSubmit'])){
     if (empty($message)){
         $errors['message'] = '<i class="fas fa-exclamation-triangle"></i> Veuillez saisir votre message.';
     }
+    elseif (strlen($message) > 500){
+        $errors['message'] = '<i class="fas fa-exclamation-triangle"></i> Le message est trop long.(Max 500)';
+    }
     if (count($errors) == 0){
         //Si il n'y pas d'erreurs initialise la variable insertMessage à true pour permettre l'insert en BDD
         $insertMessage = true;
@@ -339,6 +374,8 @@ if (isset ($_POST['recuperation'])) {
     $recuperationMailbox = trim(htmlspecialchars($recuperationMailbox));
     if (empty($recuperationMailbox)) {
         $errors['recuperationMailbox'] = '<i class="fas fa-exclamation-triangle"></i> Veuillez renseigner votre adresse mail.';
+    } elseif (strlen($recuperationMailbox) > 50){
+        $errors['recuperationMailbox'] = '<i class="fas fa-exclamation-triangle"></i> Votre adresse mail est trop longue.(Max 50)';
     } elseif (!filter_var($recuperationMailbox, FILTER_VALIDATE_EMAIL)) {
         $errors['recuperationMailbox'] = '<i class="fas fa-exclamation-triangle"></i> Veuillez saisir une adresse mail valide.';
     } elseif (count($errors) == 0){
@@ -349,6 +386,9 @@ if (isset ($_POST['recuperation'])) {
 if (isset($_POST['submitComment'])){
     if (empty($comment)){
         $errors['comment'] = '<i class="fas fa-exclamation-triangle"></i> Veuillez saisir un commentaire.';
+    }
+    elseif (strlen($comment) > 500){
+        $errors['comment'] = '<i class="fas fa-exclamation-triangle"></i> Votre commentaire est trop long.(Max 500)';
     }
     elseif (!filter_input(INPUT_POST, 'comment', FILTER_SANITIZE_STRING)){
         $errors['comment'] = '<i class="fas fa-exclamation-triangle"></i> Votre commentaire contient des caractères non valides.';
@@ -380,19 +420,6 @@ if (isset($_POST['resetMyPassword'])){
         require_once 'sqlreset-password.php';
     }
 }
-//Vérification changement du type de compte
-if (isset($_POST['changeAccountType'])) {
-    //ajoute une valeur au bouton pour réafficher le formulaire grâce au JS
-    $changeAccount = 'alreadySubmittedOnce';
-    //vérification champ mot de passe
-    if (!isset($changeAccountPassword)) {
-        $errors['changeAccountPassword'] = '<i class="fas fa-exclamation-triangle"></i> Veuillez renseigner votre mot de passe.';
-    }
-    //Si il n'y a pas d'erreurs requiert le fichier "parameterspage.php" qui compare le mot de passe de la BDD
-    elseif (count($errors) == 0) {
-        require_once 'parameterspage.php';
-    }
-}
 //Vérifications CHANGEMENT MOT DE PASSE
 if (isset ($_POST['changeMyPassword'])) {
     //ajoute une value au bouton me connecter
@@ -400,10 +427,17 @@ if (isset ($_POST['changeMyPassword'])) {
     if (empty($actualPassword)) {
         $errors['actualPassword'] = '<i class="fas fa-exclamation-triangle"></i> Veuillez saisir votre mot de passe.';
     }
+    elseif (strlen($actualPassword) > 60){
+        $errors['actualPassword'] = '<i class="fas fa-exclamation-triangle"></i> Votre mot de passe est trop long.(Max 60)';
+    }
     elseif (empty ($newPassword)) {
         $errors['newPassword'] = '<i class="fas fa-exclamation-triangle"></i> Veuillez choisir un nouveau mot de passe.';
-    } elseif ($actualPassword == $newPassword) {
+    }
+    elseif ($actualPassword == $newPassword) {
         $errors['newPassword'] = '<i class="fas fa-exclamation-triangle"></i> Le nouveau mot de passe et l\'ancien ne peuvent être identiques';
+    }
+    elseif (strlen($newPassword) > 60){
+        $errors['newPassword'] = '<i class="fas fa-exclamation-triangle"></i> Votre mot de passe est trop long.(Max 60)';
     }
     elseif (empty ($newPasswordConfirm)) {
         $errors['newPasswordConfirm'] = '<i class="fas fa-exclamation-triangle"></i> Veuillez confirmer votre nouveau mot de passe.';
@@ -417,12 +451,31 @@ if (isset ($_POST['changeMyPassword'])) {
         $errors['isok'] = 'Votre mot de passe à bien été changé.';
     }
 }
+//Vérification changement du type de compte
+if (isset($_POST['changeAccountType'])) {
+    //ajoute une valeur au bouton pour réafficher le formulaire grâce au JS
+    $changeAccount = 'alreadySubmittedOnce';
+    //vérification champ mot de passe
+    if (!isset($changeAccountPassword)) {
+        $errors['changeAccountPassword'] = '<i class="fas fa-exclamation-triangle"></i> Veuillez renseigner votre mot de passe.';
+    }
+    elseif (strlen($changeAccountPassword) > 60){
+        $errors['changeAccountPassword'] = '<i class="fas fa-exclamation-triangle"></i> Votre mot de passe est trop long.(Max 60)';
+    }
+    //Si il n'y a pas d'erreurs requiert le fichier "parameterspage.php" qui compare le mot de passe de la BDD
+    elseif (count($errors) == 0) {
+        require_once 'parameterspage.php';
+    }
+}
 //Vérifications suppression du compte
 if (isset($_POST['removeMyAccount'])) {
     //ajoute une value au bouton me connecter
     $removeMyAccount = 'alreadySubmittedOnce';
     if (empty($removeMyAccountPassword)) {
         $errors['Password'] = '<i class="fas fa-exclamation-triangle"></i> Veuillez renseigner un mot de passe.';
+    }
+    elseif (strlen($removeMyAccountPassword) > 60){
+        $errors['Password'] = '<i class="fas fa-exclamation-triangle"></i> Votre mot de passe est trop long.(Max 60)';
     }
     elseif (count($errors) == 0) {
         require_once 'sqldeleteaccount.php';

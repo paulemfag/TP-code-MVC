@@ -42,13 +42,12 @@ require_once '../controllers/form_validation.php';
     <div class="form-group">
         <label class="text-light" for="instruments"><i class="fas fa-drum"></i> Instrument(s) employé(s) : ( facultatif )</label>
         <span class="text-danger float-right"><?= $errors['instruments'] ?? '' ?></span>
-        <input id="instruments" class="col-12 inputColor" name="instruments" type="text"
-               value="<?= $_POST['instruments'] ?? '' ?>">
+        <input id="instruments" class="col-12 inputColor" name="instruments" type="text" value="<?= $_POST['instruments'] ?? '' ?>" maxlength="200" required>
     </div>
     <div class="form-group">
         <label class="text-light" for="chords">Accords employés : ( facultatif )</label>
-        <span></span>
-        <input id="chords" class="col-12 inputColor" name="chords" type="text" value="<?= $_POST['chords'] ?? '' ?>">
+        <span class="text-danger float-right"><?= $errors['chords'] ?? '' ?></span>
+        <input id="chords" class="col-12 inputColor" name="chords" type="text" value="<?= $_POST['chords'] ?? '' ?>" maxlength="200" required>
     </div>
     <div class="captcha">
         <div

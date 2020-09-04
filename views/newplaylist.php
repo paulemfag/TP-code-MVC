@@ -7,17 +7,17 @@ echo $successfullyCreated ?? '';
 <div class="row">
     <h1 class="text-center bg-light col-10 opacity mt-2 ml-auto mr-auto">Nouvelle Playlist :</h1>
 </div>
-<form class="container" action="#" method="post">
+<form class="container" action="#" method="post" novalidate>
     <div class="form-group">
         <label class="text-light" for="playlistName">Nom de la playlist :</label>
         <span class="text-danger float-right"><?= $errors['playlistName'] ?? '' ?></span>
-        <input class="col-12" id="playlistName" name="playlistName" type="text" value="<?= $playlistName ?>">
+        <input class="col-12" id="playlistName" name="playlistName" type="text" value="<?= $playlistName ?>" maxlength="50" required>
     </div>
     <div class="captcha">
         <div
-                class="g-recaptcha"
-                data-sitekey="6Lf-Dd8UAAAAAB6ROCZ8e2TWVp3-2PBzzz34y67X"
-                style="display: inline-block;">
+            class="g-recaptcha"
+            data-sitekey="6Lf-Dd8UAAAAAB6ROCZ8e2TWVp3-2PBzzz34y67X"
+            style="display: inline-block;">
         </div>
     </div>
     <input name="submitPlaylist" value="Créer la playlist" class="btn btn-outline-success col-12" type="submit">

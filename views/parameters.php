@@ -20,17 +20,17 @@ require_once '../controllers/form_validation.php';
         <div class="form-group">
             <label class="text-light" for="actualPassword">Mot de passe actuel :</label>
             <span class="text-danger float-right"><?= ($errors['actualPassword']) ?? '' ?></span>
-            <input id="actualPassword" class="col-12 inputColor" name="actualPassword" type="password" value="<?= $actualPassword ?>" required>
+            <input id="actualPassword" class="col-12 inputColor" name="actualPassword" type="password" value="<?= $actualPassword ?> "maxlength="60" required>
         </div>
         <div class="form-group">
             <label class="text-light" for="newPassword">Nouveau mot de passe :</label>
             <span class="text-danger float-right"><?= ($errors['newPassword']) ?? '' ?></span>
-            <input id="newPassword" class="col-12 inputColor" name="newPassword" type="password" value="<?= $newPassword ?>" required>
+            <input id="newPassword" class="col-12 inputColor" name="newPassword" type="password" value="<?= $newPassword ?>" maxlength="60" required>
         </div>
         <div class="form-group">
             <label class="text-light" for="newPasswordConfirm">Confirmation du nouveau mot de passe :</label>
             <span class="text-danger float-right"><?= ($errors['newPasswordConfirm']) ?? '' ?></span>
-            <input id="newPasswordConfirm" class="col-12 inputColor" name="newPasswordConfirm" type="password" value="<?= $newPasswordConfirm ?>" required>
+            <input id="newPasswordConfirm" class="col-12 inputColor" name="newPasswordConfirm" type="password" value="<?= $newPasswordConfirm ?>" maxlength="60" required>
         </div>
         <div class="captcha">
             <div
@@ -56,7 +56,7 @@ require_once '../controllers/form_validation.php';
         <div class="form-group">
             <label class="text-light" for="changeAccountPassword">Mot de passe :</label>
             <span class="text-danger float-right"><?= $errors['changeAccountPassword'] ?? '' ?></span>
-            <input class="col-12 inputColor" id="changeAccountPassword" name="changeAccountPassword" type="password" value="<?= $_POST['changeAccountPassword'] ?? '' ?>">
+            <input class="col-12 inputColor" id="changeAccountPassword" name="changeAccountPassword" type="password" value="<?= $_POST['changeAccountPassword'] ?? '' ?>" maxlength="60" required>
         </div>
         <div class="container bg-light opacity">
             <h2 class="text-danger"><i class="fas fa-exclamation-triangle"></i> Attention après ces changements [...], vous serez déconnecté et devrez donc vous reconnecter.</h2>
@@ -77,7 +77,7 @@ require_once '../controllers/form_validation.php';
         <div class="form-group">
             <label class="text-light" for="Password">Veuillez taper votre mot de passe :</label>
             <span class="text-danger float-right"><?= ($errors['Password']) ?? '' ?></span>
-            <input id="Password" class="col-12 inputColor" name="Password" type="password" value="<?= $actualPassword ?>" required>
+            <input id="Password" class="col-12 inputColor" name="Password" type="password" value="<?= $actualPassword ?>" maxlength="60" required>
         </div>
         <div class="bg-light opacity">
             <h2 class="ml-2 text-danger"><i class="fas fa-exclamation-triangle"></i> Attention après ces changements votre compte sera archivé.</h2>

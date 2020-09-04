@@ -12,12 +12,12 @@ echo $anErrorOccured ?? '';
     <form action="#" method="post" novalidate>
         <div class="form-group">
             <label class="text-light" for="originalTitle">Titre d'origine</label>
-            <input name="originalTitle" id="originalTitle" class="col-12" type="text" value="<?= $playlistTitle ?>" disabled>
+            <input name="originalTitle" id="originalTitle" class="col-12" type="text" value="<?= $playlistTitle ?>" maxlength="50" disabled>
         </div>
         <div class="form-group">
             <label class="text-light" for="playlistNewTitle">Nouveau titre :</label>
             <span class="text-danger float-right"><?= $errors['playlistNewTitle'] ?? '' ?></span>
-            <input name="playlistNewTitle" id="playlistNewTitle" class="col-12" type="text" placeholder="Veuillez saisir le nouvea titre de la playlist" value="<?= $playlistNewTitle ?>">
+            <input name="playlistNewTitle" id="playlistNewTitle" class="col-12" type="text" placeholder="Veuillez saisir le nouvea titre de la playlist" value="<?= $playlistNewTitle ?>" maxlength="50" required>
         </div>
         <div class="captcha">
             <div
