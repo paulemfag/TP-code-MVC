@@ -55,8 +55,8 @@ if ($stmt->execute(array(':pseudo' => $pseudo)) && $row = $stmt->fetch()) {
         exit();
     } // Sinon la connexion est refusé...
     else {
-        $errors['login'] = 'Votre identifiant ou mot de passe est incorrect merci de réessayer.';
+        $errors['login'] = '<i class="fas fa-exclamation-triangle"></i> Veuillez activer votre compte à l\'aide du lien d\'activation qui vous a été envoyé par mail afin de pouvoir vous connecter.';
     }
 } else {
-    $errors['login'] = 'Votre identifiant ou mot de passe est incorrect merci de réessayer.';
+    $errors['login'] = '<i class="fas fa-exclamation-triangle"></i> Votre identifiant ou mot de passe est incorrect merci de réessayer.';
 }

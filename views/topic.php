@@ -40,7 +40,7 @@ require_once '../controllers/sqltopic.php';
         <div class="captcha">
             <div
                 class="g-recaptcha"
-                data-sitekey="6Lc2seAUAAAAABg_R6mlOzQuKOkLNxYkyQiRLf7x"
+                data-sitekey="6Lf-Dd8UAAAAAB6ROCZ8e2TWVp3-2PBzzz34y67X"
                 style="display: inline-block;">
             </div>
         </div>

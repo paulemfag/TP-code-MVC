@@ -34,10 +34,9 @@ require_once '../controllers/form_validation.php';
         </div>
         <div class="captcha">
             <div
-                    class="g-recaptcha"
-                    data-sitekey="6Lc2seAUAAAAABg_R6mlOzQuKOkLNxYkyQiRLf7x"
-                    style="display: inline-block;">
-
+                class="g-recaptcha"
+                data-sitekey="6Lf-Dd8UAAAAAB6ROCZ8e2TWVp3-2PBzzz34y67X"
+                style="display: inline-block;">
             </div>
         </div>
         <button class="btn btn-outline-success col-12" id="changeMyPassword" name="changeMyPassword" type="submit" value="<?= $changeMyPassword ?? '' ?>">Changer mon mot de passe</button>
@@ -64,10 +63,9 @@ require_once '../controllers/form_validation.php';
         </div>
         <div class="captcha">
             <div
-                    class="g-recaptcha"
-                    data-sitekey="6Lc2seAUAAAAABg_R6mlOzQuKOkLNxYkyQiRLf7x"
-                    style="display: inline-block;">
-
+                class="g-recaptcha"
+                data-sitekey="6Lf-Dd8UAAAAAB6ROCZ8e2TWVp3-2PBzzz34y67X"
+                style="display: inline-block;">
             </div>
         </div>
         <button class="btn btn-outline-success col-12" id="changeAccountType" name="changeAccountType" type="submit" value="<?= $changeAccount ?? '' ?>">Changer mon type de compte</button>
@@ -86,10 +84,9 @@ require_once '../controllers/form_validation.php';
         </div>
         <div class="captcha">
             <div
-                    class="g-recaptcha"
-                    data-sitekey="6Lc2seAUAAAAABg_R6mlOzQuKOkLNxYkyQiRLf7x"
-                    style="display: inline-block;">
-
+                class="g-recaptcha"
+                data-sitekey="6Lf-Dd8UAAAAAB6ROCZ8e2TWVp3-2PBzzz34y67X"
+                style="display: inline-block;">
             </div>
         </div>
         <button class="btn btn-outline-danger col-12" id="removeMyAccount" name="removeMyAccount" type="submit" value="<?= $removeMyAccount ?? '' ?>"><i class="far fa-times-circle"></i> Supprimer mon compte</button>
