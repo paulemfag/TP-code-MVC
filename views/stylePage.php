@@ -6,7 +6,7 @@ if (empty($_GET['style'])) {
 $style = $_GET['style'];
 $title = 'Fill | ' . $style;
 require_once 'require/header.php';
-require_once '../controllers/sqlstylePagination.php';
+require_once '../models/sqlstylePagination.php';
 //Si l'entrée en base s'est correctement effectuée (récupération des paramètres d'url) affiche une alert bootstrap pour avertir l'utilisateur
 if (filter_input(INPUT_GET, 'idPlaylist', FILTER_SANITIZE_NUMBER_INT) && filter_input(INPUT_GET, 'idComposition', FILTER_SANITIZE_NUMBER_INT)) {
     echo '
@@ -31,7 +31,7 @@ if (filter_input(INPUT_GET, 'idPlaylist', FILTER_SANITIZE_NUMBER_INT) && filter_
     </tr>
     </thead>
     <tbody>
-    <?php require_once '../controllers/sqlstyle.php'; ?>
+    <?php require_once '../models/sqlstyle.php'; ?>
     </tbody>
 </table>
 <?php //Pagination si il n'y a pas qu'une seule page

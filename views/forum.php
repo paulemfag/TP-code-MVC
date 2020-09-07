@@ -1,5 +1,5 @@
 <?php
-require_once '../controllers/forum_pagination.php';
+require_once '../models/sqlforumPagination.php';
 $title = 'Fill | Forum';
 require_once 'require/header.php';
 //Barre de recherche et bouton rechercher ?>
@@ -54,7 +54,7 @@ require_once 'require/header.php';
                 </tr>
             </thead>
             <tbody>
-                <?php require_once '../controllers/forum.php'; ?>
+                <?php require_once '../models/forum.php'; ?>
             </tbody>
         </table>
     </div>

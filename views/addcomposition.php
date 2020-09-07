@@ -1,7 +1,7 @@
 <?php
 $title = 'Fill | Ajout Composition';
 require_once 'require/header.php';
-require_once  '../controllers/sqlfile.php';
+require_once '../models/sqlfile.php';
 require_once '../controllers/form_validation.php';
 ?>
 <div class="row">

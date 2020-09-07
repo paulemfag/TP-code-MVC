@@ -1,12 +1,11 @@
 <?php
 $title = 'Fill | Panel d\'administration';
 require_once 'require/header.php';
-require_once '../controllers/sqladministrationPanelPagination.php';
-require_once '../controllers/administrationPanel.php';
-$title = 'Fill | Administration Panel';
+require_once '../models/sqladministrationPanelPagination.php';
+require_once '../models/administrationPanel.php';
+$title = 'Fill | Panel d\'administration';
 session_start();
-if ($_SESSION['pseudo'] === 'Paulemfag'){
-?>
+if ($_SESSION['pseudo'] === 'Paulemfag'){ ?>
 <div class="container text-center bg-light mt-2 opacity">
     <h1>Panel d'administration :</h1>
 </div>
@@ -105,24 +104,6 @@ if ($pages > 1) : ?>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
-
-    <script>
-        playlist:[
-    {
-    localFile:"_EnV_ - Heaven.mp3",
-    hostedFile:"https://dl.dropboxusercontent.com/s/9pamibo40ycabe1/_EnV_%20-%20Heaven.mp3"
-    },
-    {
-    localFile:"ｉ ｎ ｔ ｅ ｒ ｓ ｐ ａ ｃ ｅ.mp3",
-    hostedFile:"https://dl.dropboxusercontent.com/s/p07gh6bur678t5t/%EF%BD%89%20%EF%BD%8E%20%EF%BD%94%20%EF%BD%85%20%EF%BD%92%20%EF%BD%93%20%EF%BD%90%20%EF%BD%81%20%EF%BD%83%20%EF%BD%85.mp3"
-    },
-    {
-    localFile:"Getting Stronger - Michelle Creber Black Gryph0n Baasik.mp3",
-    hostedFile:"https://dl.dropboxusercontent.com/s/mw28fr4lt64mhzt/Getting%20Stronger%20-%20Michelle%20Creber%20Black%20Gryph0n%20Baasik.mp3"
-    },  333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333
-    ...
-    ],
-</script>
     </body>
 </html>
 <?php

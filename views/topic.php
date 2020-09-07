@@ -1,9 +1,9 @@
 <?php
 $title = 'Forum | Sujet';
 require_once 'require/header.php';
-require_once '../controllers/sqltopicPagination.php';
+require_once '../models/sqltopicPagination.php';
 require_once '../controllers/form_validation.php';
-require_once '../controllers/sqltopic.php';
+require_once '../models/sqltopic.php';
 ?>
 <div class="container">
     <div class="row bg-light mt-2 opacity">

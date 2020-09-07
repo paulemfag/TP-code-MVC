@@ -1,5 +1,5 @@
 <?php
-require_once '../controllers/sqlcomposition.php';
+require_once '../models/sqlcomposition.php';
 require_once '../vendor/autoload.php';
 require_once 'require/header.php';
 require_once '../controllers/form_validation.php';

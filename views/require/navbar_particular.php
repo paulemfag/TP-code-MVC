@@ -16,6 +16,9 @@
                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Playlists
                 </a>
+            <li class="nav-item">
+                <a class="nav-link text-light" href="messagerie.php">Messagerie</a>
+            </li>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownPlaylist">
                     <a href="newplaylist.php" id="newplaylist" class="dropdown-item text-light"><i class="fas fa-plus"></i>
                         Nouvelle playlist</a>

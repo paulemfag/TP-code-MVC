@@ -6,7 +6,7 @@ if (isset ($deleteStatus)){
 }
 $title = 'Fill | Ma page';
 require_once 'require/header.php';
-require_once '../controllers/sqlmypage.php';
+require_once '../models/sqlmypage.php';
 //message d'alerte en cas de suppression de composition
 echo $deleteStatus ?? '';
 ?>

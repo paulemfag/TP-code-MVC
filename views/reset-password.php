@@ -1,5 +1,5 @@
 <?php
-require_once '../controllers/sqlparameters.php';
+require_once '../models/sqlparameters.php';
 //Définition fuseau horaire
 date_default_timezone_set('Europe/Paris');
 //Définition format de la date

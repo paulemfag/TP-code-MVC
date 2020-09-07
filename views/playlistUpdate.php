@@ -1,6 +1,6 @@
 <?php
 require_once '../controllers/form_validation.php';
-require_once '../controllers/sqlplaylistUpdate.php';
+require_once '../models/sqlplaylistUpdate.php';
 require_once 'require/header.php';
 //On avertit l'utilisateur si l'update s'est mal passé
 echo $anErrorOccured ?? '';

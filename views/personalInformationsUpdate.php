@@ -3,7 +3,7 @@ session_start();
 $title = $_SESSION['pseudo'] .'| Mise à jour des informations personnelles';
 require_once 'require/header.php';
 require_once '../controllers/form_validation.php';
-require_once '../controllers/sqlpersonalInformationsUpdate.php';
+require_once '../models/sqlpersonalInformationsUpdate.php';
 ?>
 <div class="row">
     <h1 class="text-center bg-light col-10 opacity mt-2 ml-auto mr-auto"><?= $_SESSION['pseudo'] ?> | Mise à jour des informations personnelles :</h1>

@@ -1,5 +1,5 @@
 <?php
-require_once '../controllers/sqlcompositor.php';
+require_once '../models/sqlcompositor.php';
 require_once 'require/header.php';
 ?>
 <div class="mb-2">

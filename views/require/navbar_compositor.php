@@ -15,6 +15,9 @@
                 <a class="nav-link text-light" href="mypage.php">Ma page</a>
             </li>
             <li class="nav-item">
+                <a class="nav-link text-light" href="messagerie.php">Messagerie</a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link text-light" href="addcomposition.php">Ajouter une composition</a>
             </li>
             <li class="nav-item dropdown">

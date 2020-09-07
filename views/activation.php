@@ -18,7 +18,7 @@
     <img src="../assets/img/keyboards.png" alt="logo_clavier" height="40" width="60">
     <a id="FILL" class="navbar-brand text-light" style="font-weight: bold;">FILL</a>
 </nav>
-<?php require_once '../controllers/sqlactivation.php'; ?>
+<?php require_once '../models/sqlactivation.php'; ?>
 <div class="container">
     <a href="http://fill.info?connectMe=isOk" id="login" class="btn btn-outline-success col-12 ">Me connecter</a>
 </div>

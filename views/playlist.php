@@ -3,8 +3,8 @@ if (!filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT)){
     header('location:accueil.php');
     exit();
 }
-require_once '../controllers/sqlplaylistPagination.php';
-require_once '../controllers/sqlplaylist.php';
+require_once '../models/sqlplaylistPagination.php';
+require_once '../models/sqlplaylist.php';
 //Si la playlist n'existe pas (récupération du titre) redirige vers l'accueil
 if ($playlistTitle == NULL){
     header('location:accueil.php');
