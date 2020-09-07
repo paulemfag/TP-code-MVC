@@ -1,19 +1,20 @@
 <?php
 require_once 'sqlparameters.php';
 // Récupération de la valeur du champ actif pour le login $login
-$stmt = $db->prepare('SELECT `id`, `pseudo`, `mailBox`, `active`, `rôle`, `password`, `accounttype` FROM `users` WHERE pseudo = :pseudo ');
+$stmt   = $db->prepare('SELECT `id`, `pseudo`, `mailBox`, `active`, `connected`, `rôle`, `password`, `accounttype` FROM `users` WHERE pseudo = :pseudo ');
 if ($stmt->execute(array(':pseudo' => $pseudo)) && $row = $stmt->fetch()) {
     $id = $row['id'];
     $pseudo = $row['pseudo'];
     $mailbox = $row['mailBox'];
-    $active = $row['active']; // $actif contient alors 0 ou 1
+    $connected = $row['connected'];
+    $active = $row['active'];
     $role = $row['rôle'];
     $password = $row['password'];
     $accounttype = $row['accounttype'];
     // Si la valeur de la colonne active est égale à 0, on invite l'utilisateur à confirmer son compte via le mail
-    if ($active == '0' && $pseudo == $_POST['pseudo'] && password_verify($_POST['password'], $password)) {
+    if ($active == '0' && $active = 0 && $pseudo == $_POST['pseudo'] && password_verify($_POST['password'], $password)) {
     //Vérifie le type d'adresse mail pour personnaliser le message d'erreur
-    require_once 'controllers/mailboxhost.php';
+    require_once '../controllers/mailboxhost.php';
     //si l'extension mail est trouvée :
     if (!empty($hrefTitle) && !empty($mailhref)) {
         $notConfirmetYet = '<div class="alert alert-warning alert-dismissible fade show" role="alert">
@@ -40,6 +41,7 @@ if ($stmt->execute(array(':pseudo' => $pseudo)) && $row = $stmt->fetch()) {
         $_SESSION['accounttype'] = $accounttype;
         $_SESSION['id'] = $id;
         $_SESSION['rôle'] = $role;
+        $_SESSION['connected'] = $connected;
         header('location:views/suscribe.php');
         exit();
     }
