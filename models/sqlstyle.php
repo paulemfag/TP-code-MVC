@@ -13,6 +13,18 @@ try {
     //Récupération des informations de la table composition selon le style
     $stmt = $db->prepare("SELECT compositions.id, compositions.title, compositions.file, compositions.id_users FROM compositions INNER JOIN categories ON compositions.title = categories.title AND categories.style = :style ORDER BY title ASC LIMIT $start , $limit");
     if ($stmt->execute(array(':style' => $style)) && $row = $stmt->fetchAll(PDO::FETCH_ASSOC)) {
+        ?>
+        <table class="container compositionsTables mt-2 text-center">
+            <thead>
+            <tr>
+                <th>Nom de la composition :</th>
+                <th>Compositeur :</th>
+                <th>Morceau :</th>
+                <th>Ajouter à une Playlist :</th>
+            </tr>
+            </thead>
+            <tbody>
+        <?php
         //Pour chaque composition
         $playlistListIdNumber = 1;
         foreach ($row as $rowInfo) {
@@ -46,6 +58,15 @@ try {
             </tr>';
             echo $composition;
         }
+        ?>
+            </tbody>
+        </table>
+        <?php
+    }
+    else{
+        echo '<div class="row">
+                <h1 class="text-center bg-light col-10 opacity mt-2 ml-auto mr-auto">Cette catégorie ne contient aucune compositions pour le moment.</h1>
+              </div>';
     }
 } catch (PDOException $e) {
     echo "Erreur : " . $e->getMessage();

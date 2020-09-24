@@ -34,11 +34,17 @@ $(function () {
     } else {
         $('#userAuthorizationModal').modal('hide');
     }
+    if (localStorage.getItem('analyticsAuthorization')){
+        $('#analytics').attr('checked', 'checked')
+    }
     $('#storageDecline').click(function () {
         location.href = "https://www.google.com/";
     });
+    let analytics = document.getElementById("analytics").checked;
     $('#storageAllow').click(function () {
-        localStorage.setItem('storageAuthorization', 'true');
+        if (document.getElementById('analytics').checked === true) {
+            localStorage.setItem('analyticsAuthorization', 'true');
+        }
     });
 });
 

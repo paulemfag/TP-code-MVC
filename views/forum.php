@@ -3,7 +3,7 @@ require_once '../models/sqlforumPagination.php';
 $title = 'Fill | Forum';
 require_once 'require/header.php';
 //Barre de recherche et bouton rechercher ?>
-<div class="container mt-2 12-col">
+<div class="container mt-2">
     <div class="row" style="justify-content: center;">
         <form method="post">
             <input value="<?= $_GET['search'] ?>" name="searchValue" id="searchValue" class="col-md-5 col-sm-2" type="search" placeholder="Entrez un sujet">

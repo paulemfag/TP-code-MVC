@@ -57,7 +57,7 @@ require_once '../controllers/form_validation.php';
         </div>
     </div>
     <div class="form-group">
-        <button id="newComposition" name="newComposition" value="<?= $isOk ?? '' ?>" class="btn btn-success col-12" type="submit">Ajouter la composition</button>
+        <button id="newComposition" name="newComposition" value="<?= $isOk ?? '' ?>" class="btn btn-success col-12" type="submit"><i class="fas fa-cloud-upload-alt"></i> Ajouter la composition</button>
     </div>
 </form>
 <?php require_once 'require/footer.php'; ?>

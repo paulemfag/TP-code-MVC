@@ -41,7 +41,7 @@ echo $deleteStatus ?? '';
                         src="../assets/img/facebook-logo.png" width="80" height="60" alt="logo_facebook"></a>
             <a title="Profil Twitter de <?= $pseudo ?>" rel="noopener" target="_blank" href="<?= $twitterId ?? '#' ?>"><img
                         src="../assets/img/logo_twitter.png" width="80" height="60" alt="logo_twitter"></a>
-            <a class="btn btn-outline-primary float-right mt-3" href="personalInformationsUpdate.php">Modifier mes informations personnelles</a>
+            <a class="btn btn-outline-primary float-right mt-3" href="personalInformationsUpdate.php"><i class="far fa-id-card"></i> Modifier mes informations personnelles</a>
         </div>
     </div>
 </div>

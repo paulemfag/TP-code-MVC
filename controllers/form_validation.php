@@ -87,7 +87,7 @@ if (isset($_POST['suscribe'])) {
     }
     //Si il n'y a pas d'erreurs execute l'insertion dans la BDD
     if (count($errors) == 0) {
-        require_once 'sqlsuscribe.php';
+        require_once 'models/sqlsuscribe.php';
     }
 }
 //Vérifications formulaire de connexion
@@ -108,7 +108,7 @@ if (isset($_POST['login'])) {
     }
     //Si il n'y a pas d'erreurs execute les vérifications en BDD et renvoi vers la page 'accueil.php'
     if (count($errors) == 0) {
-        require_once 'sqllogin.php';
+        require_once 'models/sqllogin.php';
         $_POST['password'] = NULL;
         $pseudo = NULL;
     }
@@ -159,7 +159,7 @@ if (isset($_POST['submitSuscribeCompositor'])) {
     }
     //si le tableau d'erreurs est vide, requiert le fichier qui fait l'insertion en BDD
     if (count($errors) == 0){
-        require_once 'sqlpersonalInformations.php';
+        require_once '../models/sqlpersonalInformations.php';
     }
 }
 //Vérifications modifications des informations personnelles page personalInformationsUpdate.php
@@ -224,7 +224,7 @@ if (isset($_POST['submitPlaylist'])) {
     }
     //si le tableau d'erreurs est vide, requiert le fichier qui fait l'update en BDD
     if (count($errors) == 0) {
-        require_once 'sqlNewPlaylist.php';
+        require_once '../models/sqlNewPlaylist.php';
     }
 }
 //vérifications changement du titre de la playlist
@@ -322,7 +322,7 @@ if (isset($_POST['newComposition'])) {
     }
     //Si il n'y a pas d'erreurs requiert le fichier 'sqladdcomposition.php' qui fait l'ajout en BDD
     if (count($errors) == 0) {
-        require_once 'sqladdcomposition.php';
+        require_once '../models/sqladdcomposition.php';
     }
 }
 //Vérifification nouveau sujet
@@ -351,7 +351,7 @@ if (isset($_POST['submitsubject'])) {
         $errors['message'] = '<i class="fas fa-exclamation-triangle"></i> Le message est trop long.';
     }
     elseif (count($errors) == 0) {
-        require_once 'sqlnewsubject.php';
+        require_once '../models/sqlnewsubject.php';
     }
 }
 if (isset($_POST['topicMessageSubmit'])){
@@ -379,7 +379,7 @@ if (isset ($_POST['recuperation'])) {
     } elseif (!filter_var($recuperationMailbox, FILTER_VALIDATE_EMAIL)) {
         $errors['recuperationMailbox'] = '<i class="fas fa-exclamation-triangle"></i> Veuillez saisir une adresse mail valide.';
     } elseif (count($errors) == 0){
-        require_once 'sqlrecuperation.php';
+        require_once 'models/sqlrecuperation.php';
     }
 }
 //Formulaire ajout de commentaire
@@ -401,7 +401,7 @@ if (isset($_POST['submitComment'])){
         $errors['comment'] = '<i class="fas fa-exclamation-triangle"></i> Votre commentaire est trop long';
     }
     if (count($errors) == 0){
-        require_once 'sqladdComment.php';
+        require_once '../models/sqladdComment.php';
     }
 }
 //Formulaire reset mot de passe après récupération
@@ -417,7 +417,7 @@ if (isset($_POST['resetMyPassword'])){
         $errors['confirmPasswordAfterReset'] = '<i class="fas fa-exclamation-triangle"></i> Les mots de passe ne correspondent pas.';
     }
     elseif (count($errors) == 0) {
-        require_once 'sqlreset-password.php';
+        require_once '../models/sqlreset-password.php';
     }
 }
 //Vérifications CHANGEMENT MOT DE PASSE
@@ -447,7 +447,7 @@ if (isset ($_POST['changeMyPassword'])) {
         $errors['newPasswordConfirm'] = '<i class="fas fa-exclamation-triangle"></i> Les mots de passes ne correspondent pas.';
     }
     elseif (count($errors) == 0) {
-        require_once 'updatePassword.php';
+        require_once '../models/updatePassword.php';
         $errors['isok'] = 'Votre mot de passe à bien été changé.';
     }
 }
@@ -464,7 +464,7 @@ if (isset($_POST['changeAccountType'])) {
     }
     //Si il n'y a pas d'erreurs requiert le fichier "parameterspage.php" qui compare le mot de passe de la BDD
     elseif (count($errors) == 0) {
-        require_once 'parameterspage.php';
+        require_once '../models/parameterspage.php';
     }
 }
 //Vérifications suppression du compte
@@ -478,7 +478,7 @@ if (isset($_POST['removeMyAccount'])) {
         $errors['Password'] = '<i class="fas fa-exclamation-triangle"></i> Votre mot de passe est trop long.(Max 60)';
     }
     elseif (count($errors) == 0) {
-        require_once 'sqldeleteaccount.php';
+        require_once '../models/sqldeleteaccount.php';
     }
 }
 

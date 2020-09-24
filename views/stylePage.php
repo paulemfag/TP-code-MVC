@@ -19,21 +19,9 @@ if (filter_input(INPUT_GET, 'idPlaylist', FILTER_SANITIZE_NUMBER_INT) && filter_
 }
 ?>
 <div class="row">
-    <h1 class="text-center bg-light col-10 opacity mt-2 ml-auto mr-auto">Compositions Style <?= $style ?> :</h1>
+    <h1 class="text-center bg-light col-10 opacity mt-2 ml-auto mr-auto"><i class="fas fa-tag fa-sm"></i> Compositions Style <?= $style ?> :</h1>
 </div>
-<table class="container compositionsTables mt-2 text-center">
-    <thead>
-    <tr>
-    <th>Nom de la composition :</th>
-    <th>Compositeur :</th>
-    <th>Morceau :</th>
-    <th>Ajouter à une Playlist :</th>
-    </tr>
-    </thead>
-    <tbody>
     <?php require_once '../models/sqlstyle.php'; ?>
-    </tbody>
-</table>
 <?php //Pagination si il n'y a pas qu'une seule page
 if ($pages > 1) : ?>
     <nav class="col-md-12 mt-2 d-flex justify-content-center">

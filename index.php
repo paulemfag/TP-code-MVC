@@ -59,6 +59,13 @@ require_once 'controllers/form_validation.php';
                 <p>Vous pouvez refuser ces conditions en cliquant sur le bouton "Refuser". Pour vous assurer la
                     meilleure utilisation de FILL, le refus du stockage local de vos informations nous amènerons à
                     limiter votre accès à notre site.</p>
+                <div>
+                    <input class="col-2 mt-1 float-left" type="checkbox" id="analytics" name="analytics" value="newsletter">
+                    <label class="col-10 float-left" id="analyticsLabel" for="analytics">J'accepte l'utilisation des services d'analyse google ( analytics, optimize, surveys ).</label>
+                    <input class="col-2 mt-1 float-left" type="checkbox" id="storage" name="storage" value="newsletter">
+                    <label class="col-10 float-left" id="storageLabel" for="storage">J'accepte le stockage de mes informations* :<br>- Adresse mail<br>- Pseudo <br>- Mot de passe</label>
+                    <p>*Ces informations sont collectés afin de permettre un bon fonctionnement du site et ne seront pas communiqués à des tierces.</p>
+                </div>
             </div>
             <div class="modal-footer">
                 <button id="storageDecline" type="button" class="btn btn-block btn-danger my-0 mx-5"
@@ -98,25 +105,20 @@ echo $activeYourAccount ?? '' ?>
             <div class="form-group">
                 <label class="text-light" for="suscribepseudo">Pseudo :</label>
                 <span class="text-danger float-right"><?= ($errors['suscribepseudo']) ?? '' ?></span>
-                <input id="suscribepseudo" name="suscribepseudo" class="col-12 mt-1 inputColor" type="text"
-                       placeholder="Pseudo" value="<?= $suscribepseudo ?>" required>
+                <input id="suscribepseudo" name="suscribepseudo" class="col-12 mt-1 inputColor" type="text" placeholder="Pseudo" value="<?= $suscribepseudo ?>" autocomplete="off" maxlength="50" required>
             </div>
             <div class="form-group">
                 <label class="text-light" for="suscribemailbox">Adresse mail :</label>
                 <span class="text-danger float-right"><?= ($errors['suscribemailbox']) ?? '' ?></span>
-                <input id="suscribemailbox" name="suscribemailbox" class="col-12 mt-1 inputColor" type="email"
-                       placeholder="exemple@mail.com" value="<?= $suscribemailbox ?>" required>
+                <input id="suscribemailbox" name="suscribemailbox" class="col-12 mt-1 inputColor" type="email" placeholder="exemple@mail.com" value="<?= $suscribemailbox ?>" autocomplete="off" maxlength="50" required>
             </div>
             <div class="form-group">
                 <label class="text-light" for="suscribepassword">Mot de passe :</label>
                 <span class="text-danger float-right"><?= ($errors['suscribepassword']) ?? '' ?></span>
-                <input id="suscribepassword" name="suscribepassword" class="col-12 mt-1 inputColor"
-                       type="password" placeholder="*****" value="<?= $suscribepassword ?>" required>
+                <input id="suscribepassword" name="suscribepassword" class="col-12 mt-1 inputColor" type="password" placeholder="*****" value="<?= $suscribepassword ?>" autocomplete="off" maxlength="60" required>
             </div>
             <div class="form-group">
-                <input id="suscribepasswordconfirmation" name="suscribepasswordconfirmation"
-                       class="col-12 mt-1 inputColor" type="password"
-                       placeholder="Confirmation du mot de passe" value="<?= $suscribepasswordconfirmation ?>" required>
+                <input id="suscribepasswordconfirmation" name="suscribepasswordconfirmation" class="col-12 mt-1 inputColor" type="password" placeholder="Confirmation du mot de passe" value="<?= $suscribepasswordconfirmation ?>" autocomplete="off" maxlength="60" required>
             </div>
             <div class="captcha">
                 <div
@@ -141,14 +143,12 @@ echo $activeYourAccount ?? '' ?>
         <div class="form-group">
             <label class="text-light" for="pseudo">Pseudo :</label>
             <span class="text-danger float-right"><?= ($errors['pseudo']) ?? '' ?></span>
-            <input id="pseudo" name="pseudo" class="col-12 mt-1 inputColor" type="text" placeholder="Pseudo"
-                   value="<?= $pseudo ?>" required>
+            <input id="pseudo" name="pseudo" class="col-12 mt-1 inputColor" type="text" placeholder="Pseudo" value="<?= $pseudo ?>" autocomplete="off" maxlength="50" required>
         </div>
         <div class="form-group">
             <label class="text-light" for="password">Mot de passe :</label>
             <span class="text-danger float-right"><?= ($errors['password']) ?? '' ?></span>
-            <input id="password" name="password" class="col-12 mt-1 inputColor" type="password"
-                   placeholder="Mot de passe" value="<?= $_POST['password'] ?? '' ?>" required>
+            <input id="password" name="password" class="col-12 mt-1 inputColor" type="password" placeholder="Mot de passe" value="<?= $_POST['password'] ?? '' ?>" autocomplete="off" maxlength="60" required>
         </div>
         <div class="row text-center">
             <a class="col-12 indexhref" title="Créer un compte" id="noAccount" href="#">Je n'ai pas encore de compte</a>
@@ -175,8 +175,7 @@ echo $activeYourAccount ?? '' ?>
     <div class="form-group">
         <label class="text-light" for="recuperationMailbox">Adresse mail :</label>
         <span class="text-danger float-right"><?= ($errors['recuperationMailbox']) ?? '' ?></span>
-        <input id="recuperationMailbox" class="col-12 inputColor" name="recuperationMailbox" type="text"
-               value="<?= $recuperationMailbox ?>" required>
+        <input id="recuperationMailbox" class="col-12 inputColor" name="recuperationMailbox" type="text" value="<?= $recuperationMailbox ?>" autocomplete="off" maxlength="50" required>
     </div>
     <div class="captcha">
         <div

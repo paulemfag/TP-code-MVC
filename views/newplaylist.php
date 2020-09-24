@@ -2,7 +2,7 @@
 $title = 'Fill | Nouvelle playlist';
 require_once 'require/header.php';
 require_once '../controllers/form_validation.php';
-echo $successfullyCreated ?? '';
+echo $creationStatus ?? '';
 ?>
 <div class="row">
     <h1 class="text-center bg-light col-10 opacity mt-2 ml-auto mr-auto">Nouvelle Playlist :</h1>
