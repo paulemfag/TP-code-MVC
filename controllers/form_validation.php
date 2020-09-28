@@ -35,6 +35,9 @@ $message = trim(filter_input(INPUT_POST, 'message', FILTER_SANITIZE_STRING)) ?? 
 $recuperationMailbox = $_POST['recuperationMailbox'] ?? NULL;
 //formulaire ajout de commentaire
 $comment = $_POST['comment'] ?? NULL;
+//formulaire envoi de message
+$objet = $_POST['objet'] ?? NULL;
+$message = $_POST['message'] ?? NULL;
 //formulaire reset password
 $passwordAfterReset = $_POST['passwordAfterReset'] ?? NULL;
 $confirmPasswordAfterReset = $_POST['confirmPasswordAfterReset'] ?? NULL;
@@ -172,41 +175,41 @@ if (isset($_POST['updatePersonalInformations'])){
     if (!empty($twitter) && !preg_match($regexTwitter, $twitter)) {
         $errors['twitterId'] = '<i class="fas fa-exclamation-triangle"></i> Veuillez saisir un url correct.';
     }
-/*    //Vérifications Recaptcha
-    function post_captcha($user_response) {
-        $fields_string = '';
-        $fields = array(
-            'secret' => '6Lc2seAUAAAAABg_R6mlOzQuKOkLNxYkyQiRLf7x',
-            'response' => $user_response
-        );
-        foreach($fields as $key=>$value)
-        $fields_string .= $key . '=' . $value . '&';
-        $fields_string = rtrim($fields_string, '&');
+    /*    //Vérifications Recaptcha
+        function post_captcha($user_response) {
+            $fields_string = '';
+            $fields = array(
+                'secret' => '6Lc2seAUAAAAABg_R6mlOzQuKOkLNxYkyQiRLf7x',
+                'response' => $user_response
+            );
+            foreach($fields as $key=>$value)
+            $fields_string .= $key . '=' . $value . '&';
+            $fields_string = rtrim($fields_string, '&');
 
-        $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL, 'https://www.google.com/recaptcha/api/siteverify');
-        curl_setopt($ch, CURLOPT_POST, count($fields));
-        curl_setopt($ch, CURLOPT_POSTFIELDS, $fields_string);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, True);
+            $ch = curl_init();
+            curl_setopt($ch, CURLOPT_URL, 'https://www.google.com/recaptcha/api/siteverify');
+            curl_setopt($ch, CURLOPT_POST, count($fields));
+            curl_setopt($ch, CURLOPT_POSTFIELDS, $fields_string);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, True);
 
-        $result = curl_exec($ch);
-        curl_close($ch);
+            $result = curl_exec($ch);
+            curl_close($ch);
 
-        return json_decode($result, true);
-    }
+            return json_decode($result, true);
+        }
 
-    // Call the function post_captcha
-    $res = post_captcha($_POST['g-recaptcha-response']);
+        // Call the function post_captcha
+        $res = post_captcha($_POST['g-recaptcha-response']);
 
-    if (!$res['success']) {
-        // What happens when the CAPTCHA wasn't checked
-        echo '<p>Please go back and make sure you check the security CAPTCHA box.</p><br>';
-    } else {
-        // If CAPTCHA is successfully completed...
+        if (!$res['success']) {
+            // What happens when the CAPTCHA wasn't checked
+            echo '<p>Please go back and make sure you check the security CAPTCHA box.</p><br>';
+        } else {
+            // If CAPTCHA is successfully completed...
 
-        // Paste mail function or whatever else you want to happen here!
-        echo '<br><p>CAPTCHA was completed successfully!</p><br>';
-    }}*/
+            // Paste mail function or whatever else you want to happen here!
+            echo '<br><p>CAPTCHA was completed successfully!</p><br>';
+        }}*/
     if (count($errors) == 0){
         $changePersonalInformations = true;
     }
@@ -398,10 +401,46 @@ if (isset($_POST['submitComment'])){
     $commentLength = strlen($comment);
     //Si le commentaire est trop long
     if (($commentLength) > 500){
-        $errors['comment'] = '<i class="fas fa-exclamation-triangle"></i> Votre commentaire est trop long';
+        $errors['comment'] = '<i class="fas fa-exclamation-triangle"></i> Votre commentaire est trop long (Max 500)';
     }
     if (count($errors) == 0){
         require_once '../models/sqladdComment.php';
+    }
+}
+//Formulaire envoi de message
+if (isset($_POST['submitMessage'])){
+    //Vérifications champ pseudo.
+    if (empty($pseudo)){
+        $errors['pseudo'] = '<i class="fas fa-exclamation-triangle"></i> Veuillez renseigner le pseudo du destinataire.';
+    }
+    elseif (strlen($pseudo) > 50){
+        $errors['pseudo'] = '<i class="fas fa-exclamation-triangle"></i> Le pseudo est trop long (Max 50)';
+    }
+    elseif (!filter_input(INPUT_POST, 'pseudo', FILTER_SANITIZE_STRING)){
+        $errors['pseudo'] = '<i class="fas fa-exclamation-triangle"></i> Le pseudo contient des caractères non valides.';
+    }
+    //Vérifications champ objet.
+    if (empty($objet)){
+        $errors['objet'] = '<i class="fas fa-exclamation-triangle"></i> Veuillez renseigner l\'objet du message.';
+    }
+    elseif (strlen($objet) > 20){
+        $errors['objet'] = '<i class="fas fa-exclamation-triangle"></i> L\'objet est trop long (Max 20)';
+    }
+    elseif (!filter_input(INPUT_POST, 'objet', FILTER_SANITIZE_STRING)){
+        $errors['objet'] = '<i class="fas fa-exclamation-triangle"></i> L\'objet contient des caractères non valides.';
+    }
+    //Vérifications champ message.
+    if (empty($message)){
+        $errors['message'] = '<i class="fas fa-exclamation-triangle"></i> Veuillez renseigner votre message.';
+    }
+    elseif (strlen($message) > 500){
+        $errors['message'] = '<i class="fas fa-exclamation-triangle"></i> Le pseudo est trop long (Max 500)';
+    }
+    elseif (!filter_input(INPUT_POST, 'message', FILTER_SANITIZE_STRING)){
+        $errors['message'] = '<i class="fas fa-exclamation-triangle"></i> Le message contient des caractères non valides.';
+    }
+    if (count($errors) === 0){
+        require_once '../models/sqlnewmessage.php';
     }
 }
 //Formulaire reset mot de passe après récupération
@@ -481,4 +520,3 @@ if (isset($_POST['removeMyAccount'])) {
         require_once '../models/sqldeleteaccount.php';
     }
 }
-

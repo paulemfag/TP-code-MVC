@@ -28,18 +28,18 @@ try {
     $sth->execute();
     $user = $sth->fetch();
 } catch (Exception $ex) {
-    die('Connexion échoué !');
+    die('Connexion échoué 1!');
 }
 $compositorPseudo = $user['pseudo'];
 //récupération des commentaires de la composition (dans l'ordre de publication)
 try {
-    $sth = $db->prepare('SELECT `id`, `pseudo`, `comment`, DATE_FORMAT(`published_at`, \'le %d/%m/%Y\ à %HH%i\') `published_at_formatted` FROM `comments` WHERE `id_compositions` = :id_composition ORDER BY `published_at` DESC');
+    $sth = $db->prepare('SELECT comments.id, comments.comment, DATE_FORMAT(comments.published_at, \'le %d/%m/%Y\ à %HH%i\') as published_at_formatted, users.pseudo FROM `comments`
+ JOIN users ON comments.id_users = users.id
+ WHERE comments.id_compositions = :id_composition');
     $sth->bindValue(':id_composition', $id, PDO::PARAM_INT);
     $sth->execute();
     $commentList = $sth->fetchAll(PDO::FETCH_ASSOC);
-} catch (Exception $ex) {
-    die('Connexion échoué');
-}
+} catch (Exception $ex) {}
 if ($commentList){
     $commentsAnnouncement = '<div class="row">
     <h2 class="text-center bg-light col-10 opacity mt-2 ml-auto mr-auto">Commentaires :</h2>

@@ -41,7 +41,7 @@ echo $deleteStatus ?? '';
                         src="../assets/img/facebook-logo.png" width="80" height="60" alt="logo_facebook"></a>
             <a title="Profil Twitter de <?= $pseudo ?>" rel="noopener" target="_blank" href="<?= $twitterId ?? '#' ?>"><img
                         src="../assets/img/logo_twitter.png" width="80" height="60" alt="logo_twitter"></a>
-            <a class="btn btn-outline-primary float-right mt-3" href="personalInformationsUpdate.php"><i class="far fa-id-card"></i> Modifier mes informations personnelles</a>
+            <a title="Modifier mes informations personnelles" class="btn btn-outline-primary float-right mt-3" href="personalInformationsUpdate.php"><i class="far fa-id-card"></i> Modifier mes informations personnelles</a>
         </div>
     </div>
 </div>
@@ -67,7 +67,7 @@ echo $deleteStatus ?? '';
                     <div class="modal-body">
                         <p class="text-dark text-center col-12">Voulez vous vraiment supprimer la composition :<br><b>" ' .$compositionTitle[0]. ' " </b>?</p>
                         <a title="Annuler la suppression" class="col-5 ml-auto mr-auto btn-sm btn-secondary text-center text-light" data-dismiss="modal"><i class="fas fa-times"></i> Fermer</a>
-                        <a title="Suprimmer la composition : ' .$compositionTitle[0]. '" class="col-5 ml-auto mr-auto btn-sm btn-danger text-center" href="?idcomposition=' .$composition['id']. '"><i class="fas fa-trash-alt"> Spprimer la composition</i></a>              
+                        <a title="Suprimmer la composition : ' .$compositionTitle[0]. '" class="col-5 ml-auto mr-auto btn-sm btn-danger text-center" href="?idcomposition=' .$composition['id']. '"><i class="fas fa-trash-alt"></i> Spprimer la composition</a>              
                     </div>
                 </div>
             </div>

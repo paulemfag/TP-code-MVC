@@ -12,27 +12,27 @@ if ($stmt->execute(array(':pseudo' => $pseudo)) && $row = $stmt->fetch()) {
     $password = $row['password'];
     $accounttype = $row['accounttype'];
     //Si la valeur de la colonne active est égale à 0, on invite l'utilisateur à confirmer son compte via le mail.
-    if ($active == '0' && $active = 0 && $pseudo == $_POST['pseudo'] && password_verify($_POST['password'], $password)) {
-    //Vérifie le type d'adresse mail pour personnaliser l'alert d'information.
-    require_once '../controllers/mailboxhost.php';
-    //Si l'extension mail est trouvée.
-    if (!empty($hrefTitle) && !empty($mailhref)) {
-        $notConfirmetYet = '<div class="alert alert-warning alert-dismissible fade show" role="alert">
+    if ($active == '0' && $pseudo == $_POST['pseudo'] && password_verify($_POST['password'], $password)) {
+        //Vérifie le type d'adresse mail pour personnaliser l'alert d'information.
+        require_once 'controllers/mailboxhost.php';
+        //Si l'extension mail est trouvée.
+        if (!empty($hrefTitle) && !empty($mailhref)) {
+            $notConfirmetYet = '<div class="alert alert-warning alert-dismissible fade show" role="alert">
     <p>Bonjour ' . $pseudo . ', veuillez activer votre compte à l\'aide du lien d\'activation qui vous a été envoyé par <a class="alert-link" target="_blank" title="' . $hrefTitle . '" href="' . $mailhref . '">mail</a> afin de pouvoir vous connecter.</p>
     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
     <span aria-hidden="true">&times;</span>
   </button>
 </div>';
-    }
-    //Sinon
-    else{
-        $notConfirmetYet = '<div class="alert alert-warning alert-dismissible fade show" role="alert">
+        }
+        //Sinon
+        else{
+            $notConfirmetYet = '<div class="alert alert-warning alert-dismissible fade show" role="alert">
     <p>Bonjour ' . $pseudo . ', veuillez activer votre compte à l\'aide du lien d\'activation qui vous a été envoyé par mail afin de pouvoir vous connecter.</p>
     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
     <span aria-hidden="true">&times;</span>
   </button>
 </div>';
-    }
+        }
     }
     //Si l'utilisateur viens de la page 'activation.php' et que la valeur de la colonne active est égale à 1, on autorise la connexion et on le renvoi vers la page infos personnelles.
     if (isset($_GET['connectMe']) && $active == '1' && $pseudo == $_POST['pseudo'] && password_verify($_POST['password'], $password)) {
@@ -65,6 +65,7 @@ if ($stmt->execute(array(':pseudo' => $pseudo)) && $row = $stmt->fetch()) {
     else {
         $errors['login'] = '<i class="fas fa-exclamation-triangle"></i> Veuillez activer votre compte à l\'aide du lien d\'activation qui vous a été envoyé par mail afin de pouvoir vous connecter.';
     }
-} else {
+}
+else {
     $errors['login'] = '<i class="fas fa-exclamation-triangle"></i> Votre identifiant ou mot de passe est incorrect merci de réessayer.';
 }

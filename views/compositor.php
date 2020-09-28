@@ -35,6 +35,7 @@ require_once 'require/header.php';
                             src="../assets/img/facebook-logo.png" width="80" height="60" alt="logo_facebook"></a>
                 <a title="Profil Twitter de <?= $pseudo ?>" target="_blank" href="<?= $twitterId ?? '#' ?>"><img
                             src="../assets/img/logo_twitter.png" width="80" height="60" alt="logo_twitter"></a>
+                <a title="Envoyer un message à <?= $pseudo ?>" class="btn btn-outline-primary float-right mt-3" href="newmessage.php?id=<?= $_GET['id'] ?>"><i class="fas fa-envelope"></i> Envoyer un message</a>
             </div>
         </div>
     </div>

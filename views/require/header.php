@@ -49,27 +49,27 @@ if ($_SESSION['accounttype'] === 'compositor'){ ?>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav">
                 <li class="nav-item active">
-                    <a class="nav-link text-light" href="accueil.php"><i class="fas fa-home fa-lg"></i> Accueil<span class="sr-only">(current)</span></a>
+                    <a title="Accueil" class="nav-link text-light" href="accueil.php"><i class="fas fa-home fa-lg"></i> Accueil<span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-light" href="mypage.php"><i class="far fa-address-card fa-lg"></i> Ma page</a>
+                    <a title="Ma page" class="nav-link text-light" href="mypage.php"><i class="far fa-address-card fa-lg"></i> Ma page</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-light" href="messagerie.php?page=1"><i class="fas fa-mail-bulk fa-lg"></i> Messagerie <?= $numberOfNewMessages['COUNT(`id`)'] ?></a>
+                    <a title="Messagerie" class="nav-link text-light" href="messagerie.php?page=1"><i class="fas fa-mail-bulk fa-lg"></i> Messagerie <?= $numberOfNewMessages['COUNT(`id`)'] ?></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-light" href="addcomposition.php"><i class="fas fa-cloud-upload-alt fa-lg"></i> Ajouter une composition</a>
+                    <a title="Ajouter une composition" class="nav-link text-light" href="addcomposition.php"><i class="fas fa-cloud-upload-alt fa-lg"></i> Ajouter une composition</a>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdownPlaylist" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-list fa-lg"></i> Playlists</a>
+                    <a title="Liste des Playlists" class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdownPlaylist" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-bars fa-lg"></i> Playlists</a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownPlaylist">
-                        <a href="newplaylist.php" id="newplaylist" class="dropdown-item text-light"><i class="fas fa-plus"></i> Nouvelle playlist</a>
+                        <a title="Créer une nouvelle paylist" href="newplaylist.php" id="newplaylist" class="dropdown-item text-light"><i class="fas fa-plus"></i> Nouvelle playlist</a>
                         <?php require_once '../models/playlistList.php'?>
                     </div>
                 </li>
                 <!-- Menu Tags -->
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdownTags" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-tags fa-lg"></i> Tags</a>
+                    <a title="Tags" class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdownTags" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-tags fa-lg"></i> Tags</a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownTags">
                         <a title="Page style | Afro" class="dropdown-item" href="stylePage.php?style=Afro&page=1"><i class="fas fa-tag"></i> Afro</a>
                         <a title="Page style | Blues" class="dropdown-item" href="stylePage.php?style=Blues&page=1"><i class="fas fa-tag"></i> Blues</a>
@@ -92,15 +92,15 @@ if ($_SESSION['accounttype'] === 'compositor'){ ?>
             </ul>
             <ul class="navbar-nav ml-auto mr-4">
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdownMenu" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Menu</a>
+                    <a title="Menu" class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdownMenu" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Menu</a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenu">
-                        <a class="dropdown-item" href="parameters.php"><i class="fas fa-cogs"></i> Paramètres</a>
-                        <a class="dropdown-item" href="#">CGU</a>
-                        <a class="dropdown-item text-danger" href="logout.php">Me déconnecter <i class="fas fa-sign-out-alt"></i></a>
+                        <a title="Paramètres" class="dropdown-item" href="parameters.php"><i class="fas fa-cogs"></i> Paramètres</a>
+                        <a title="Conditions générales d'utilisation" class="dropdown-item" href="#"><i class="fas fa-info"></i> CGU</a>
+                        <a title="Me déconnecter" class="dropdown-item text-danger" href="logout.php">Me déconnecter <i class="fas fa-sign-out-alt"></i></a>
                     </div>
                 </li>
                 <li>
-                    <a class="btn btn-light text-dark" href="forum.php?page=1" role="button">Forum</a>
+                    <a title="Forum" class="btn btn-light text-dark" href="forum.php?page=1" role="button">Forum</a>
                 </li>
             </ul>
         </div>
@@ -111,28 +111,26 @@ elseif ($_SESSION['accounttype'] === 'particular'){ ?>
     <nav class="navbar navbar-expand-lg navbar-light bg-secondary">
         <img src="../assets/img/keyboards.png" alt="logo_clavier" height="40" width="60">
         <a class="navbar-brand text-light"><b>FILL</b></a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav">
                 <li class="nav-item active">
-                    <a class="nav-link text-light" href="accueil.php"><i class="fas fa-home fa-lg"></i> Accueil<span class="sr-only">(current)</span></a>
+                    <a title="Accueil" class="nav-link text-light" href="accueil.php"><i class="fas fa-home fa-lg"></i> Accueil<span class="sr-only">(current)</span></a>
+                </li>
+                    <a title="Messagerie" class="nav-link text-light" href="messagerie.php?page=1"><i class="fas fa-mail-bulk fa-lg"></i> Messagerie <?= $numberOfNewMessages['COUNT(`id`)'] ?></a>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdownPlaylist" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-list fa-lg"></i> Playlists</a>
-                <li class="nav-item">
-                    <a class="nav-link text-light" href="messagerie.php?page=1"><i class="fas fa-mail-bulk fa-lg"></i> Messagerie <?= $numberOfNewMessages['COUNT(`id`)'] ?></a>
-                </li>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdownPlaylist">
-                    <a href="newplaylist.php" id="newplaylist" class="dropdown-item text-light"><i class="fas fa-plus"></i> Nouvelle playlist</a>
-                    <?php require_once '../models/playlistList.php'?>
-                </div>
+                    <a title="Liste des Playlists" class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdownPlaylist" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-bars fa-lg"></i> Playlists</a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownPlaylist">
+                        <a title="Créer une nouvelle paylist" href="newplaylist.php" id="newplaylist" class="dropdown-item text-light"><i class="fas fa-plus"></i> Nouvelle playlist</a>
+                        <?php require_once '../models/playlistList.php'?>
+                    </div>
                 </li>
                 <!-- Menu Tags -->
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdownTags" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-tags fa-lg"></i> Tags</a>
+                    <a title="Tags" class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdownTags" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-tags fa-lg"></i> Tags</a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownTags">
                         <a title="Page style | Afro" class="dropdown-item" href="stylePage.php?style=Afro&page=1"><i class="fas fa-tag"></i> Afro</a>
                         <a title="Page style | Blues" class="dropdown-item" href="stylePage.php?style=Blues&page=1"><i class="fas fa-tag"></i> Blues</a>
@@ -153,20 +151,20 @@ elseif ($_SESSION['accounttype'] === 'particular'){ ?>
                     </div>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-light" href="personalInformationsUpdate.php"><i class="far fa-id-card fa-lg"></i> Modifier mes informations personnelles</a>
+                    <a title="Modifier mes informations personnelles" class="nav-link text-light" href="personalInformationsUpdate.php"><i class="far fa-id-card fa-lg"></i> Modifier mes informations personnelles</a>
                 </li>
             </ul>
             <ul class="navbar-nav ml-auto mr-4">
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdownMenu" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Menu</a>
+                    <a title="Menu" class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdownMenu" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Menu</a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenu">
-                        <a class="dropdown-item" href="parameters.php"><i class="fas fa-cogs"></i> Paramètres</a>
-                        <a class="dropdown-item" href="#">CGU</a>
-                        <a class="dropdown-item text-danger" href="logout.php">Me déconnecter <i class="fas fa-sign-out-alt"></i></a>
+                        <a title="Paramètres" class="dropdown-item" href="parameters.php"><i class="fas fa-cogs"></i> Paramètres</a>
+                        <a title="Conditions générales d'utilisation" class="dropdown-item" href="#"><i class="fas fa-info"></i> CGU</a>
+                        <a title="Me déconnecter" class="dropdown-item text-danger" href="logout.php">Me déconnecter <i class="fas fa-sign-out-alt"></i></a>
                     </div>
                 </li>
                 <li>
-                    <a class="btn btn-light text-dark" href="forum.php?page=1" role="button">Forum</a>
+                    <a title="Forum" class="btn btn-light text-dark" href="forum.php?page=1" role="button">Forum</a>
                 </li>
             </ul>
         </div>

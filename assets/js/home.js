@@ -25,27 +25,6 @@ $(function () {
         $('#presentationText').show();
         $('#forgottenPassword').hide();
     }
-    //Vérifications modal cookies
-
-    //empêche de fermer la modal // click backdrop
-    $('#userAuthorizationModal').modal({backdrop: 'static', keyboard: false});
-    if (!localStorage.getItem('storageAuthorization')) {
-        $('#userAuthorizationModal').modal('show');
-    } else {
-        $('#userAuthorizationModal').modal('hide');
-    }
-    if (localStorage.getItem('analyticsAuthorization')){
-        $('#analytics').attr('checked', 'checked')
-    }
-    $('#storageDecline').click(function () {
-        location.href = "https://www.google.com/";
-    });
-    let analytics = document.getElementById("analytics").checked;
-    $('#storageAllow').click(function () {
-        if (document.getElementById('analytics').checked === true) {
-            localStorage.setItem('analyticsAuthorization', 'true');
-        }
-    });
 });
 
 // quand on clique sur le bouton se connecter affiche le formulaire de connexion

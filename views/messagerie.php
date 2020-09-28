@@ -15,7 +15,7 @@ require_once 'require/header.php';
 require_once '../models/sqlmessageriePagination.php'; ?>
 <div class="row">
     <h1 class="text-center bg-light col-10 opacity mt-2 ml-auto mr-auto"><i class="fas fa-mail-bulk"></i> Messagerie :</h1>
-    <a href="newmessage.php" type="submit" class="btn btn-outline-success mr-auto ml-auto col-10" style="button">Envoyer un message</a>
+    <a href="newmessage.php" type="submit" class="btn btn-success mr-auto ml-auto col-10" style="button">Envoyer un message</a>
 </div>
 <div class="container mt-2">
     <div class="row" style="justify-content: center;">

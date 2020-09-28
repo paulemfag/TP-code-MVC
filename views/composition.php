@@ -1,6 +1,5 @@
 <?php
 require_once '../models/sqlcomposition.php';
-require_once '../vendor/autoload.php';
 require_once 'require/header.php';
 require_once '../controllers/form_validation.php';
 ?>
@@ -30,6 +29,7 @@ require_once '../controllers/form_validation.php';
 <div class="row">
     <h2 class="text-center bg-light col-10 opacity mt-2 ml-auto mr-auto">Laisser un commentaire :</h2>
 </div>
+<?= $commentReturn ?? ''; ?>
 <form class="container mt-1" method="post" action="#">
     <div class="form-group row">
         <span class="text-danger ml-auto"><?= $errors['comment'] ?? '' ?></span>
@@ -46,9 +46,8 @@ require_once '../controllers/form_validation.php';
         <input name="submitComment" id="submitComment" class="btn btn-outline-success mt-2 col-12" value="Envoyer" type="submit">
     </div>
 </form>
-<?php echo $commentsAnnouncement
-?? '';
-echo $commentReturn ?? '';
+<?php
+echo $commentsAnnouncement ?? '';
 foreach ($commentList as $comment):
     //Récupération du nombre de caractères du pseudo et de la date.
     $pseudoAndPublishedAtLength = strlen($comment['pseudo'] .', '. $comment['published_at_formatted'] .' :');
