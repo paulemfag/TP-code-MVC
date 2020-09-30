@@ -72,14 +72,36 @@ try {
     echo "Erreur : " . $e->getMessage();
 }
 if (filter_input(INPUT_GET, 'idPlaylist', FILTER_SANITIZE_NUMBER_INT) && filter_input(INPUT_GET, 'idComposition', FILTER_SANITIZE_NUMBER_INT)) {
-    $idComposition = $_GET['idComposition'];
-    $idPlaylist = $_GET['idPlaylist'];
     try {
+        $sth = $db->prepare('SELECT `title` FROM `playlists` WHERE `id` = :id');
+        $sth->bindValue(':id', $_GET['idPlaylist'], PDO::PARAM_INT);
+        $sth->execute();
+        $playlistExist = $sth->fetchAll(PDO::FETCH_ASSOC);
+        $addToPlaylistStatus = '
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+          <p>La composition a bien été ajoutée à la playlist.</p>
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>';
+    } catch (Exception $ex) {
+        die('Connexion échoué');
+    }
+    if ($playlistExist){
+        $addToPlaylistStatus = '
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+          <p>La composition a bien été ajoutée à la playlist.</p>
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>';
+    }
+   /* try {
         $stmt = $db->prepare('INSERT INTO `compo_in_playlist` (`id_compositions`, `id_playlists`) VALUES (:idComposition, :idPlaylist)');
-        $stmt->bindParam(':idComposition', $idComposition, PDO::PARAM_STR);
-        $stmt->bindParam(':idPlaylist', $idPlaylist, PDO::PARAM_INT);
+        $stmt->bindParam(':idComposition', $_GET['idComposition'], PDO::PARAM_STR);
+        $stmt->bindParam(':idPlaylist', $_GET['idPlaylist'], PDO::PARAM_INT);
         $stmt->execute();
     } catch (PDOException $e) {
         echo "Erreur : " . $e->getMessage();
-    }
+    }*/
 }
